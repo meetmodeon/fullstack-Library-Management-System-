@@ -8,9 +8,11 @@ import { Router} from '@angular/router';
 import { WebSocketServicProgramService } from '../../../../services/socket/websocketProgram/web-socket-servic-program.service';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpContext } from '@angular/common/http';
 import { UserResponse } from '../../../../services/models';
 import { AuthServiceService } from '../../../../services/auth/auth-service.service';
+import { UserServiceService } from '../../../../services/StateMangeSerivce/User/user-service.service';
+import { getUserById, GetUserById$Params } from '../../../../services/functions';
 
 
 @Component({
@@ -27,7 +29,7 @@ import { AuthServiceService } from '../../../../services/auth/auth-service.servi
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  url=environment.apiUrl;
+  private apiUrl=environment.apiUrl;
   @ViewChild('notify') notify!:NotificationComponent;
   @ViewChild('profile') profile!:ProfileSettingComponent;
   unreadCount=signal<number>(0);
@@ -39,14 +41,32 @@ export class HeaderComponent {
     private router:Router,
     private webService:WebSocketServicProgramService,
     private http:HttpClient,
-    private authSerivce:AuthServiceService
+    private authSerivce:AuthServiceService,
+    private userService:UserServiceService
   ){}
   
   items=[{}];
   
   ngOnInit(){
+    if(this.authSerivce.isLoggedIn()){
+      const params:GetUserById$Params={
+        email:this.authSerivce.getUserName() as string
+      }
+      getUserById(this.http,this.apiUrl,params,new HttpContext()).subscribe({
+        next:(value)=>{
+          if(value.body){
+            this.userData=value.body as UserResponse;
+          }
+        },
+        error:(error)=>{
+          alert('something went wrong to fetch user'+error.error);
+        }
+      })
+    }
+
     this.webService.unreadCount$.subscribe(data=>{
       if(data){
+        console.log("count data: ",data);
         this.unreadCount.set(data);
       }
     })

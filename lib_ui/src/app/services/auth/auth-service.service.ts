@@ -17,7 +17,7 @@ export class AuthServiceService {
   private refreshUrl= environment.apiUrl+"/common/refreshToken";
   private isLoggedInSubject= new BehaviorSubject<boolean>(false);
   isLoggedIn$= this.isLoggedInSubject.asObservable();
-
+  private refreshTimeOut:any=null;
 
   constructor(private http:HttpClient,
     private router:Router
@@ -44,6 +44,12 @@ export class AuthServiceService {
   }
 
   logout():void{
+
+    if(this.refreshTimeOut){
+      clearTimeout(this.refreshTimeOut);
+      this.refreshTimeOut=null;
+    }
+
     window.localStorage.removeItem('token');
     this.isLoggedInSubject.next(false);
     this.router.navigate(['/']);
@@ -106,7 +112,8 @@ export class AuthServiceService {
   }
 
   autoRefresh():void{
-    const decoded= this.decodeToken();
+   
+     const decoded= this.decodeToken();
 
     if(!decoded?.exp) return;
 
@@ -114,7 +121,7 @@ export class AuthServiceService {
     const refreshBeforeMs= expiresInMs-5000;
 
     if(refreshBeforeMs>0){
-      setTimeout(()=>{
+      this.refreshTimeOut=setTimeout(()=>{
         console.log("Meet this method call the refreshtoken method::  thanks you")
         this.refreshToken().subscribe();
       },refreshBeforeMs)

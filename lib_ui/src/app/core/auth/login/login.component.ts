@@ -84,8 +84,8 @@ export class LoginComponent {
         }
       }),
       error:((error)=>{
-        
-        this.messageService.add({severity: 'error', summary: 'Error', detail:error.errorMessage})
+        console.log("login error",error);
+        this.messageService.add({severity: 'error', summary: 'Error', detail:error.error.errorMessage})
       })
 
 

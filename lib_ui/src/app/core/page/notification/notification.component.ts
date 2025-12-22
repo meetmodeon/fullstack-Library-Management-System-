@@ -43,9 +43,9 @@ export class NotificationComponent {
 
   ){}
   ngOnInit(){
-    // this.webService.allNotification$.subscribe(data=>{
-    //   this.getAllNotification=data;
-    // })
+    this.webService.allNotification$.subscribe(data=>{
+      this.getAllNotification=data;
+    })
   }
   onShow(){
     this.visible=true;

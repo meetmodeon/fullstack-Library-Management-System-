@@ -1,0 +1,263 @@
+<div class="card flex justify-center">
+    <!-- <p-button (click)="showDialog()" label="Show" /> -->
+    <p-dialog [modal]="true" [(visible)]="visible" [style]="{ width: '35rem' }"
+        [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+        <ng-template #header>
+            <div class="flex flex-col  gap-2">
+                <span class="font-bold whitespace-nowrap ">Amy Elsner</span>
+                <span>Header</span>
+            </div>
+        </ng-template>
+        <div class="parent1 w-full">
+            <div class="main1-content grid grid-cols-3  gap-1 ">
+                <div class="left1-side">
+                    <div class="h-[180px]">
+                        <img src="libr.jpg" alt="alt" class="object-cover  h-full rounded-2xl bg-gray-600 ">
+                    </div>
+                    <div class="flex gap-1 mt-2">
+                        <span class="text-yellow-400">
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        <span>4.5</span>
+                        <span class="text-gray-400">(123 reviews)</span>
+                    </div>
+
+                    <div class="flex flex-col gap-2 my-4">
+                        @if (false) {
+                        <div class="w-full ">
+                            <span class="text-sm bg-black text-white rounded-xl px-2 py-0.5 ">Available</span>
+                        </div>
+                        <span
+                            class="bg-green-500 text-sm text-white font-semibold rounded-2xl overflow-hidden h-5">Recycled
+                            Book - Saving the Planet!</span>
+                        <div class="w-full bg-black rounded-xl flex justify-center items-center ring-2 ring-amber-300 active:scale-1 cursor-pointer"
+                            (click)="onBorrow()">
+                            <div class="text-white px-4 py-2">
+                                <span>Borrow Book</span>
+                            </div>
+                        </div>
+                        }@else {
+                        <div class="btn-part  ">
+                            <span
+                                class="border-1 border-green-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold">Current
+                                Borrowed</span>
+                        </div>
+                        }
+                        <div class="btn1 flex gap-1">
+                            <div class="first-btn flex gap-1 border-1 border-gray-200 rounded-xl px-1.5 py-0.5">
+                                <span class="">
+                                    <i class="fa-regular fa-heart"></i>
+                                </span><span>Save</span>
+                            </div>
+                            <div class="second-btn border-1 flex gap-1 border-gray-200 rounded-xl px-1.5 py-0.5">
+                                <span class=" ">
+                                    <i class="fa-solid fa-share-nodes"></i>
+                                </span><span>Share</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-side1 col-span-2">
+                    <div class="parent-container ">
+                        <div class="nav-bar bg-gray-200/40 rounded-2xl w-full px-2 p-1">
+                            <div class="grid grid-cols-2 gap-4 [&>*]:hover:cursor-pointer">
+                                <div (click)="onMethod('detail')"
+                                    [className]="selectedMenu==='detail'?'rounded-2xl flex justify-center items-center bg-white ':'rounded-2xl flex justify-center items-center'">
+                                    <div>
+                                        <div class="rounded-2xl ">
+                                            <span>Details</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div (click)="onMethod('review')"
+                                    [className]="selectedMenu==='review'?'rounded-2xl flex justify-center items-center bg-white ':'rounded-2xl flex justify-center items-center'">
+                                    <div>
+                                        <div class="rounded-2xl ">
+                                            <span>Reviews(123)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @if (selectedMenu==='detail') {
+                        <div class="about-section ">
+
+                            <div class="about">
+                                <div class="font-semibold my-2">About this Book</div>
+                                <div class="h-30 w-full overflow-auto ">
+                                    Hi,Meet how are you.
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="footer-section my-4 grid grid-cols-2">
+                            <div class="first-section flex flex-col gap-1">
+                                <div class="left-side flex flex-col">
+                                    <span class="text-gray-400 ">
+                                        Category
+                                    </span>
+                                    <span class="text-black">
+                                        Friction
+                                    </span>
+                                </div>
+                                <div class="left-side flex flex-col">
+                                    <span class="text-gray-400 ">
+                                        Times Borrowed
+                                    </span>
+                                    <span class="text-black">
+                                        127
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="second-section flex flex-col gap-1">
+                                <div class="right-side flex flex-col  pr-6">
+                                    <span class="text-gray-400 ">
+                                        Borrowed Period
+                                    </span>
+                                    <span class="text-black">
+                                        14 days
+                                    </span>
+                                </div>
+                                <div class="right-side flex flex-col">
+                                    <span class="text-gray-400 ">
+                                        Sustainability Score
+                                    </span>
+                                    <div class="high">
+                                        <span class="text-red-500 mr-1">High</span>
+                                        <span class="font-bold"><i class="fa-solid fa-recycle"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        }
+                        @if(selectedMenu==='review'){
+                        <div class="first-section my-3 flex gap-1 ">
+                            <div class="left-side  w-full">
+                                <div class=" flex gap-2 text-2xl">
+                                    <span class="text-yellow-300">
+                                        <i class="fa-solid fa-star"></i>
+                                    </span>
+                                    <span>4.5</span>
+                                </div>
+                                <div class="detail mt-4">
+                                    <span class="text-gray-500">Based on 127 reviews</span>
+                                </div>
+
+                            </div>
+
+                            <div class="right-side w-full ">
+                                <div class="fifth-star flex justify-center items-center">
+                                    <div class="text-sm">
+                                        <span class="text-black">5<i class="fa-solid fa-star"></i></span>
+                                    </div>
+                                    <div class="bar pl-5 pr-2">
+                                        <p-progressbar [value]="50"
+                                            [style]="{ height: '10px', width:'60px',color: 'white',backgound:'black'}" />
+                                    </div>
+                                    <span class="text-black">47</span>
+                                </div>
+                                <div class="fifth-star flex justify-center items-center">
+                                    <div class="text-sm">
+                                        <span class="text-black">4<i class="fa-solid fa-star"></i></span>
+                                    </div>
+                                    <div class="bar pl-5 pr-2">
+                                        <p-progressbar [value]="80"
+                                            [style]="{ height: '10px', width:'60px',color: 'white',backgound:'black'}" />
+                                    </div>
+                                    <span class="text-black">9</span>
+                                </div>
+                                <div class="fifth-star flex justify-center items-center">
+                                    <div class="text-sm">
+                                        <span class="text-black">3<i class="fa-solid fa-star"></i></span>
+                                    </div>
+                                    <div class="bar pl-5 pr-2">
+                                        <p-progressbar [value]="30"
+                                            [style]="{ height: '10px', width:'60px',color: 'white',backgound:'black'}" />
+                                    </div>
+                                    <span class="text-black">7</span>
+                                </div>
+                                <div class="fifth-star flex justify-center items-center">
+                                    <div class="text-sm">
+                                        <span class="text-black">2<i class="fa-solid fa-star"></i></span>
+                                    </div>
+                                    <div class="bar pl-5 pr-2">
+                                        <p-progressbar [value]="15"
+                                            [style]="{ height: '10px', width:'60px',color: 'white',backgound:'black'}" />
+                                    </div>
+                                    <span class="text-black">2</span>
+                                </div>
+                                <div class="fifth-star flex justify-center items-center">
+                                    <div class="text-sm">
+                                        <span class="text-black">1<i class="fa-solid fa-star"></i></span>
+                                    </div>
+                                    <div class="bar pl-5 pr-2">
+                                        <p-progressbar [value]="2"
+                                            [style]="{ height: '10px', width:'60px',color: 'white',backgound:'black'}" />
+                                    </div>
+                                    <span class="text-black">1</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <p-divider />
+                        <div class="second-section">
+                            <div class="write flex flex-col gap-2">
+                                <div>
+                                    <span class="text-black">Write a Review</span>
+                                </div>
+                                <div>
+                                    <span>
+                                        <p-rating [(ngModel)]="value" />
+                                    </span>
+                                </div>
+
+                                <div class="w-full ">
+                                    <textarea class="bg-gray-200 h-full w-full rounded-2xl p-2 resize-none"
+                                       row="3"
+                                       ></textarea>
+                                </div>
+                                <div class="mb-2">
+                                    <span class="px-4 py-2 text-white bg-black rounded-xl">Submit Review</span>
+                                </div>
+                               @for (item of items; track $index) {
+                                 <div class="review-details flex justify-between gap-2">
+                                    <div class="profile inline-block py-2">
+                                        <span class="bg-gray-300 rounded-full p-2"><i class="fa-regular fa-user"></i></span>
+                                    </div>
+                                    <div class="remain-details  w-full">
+                                        <div class="upper-section flex justify-between">
+                                            <div class="profile-name flex flex-col gap-1">
+                                                <span>
+                                                    Sarah Chen
+                                                </span>
+                                                <span>
+                                                     <p-rating [(ngModel)]="value" [disabled]="true"/>
+                                                </span>
+                                            </div>
+                                            <div class="date-section">
+                                                <span>
+                                                    Oct 10, 2025
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="comment h-20 w-full overflow-x-auto">
+                                            <span>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p-divider></p-divider>
+                               }
+                            </div>
+                        </div>
+                        
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p-dialog>
+</div>

@@ -1,0 +1,79 @@
+import { Injectable } from '@angular/core';
+import { environment } from '../../../../environments/environment';
+import { BehaviorSubject } from 'rxjs';
+import { UserResponse } from '../../models';
+import { HttpClient, HttpContext } from '@angular/common/http';
+import { downloadBookFile, downloadFile, DownloadFile$Params, getAllUser, GetAllUser$Params } from '../../functions';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserServiceService {
+  private apiUrl=environment.apiUrl;
+  private userSubject=new BehaviorSubject<UserResponse[]>([]);
+  readonly user$=this.userSubject.asObservable();
+  private isUserLoding=false;
+
+  private userImageCache=new Map<string,string>();
+  constructor(
+    private httpClient:HttpClient
+  ) { }
+
+  onLoadAllUserOnce(){
+    if(this.isUserLoding) return;
+
+    this.isUserLoding=true;
+    const params:GetAllUser$Params={
+      page:0,
+      size:100
+    }
+    getAllUser(this.httpClient,this.apiUrl,params,new HttpContext())
+    .subscribe({
+      next:(value)=>{
+        const users=value.body.content as UserResponse[];
+        this.userSubject.next(users);
+        
+       users.forEach(user=>{
+        this.fetchUserImage(user.email as string);
+       })
+      },
+      error:(error)=>{
+        this.isUserLoding=false;
+        console.log('Some error occur during fetching user');
+      }
+    })
+  }
+
+  private fetchUserImage(userEmail:string):void{
+    if(this.userImageCache.has(userEmail)) return;
+
+    this.userImageCache.set(userEmail,'libr.jpg');
+
+    const params:DownloadFile$Params={
+      email:userEmail
+    }
+    downloadFile(this.httpClient,this.apiUrl,params,new HttpContext()).subscribe({
+      next:res=>{
+        if(res.body){
+          const imageUrl=URL.createObjectURL(res.body);
+          this.userImageCache.set(userEmail,imageUrl);
+        }
+      },
+      error:()=>{
+        this.userImageCache.set(userEmail,'libr.jpg');
+      }
+    });
+  }
+  
+  getUserImage(email:string):string{
+    return this.userImageCache.get(email)??'libr.jpg';
+  }
+
+  ngOnDestroy():void{
+    this.userImageCache.forEach(url=>{
+      if(url.startsWith('blob: ')){
+        URL.revokeObjectURL(url);
+      }
+    })
+  }
+}

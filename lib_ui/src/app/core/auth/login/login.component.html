@@ -1,0 +1,86 @@
+<div>
+  <div
+    class="backdrop-blur-xl shadow-2xl rounded-2xl p-10 w-full max-w-md border border-white/30"
+  >
+    <h2 class="text-black text-3xl font-bold text-center mb-8 tracking-wide">
+      Welcome Back 👋
+    </h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
+      <!-- Email -->
+      <div>
+        <label class="block text-black font-medium mb-2">Email</label>
+        <div class="rounded-xl px-1">
+          <input
+            pInputText
+            formControlName="email"
+            placeholder="example@gmail.com"
+            class="w-full"
+          />
+        </div>
+        <p *ngIf="hasError('email', 'required')" class="text-red-500 text-sm">
+          Email is required
+        </p>
+        <p *ngIf="hasError('email', 'email')" class="text-red-500 text-sm">
+          Invalid email
+        </p>
+      </div>
+
+      <!-- Password -->
+      <div>
+        <label class="block text-black font-medium mb-2">Password</label>
+        <div
+          class="relative focus:ring-2 focus:border-violet-400 rounded-xl px-1"
+        >
+          <input
+            pPassword
+            formControlName="password"
+            [type]="isVisible ? 'text' : 'password'"
+            [feedback]="false"
+            placeholder="••••••••"
+            class="w-full"
+          />
+          <span class="absolute top-2 right-2" (click)="showPassword()"
+            ><i
+              [class]="
+                isVisible ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'
+              "
+            ></i
+          ></span>
+        </div>
+
+        <p
+          *ngIf="hasError('password', 'required')"
+          class="text-red-300 text-sm"
+        >
+          Password is required
+        </p>
+      </div>
+
+      <!-- Login Button -->
+     <button
+    type="submit"
+    class="w-full text-lg font-semibold border border-gray-300 px-4 py-2 rounded-md bg-blue-300
+           focus:outline-1 focus:outline-gray-300 focus:rounded-2xl"
+    [disabled]="loginForm.invalid"
+    [ngClass]="{
+      'cursor-not-allowed opacity-60': loginForm.invalid,
+      'cursor-pointer': !loginForm.invalid
+    }"
+  >
+    Login
+  </button>
+      
+      <div class="text-center">
+        <span class="active:text-blue-400/50">
+          <a href="http://localhost:8080/api/v1/oauth2/authorization/google">
+            Google<i class="fa-brands fa-google"></i>
+          </a>
+        </span>
+      </div>
+      <!-- Footer -->
+    </form>
+  </div>
+</div>
+
+<p-toast />

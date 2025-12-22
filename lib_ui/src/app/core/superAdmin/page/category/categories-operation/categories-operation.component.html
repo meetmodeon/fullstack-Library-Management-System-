@@ -1,0 +1,70 @@
+<div class="add-category w-full p-4">
+  <ng-container *ngIf="!isEditMode(); else updateTemplate">
+    <form [formGroup]="categoryFormGroup" (ngSubmit)="onSubmitForm()">
+      <div><small *ngIf="hasError('name','required')" class="text-red-400">Name is required filed</small></div>
+     <div class="w-full flex justify-between px-4 items-center">
+      <div class="input-section">
+        <label for="">Category Name: </label>
+         <input formControlName="name" class="w-full bg-gray-100 foucus:outline-1 focus:outline-indigo-300 rounded-md px-2 py-1"
+      />
+      
+      </div>
+     <div class="btn">
+       <button type="submit" [disabled]="categoryFormGroup.invalid" class="px-4 rounded-md border border-black "
+       [ngClass]="categoryFormGroup.invalid?'active:scale-100':'translate-1 active:scale-90'"
+       >Add Category</button>
+     </div>
+     </div>
+      
+    </form>
+  </ng-container>
+
+  <ng-template #updateTemplate>
+    <form [formGroup]="categoryFormGroup" (ngSubmit)="onSubmitForm()">
+      <div class="flex flex-wrap justify-between items-center">
+        <div class="input-section">
+          <label for="">Category Name</label>
+          <input formControlName="name" class="w-full bg-gray-100 foucus:outline-1 focus:outline-indigo-300 rounded-md px-2 py-1"
+      />
+      <div><small *ngIf="hasError('name','required')" class="text-red-400">Name is required filed</small></div>
+
+        </div>
+        <div class="btn-section space-x-4">
+      <button type="submit" [disabled]="categoryFormGroup.invalid" class="px-4 rounded-md border border-black "
+       [ngClass]="categoryFormGroup.invalid?'active:scale-100':'translate-1 active:scale-90'"
+       >Update Category</button>
+      <button type="button" (click)="onCancelEdit()" class="px-4 rounded-md border border-black active:scale-90 ">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</div>
+
+<p-divider></p-divider>
+
+<p-table [value]="allCategoryResponse"
+         [paginator]="true"
+         [rows]="rowNo()"
+         [rowsPerPageOptions]="[5,10,20]"
+         [loading]="loadingData()"
+         (onPage)="onPageChange($event)">
+  <ng-template #header>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Action</th>
+    </tr>
+  </ng-template>
+
+  <ng-template #body let-category>
+    <tr>
+      <td>{{ category.categoryId }}</td>
+      <td>{{ category.name | capitalization }}</td>
+      <td class="space-x-4">
+        <button (click)="onUpdate(category.categoryId)" class=" rounded-2xl border border-black translate-1 active:scale-80 px-4 space-x-4">Edit</button>
+        <button (click)="onDelete(category.categoryId)" class="rounded-2xl border border-black translate-1 active:scale-80 px-4 ">Delete</button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<p-toast></p-toast>

@@ -1,0 +1,411 @@
+<div>
+    <div class="w-full h-full border-1 border-blue-200/60 bg-blue-100/40 p-8 rounded-2xl">
+        <div class="flex flex-col gap-6">
+            <div class="par [&>*]:text-blue-500 flex flex-col">
+                <span>Welcome to PU Book Cycle</span>
+                <span>Your sustainable reading journey starts here</span>
+            </div>
+            <div class="image">
+                <div>
+                    <img src="libr.jpg" alt="image" class="w-full h-110 object-cover rounded-2xl">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid grid-rows-3 grid-flow-row">
+        <div class="tranding-now " >
+            <div class="par my-8 flex gap-2">
+                <span>
+                    <i class="pi pi-chart-line text-red-400"></i>
+                </span>
+                <span class="text-black">Trending Now</span>
+                <span class="pl-2 text-gray-500">Most popular this week</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 ">
+                <div class="content " (click)="onShow()">
+                    <div class=" border-1 grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300">
+                        <div class="content1-image w-full">
+                           <div class=" h-[200px] p-2">
+                             <img src="libr.jpg" alt="alt" class="object-cover w-full  h-full rounded-2xl bg-gray-600 ">
+                           </div>
+                        </div>
+                        <div class="content overflow-auto flex flex-col gap-2">
+                            <div class="book-title">
+                                <span class=" text-black">The Midnight Library</span>
+                            </div>
+                            <div class="book_author">
+                                <span class="text-gray-400 text-sm">
+                                    Matt Haig
+                                </span>
+                            </div>
+                            <div class="flex gap-1">
+                                <span class="text-yellow-400">
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                                <span>4</span>
+                                <span>(123)</span>
+                            </div>
+                            <div class="btn-part mt-2">
+                                <span class="border-1 border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold">Borrowed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content ">
+                    <div class=" border-1 grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300">
+                        <div class="content1-image w-full">
+                           <div class=" h-[200px] p-2 ">
+                             <img src="libr.jpg" alt="alt" class="object-cover w-full  h-full rounded-2xl bg-gray-600 ">
+                           </div>
+                        </div>
+                        <div class="content overflow-auto flex flex-col gap-2">
+                            <div class="book-title">
+                                <span class=" text-black">The Midnight Library</span>
+                            </div>
+                            <div class="book_author">
+                                <span class="text-gray-400 text-sm">
+                                    Matt Haig
+                                </span>
+                            </div>
+                            <div class="flex gap-1">
+                                <span class="text-yellow-400">
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                                <span>4</span>
+                                <span>(123)</span>
+                            </div>
+                            <div class="btn-part mt-2">
+                                <span class="border-1 border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold">Borrowed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="content ">
+                    <div class=" border-1 grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300">
+                        <div class="content1-image w-full">
+                           <div class=" h-[200px] py-4 px-8">
+                             <img src="libr.jpg" alt="alt" class="object-cover w-full  h-full rounded-2xl bg-gray-600 ">
+                           </div>
+                        </div>
+                        <div class="content overflow-auto flex flex-col gap-2">
+                            <div class="book-title">
+                                <span class=" text-black">The Midnight Library</span>
+                            </div>
+                            <div class="book_author">
+                                <span class="text-gray-400 text-sm">
+                                    Matt Haig
+                                </span>
+                            </div>
+                            <div class="flex gap-1">
+                                <span class="text-yellow-400">
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                                <span>4</span>
+                                <span>(123)</span>
+                            </div>
+                            <div class="btn-part mt-2">
+                                <span class="border-1 border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold">Borrowed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="content ">
+                    <div class=" border-1 grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300">
+                        <div class="content1-image w-full">
+                           <div class=" h-[200px] py-4 px-8">
+                             <img src="libr.jpg" alt="alt" class="object-cover w-full  h-full rounded-2xl bg-gray-600 ">
+                           </div>
+                        </div>
+                        <div class="content overflow-auto flex flex-col gap-2">
+                            <div class="book-title">
+                                <span class=" text-black">The Midnight Library</span>
+                            </div>
+                            <div class="book_author">
+                                <span class="text-gray-400 text-sm">
+                                    Matt Haig
+                                </span>
+                            </div>
+                            <div class="flex gap-1">
+                                <span class="text-yellow-400">
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                                <span>4</span>
+                                <span>(123)</span>
+                            </div>
+                            <div class="btn-part mt-2">
+                                <span class="border-1 border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold">Borrowed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content ">
+                    <div class=" border-1 grid grid-rows-2 border-gray-300 rounded-2xl p-2  hover:shadow-xl hover:shadow-gray-300">
+                        <div class="content1-image w-full">
+                           <div class=" h-[200px] py-4 px-8">
+                             <img src="libr.jpg" alt="alt" class="object-cover w-full  h-full rounded-2xl bg-gray-600 ">
+                           </div>
+                        </div>
+                        <div class="content overflow-auto flex flex-col gap-2">
+                            <div class="book-title">
+                                <span class=" text-black">The Midnight Library klsljflkkldjfljslsjldf</span>
+                            </div>
+                            <div class="book_author">
+                                <span class="text-gray-400 text-sm">
+                                    Matt Haig,jkaldkjflkalsdjfl,kjldalkfjjlkajldfjlajslf
+                                </span>
+                            </div>
+                            <div class="flex gap-1">
+                                <span class="text-yellow-400">
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                                <span>4</span>
+                                <span>(123)</span>
+                            </div>
+                            <div class="btn-part mt-2">
+                                <span class="border-1 border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold">Borrowed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-red-200">2</div>
+            </div>
+        </div>
+        <div class="recommand ">
+            <div class="par my-8 flex gap-2">
+                <span>
+                    <i class="fa-solid fa-ranking-star text-blue-400"></i>
+                </span>
+                <span class="text-black">Recommended For You</span>
+                <span class="pl-2 text-gray-500">Based on your reading history</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 ">
+                <div class="content ">
+                    <div class=" border-1 grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300">
+                        <div class="content1-image w-full">
+                           <div class=" h-[200px] p-2">
+                             <img src="libr.jpg" alt="alt" class="object-cover w-full  h-full rounded-2xl bg-gray-600 ">
+                           </div>
+                        </div>
+                        <div class="content overflow-auto flex flex-col gap-2">
+                            <div class="book-title">
+                                <span class=" text-black">The Midnight Library</span>
+                            </div>
+                            <div class="book_author">
+                                <span class="text-gray-400 text-sm">
+                                    Matt Haig
+                                </span>
+                            </div>
+                            <div class="flex gap-1">
+                                <span class="text-yellow-400">
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                                <span>4</span>
+                                <span>(123)</span>
+                            </div>
+                            <div class="btn-part mt-2">
+                                <span class="border-1 border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold">Borrowed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content ">
+                    <div class=" border-1 grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300">
+                        <div class="content1-image w-full">
+                           <div class=" h-[200px] py-4 px-8">
+                             <img src="libr.jpg" alt="alt" class="object-cover w-full  h-full rounded-2xl bg-gray-600 ">
+                           </div>
+                        </div>
+                        <div class="content overflow-auto flex flex-col gap-2">
+                            <div class="book-title">
+                                <span class=" text-black">The Midnight Library</span>
+                            </div>
+                            <div class="book_author">
+                                <span class="text-gray-400 text-sm">
+                                    Matt Haig
+                                </span>
+                            </div>
+                            <div class="flex gap-1">
+                                <span class="text-yellow-400">
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                                <span>4</span>
+                                <span>(123)</span>
+                            </div>
+                            <div class="btn-part mt-2">
+                                <span class="border-1 border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold">Borrowed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="content ">
+                    <div class=" border-1 grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300">
+                        <div class="content1-image w-full">
+                           <div class=" h-[200px] py-4 px-8">
+                             <img src="libr.jpg" alt="alt" class="object-cover w-full  h-full rounded-2xl bg-gray-600 ">
+                           </div>
+                        </div>
+                        <div class="content overflow-auto flex flex-col gap-2">
+                            <div class="book-title">
+                                <span class=" text-black">The Midnight Library</span>
+                            </div>
+                            <div class="book_author">
+                                <span class="text-gray-400 text-sm">
+                                    Matt Haig
+                                </span>
+                            </div>
+                            <div class="flex gap-1">
+                                <span class="text-yellow-400">
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                                <span>4</span>
+                                <span>(123)</span>
+                            </div>
+                            <div class="btn-part mt-2">
+                                <span class="border-1 border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold">Borrowed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="content ">
+                    <div class=" border-1 grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300">
+                        <div class="content1-image w-full">
+                           <div class=" h-[200px] py-4 px-8">
+                             <img src="libr.jpg" alt="alt" class="object-cover w-full  h-full rounded-2xl bg-gray-600 ">
+                           </div>
+                        </div>
+                        <div class="content overflow-auto flex flex-col gap-2">
+                            <div class="book-title">
+                                <span class=" text-black">The Midnight Library</span>
+                            </div>
+                            <div class="book_author">
+                                <span class="text-gray-400 text-sm">
+                                    Matt Haig
+                                </span>
+                            </div>
+                            <div class="flex gap-1">
+                                <span class="text-yellow-400">
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                                <span>4</span>
+                                <span>(123)</span>
+                            </div>
+                            <div class="btn-part mt-2">
+                                <span class="border-1 border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold">Borrowed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content ">
+                    <div class=" border-1 grid grid-rows-2 border-gray-300 rounded-2xl p-2  hover:shadow-xl hover:shadow-gray-300">
+                        <div class="content1-image w-full">
+                           <div class=" h-[200px] py-4 px-8">
+                             <img src="libr.jpg" alt="alt" class="object-cover w-full  h-full rounded-2xl bg-gray-600 ">
+                           </div>
+                        </div>
+                        <div class="content overflow-auto flex flex-col gap-2">
+                            <div class="book-title">
+                                <span class=" text-black">The Midnight Library klsljflkkldjfljslsjldf</span>
+                            </div>
+                            <div class="book_author">
+                                <span class="text-gray-400 text-sm">
+                                    Matt Haig,jkaldkjflkalsdjfl,kjldalkfjjlkajldfjlajslf
+                                </span>
+                            </div>
+                            <div class="flex gap-1">
+                                <span class="text-yellow-400">
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                                <span>4</span>
+                                <span>(123)</span>
+                            </div>
+                            <div class="btn-part mt-2">
+                                <span class="border-1 border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold">Borrowed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-red-200">2</div>
+            </div>
+        </div>
+        <div class="recent visited">
+            <div class="par mt-6 mb-3 flex gap-2">
+                <span>
+                    <i class="fa-regular fa-clock text-blue-500"></i>
+                </span>
+                <span class="text-black">Recent Visited</span>
+               
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8 ">
+                <div class="content">
+                    <div class=" border-1 grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300">
+                        <div class="content1-image w-full">
+                           <div class=" h-[200px] p-2">
+                             <img src="libr.jpg" alt="alt" class="object-cover w-full  h-full rounded-2xl bg-gray-600 ">
+                           </div>
+                        </div>
+                        <div class="content overflow-auto flex flex-col gap-2">
+                            <div class="book-title">
+                                <span class=" text-black">The Midnight Library</span>
+                            </div>
+                            <div class="book_author">
+                                <span class="text-gray-400 text-sm">
+                                    Matt Haig
+                                </span>
+                            </div>
+                            <div class="flex gap-1">
+                                <span class="text-yellow-400">
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                                <span>4</span>
+                                <span>(123)</span>
+                            </div>
+                            <div class="btn-part mt-2">
+                                <span class="border-1 border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold">Borrowed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <app-book-layout></app-book-layout>
+                </div>
+                 <app-book-layout></app-book-layout>
+                 <app-book-layout></app-book-layout>
+                <div class="content ">
+                    <div class=" border-1 grid grid-rows-2 border-gray-300 rounded-2xl p-2  hover:shadow-xl hover:shadow-gray-300">
+                        <div class="content1-image w-full">
+                           <div class=" h-[200px] py-4 px-8">
+                             <img src="libr.jpg" alt="alt" class="object-cover w-full  h-full rounded-2xl bg-gray-600 ">
+                           </div>
+                        </div>
+                        <div class="content overflow-auto flex flex-col gap-2">
+                            <div class="book-title">
+                                <span class=" text-black">The Midnight Library klsljflkkldjfljslsjldf</span>
+                            </div>
+                            <div class="book_author">
+                                <span class="text-gray-400 text-sm">
+                                    Matt Haig,jkaldkjflkalsdjfl,kjldalkfjjlkajldfjlajslf
+                                </span>
+                            </div>
+                            <div class="flex gap-1">
+                                <span class="text-yellow-400">
+                                    <i class="fa-solid fa-star"></i>
+                                </span>
+                                <span>4</span>
+                                <span>(123)</span>
+                            </div>
+                            <div class="btn-part mt-2">
+                                <span class="border-1 border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold">Borrowed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-red-200">2</div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+        <div >
+        <app-book-card #book ></app-book-card>
+    </div>
+    

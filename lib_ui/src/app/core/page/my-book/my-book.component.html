@@ -1,0 +1,50 @@
+<div class="m-4">
+    <div class="flex justify-between items-baseline mb-2 ">
+        <div class="book-detail flex flex-col">
+            <span>The Midnight Library</span>
+            <span class="text-gray-400">Matt Haig</span>
+        </div>
+        <div class="due text-xs px-2 rounded-md border-1 border-gray-500 flex gap-1 ">
+            <span class="text-yellow-500">
+                <i class="fa-regular fa-clock"></i>
+            </span>
+            <span class="font-semibold">due soon</span>
+        </div>
+    </div>
+    <div>
+        <div class="date flex justify-between [&>*]:text-gray-500">
+            <span>Borrowed: Oct 1, 2025</span>
+            <span>Due: Oct 17, 2025</span>
+        </div>
+        <div class="progess-bar1 w-full">
+            <div class="w-full h-2  rounded-full overflow-hidden" [ngClass]="getBg()">
+                <div class="h-full " [ngClass]="getBarColor()" [style.width.%]="progress"></div>
+            </div>
+        </div>
+        <div class="tags">
+            <ul class="space-y-2 flex gap-2 [&>*]:text-xs ">
+                <li
+                    class="relative  pl-3 before:content-[''] before:w-2 before:h-2 before:bg-red-500 before:rounded-full before:absolute before:left-0 before:top-1">
+                    Request
+                </li>
+
+                <li
+                    class="relative pl-3   before:content-[''] before:w-2 before:h-2 before:bg-green-500 before:rounded-full before:absolute before:left-0 before:top-1">
+                    Borrowed
+                </li>
+
+                <li
+                    class="relative pl-3  before:content-[''] before:w-2 before:h-2 before:bg-blue-500 before:rounded-full before:absolute before:left-0 before:top-1">
+
+                    Due Soon
+                </li>
+
+                <li
+                    class="relative pl-3 before:content-[''] before:w-2 before:h-2 before:bg-yellow-500 before:rounded-full before:absolute before:left-0 before:top-1">
+                    Returned
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>

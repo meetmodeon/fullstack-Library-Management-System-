@@ -1,0 +1,255 @@
+<div class="sub-category">
+  <div class="add-category w-full p-4">
+    <div class="w-full flex justify-end">
+      <div
+        class="text-black rounded-2xl shadow shadow-gray-800 px-4 border border-black inline-block transform active:scale-90 cursor-pointer"
+      >
+        <button (click)="onShowCard()">Add New Book</button>
+      </div>
+    </div>
+  </div>
+  <p-divider></p-divider>
+
+  <div class="container mx-auto">
+    <div class="show-category">
+      <div class="card">
+        <p-table
+          [value]="bookListData"
+          [paginator]="true"
+          [rows]="5"
+          [rowsPerPageOptions]="[5, 10, 20]"
+          [tableStyle]="{ 'min-width': '50rem' }"
+          [loading]="false"
+        >
+          <ng-template #header>
+            <tr>
+              <th style="width: 1%">Book_Id</th>
+              <th style="width: 8%">Book Name</th>
+              <th style="width: 10%">Author</th>
+              <th style="width: 3%">Status</th>
+              <th style="width: 5%">Rating</th>
+              <th style="width: 10%">ISBN</th>
+              <th style="width: 5%">Pulication</th>
+              <th style="width: 13%">Sub_Category Name</th>
+              <th style="width: 20%">Action</th>
+              <th style="width: 15%">Book pdf</th>
+            </tr>
+          </ng-template>
+          <ng-template #body let-book>
+            <tr>
+              <td>{{ book.bookId }}</td>
+              <td>
+                <div class="flex items-center">
+                  <span class="w-full space-x-1"
+                    ><img
+                      [src]="getBookImage(book.bookId) || 'libr.jpg'"
+                      alt=""
+                      class="size-5 rounded-full object-cover"
+                  /></span>
+                  <span class="">{{ book.name | capitalization }}</span>
+                </div>
+              </td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.bookStatus }}</td>
+              <td>
+                <span>
+                  <div class="card flex justify-center">
+                    <p-rating
+                      [(ngModel)]="book.averageRating"
+                      [readonly]="true"
+                    />
+                  </div>
+                </span>
+              </td>
+              <td>{{ book.isbn }}</td>
+              <td>{{ book.publication }}</td>
+              <td>{{ getSubCategoryName(book.subCategoryId) }}</td>
+              <td>
+                <div class="flex-auto space-x-2 *:transform *:active:scale-90">
+                  <button
+                    class="px-4 text-black hover:bg-gray-200 rounded-2xl border border-black"
+                    (click)="onUpdate(book.bookId)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="px-4 text-black hover:bg-gray-200 rounded-2xl border border-black"
+                    (click)="onDelete(book.bookId)"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </td>
+              <td>
+                <input
+                  type="file"
+                  #fileInput
+                  style="display: none"
+                  (change)="onFileSelected($event)"
+                  [accept]="fileType()==='BOOK_IMAGE'?'image/jpeg,image/png':'application/pdf'"
+                />
+                <div class="flex-auto gap-1 *:transform *:active:scale-90">
+                  <button
+                    class="px-4 text-black hover:bg-gray-200 rounded-2xl border border-black"
+                    (click)="onUploadFile(book.bookId,fileInput,'image')"
+                  >
+                    uploadBookImage
+                  </button>
+                  <button
+                    class="px-4 text-black hover:bg-gray-200 rounded-2xl border border-black"
+                    (click)="onUploadFile(book.bookId,fileInput,'pdf')"
+                  >
+                    UploadBookPdf
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="dialog-form">
+  <p-dialog
+    header="Book Information"
+    [modal]="true"
+    [(visible)]="visible"
+    [style]="{ width: '40rem' }"
+  >
+    <span class="p-text-secondary block mb-6">
+      {{ isEdit ? "Edit Book Details" : "Add New Book" }}
+    </span>
+
+    <form [formGroup]="bookFormGroup" (ngSubmit)="submit()">
+      <!-- Book Name -->
+      <div class="flex items-center gap-4 mb-4">
+        <label class="font-semibold w-32">Book Name</label>
+        <input
+          pInputText
+          formControlName="name"
+          class="flex-auto rounded-md w-full border border-gray-300 py-2"
+          autocomplete="off"
+        />
+      </div>
+      <p *ngIf="hasError('name', 'required')" class="text-red-500 text-xs mb-2">
+        Book Name is required
+      </p>
+
+      <!-- Sub Categories -->
+      <div class="flex items-start gap-4 mb-6">
+        <label class="font-semibold w-32 pt-2">SubCategories</label>
+
+        <p-multiSelect
+          [options]="listOfSubCategory"
+          optionLabel="name"
+          optionValue="subCategoryId"
+          formControlName="subCategoryId"
+          display="chip"
+          class="w-full"
+          placeholder="Select SubCategories"
+        ></p-multiSelect>
+      </div>
+
+      <!-- ISBN -->
+      <div class="flex items-center gap-4 mb-4">
+        <label class="font-semibold w-32">ISBN</label>
+        <input
+          pInputText
+          formControlName="isbn"
+          class="flex-auto rounded-md w-full border border-gray-300 py-2"
+          autocomplete="off"
+        />
+      </div>
+      <p *ngIf="hasError('isbn', 'required')" class="text-red-500 text-xs mb-2">
+        ISBN is required
+      </p>
+
+      <!-- Publication -->
+      <div class="flex items-center gap-4 mb-4">
+        <label class="font-semibold w-32">Publication</label>
+        <input
+          pInputText
+          formControlName="publication"
+          class="flex-auto rounded-md w-full border border-gray-300 py-2"
+          autocomplete="off"
+        />
+      </div>
+      <p
+        *ngIf="hasError('publication', 'required')"
+        class="text-red-500 text-xs mb-2"
+      >
+        Publication is required
+      </p>
+
+      <!-- Author Multi-select -->
+      <div class="flex gap-2 mb-4">
+        <label class="font-semibold w-32 pt-2">Authors</label>
+
+        <div
+          class="flex flex-wrap gap-2 items-center border border-gray-300 p-2 rounded-lg w-full"
+        >
+          <!-- Chips -->
+          <span
+            *ngFor="let a of bookFormGroup.value.author; let i = index"
+            class="bg-blue-200 text-blue-800 px-2 py-1 rounded-full flex items-center gap-1"
+          >
+            {{ a }}
+            <button
+              type="button"
+              (click)="removeAuthor(i)"
+              class="text-red-600 font-bold"
+            >
+              &times;
+            </button>
+          </span>
+
+          <!-- Input field -->
+          <input
+            type="text"
+            [formControl]="authorInput"
+            (keydown.enter)="addAuthor(); $event.preventDefault()"
+            placeholder="Type author & press Enter"
+            class="flex-auto outline-none bg-transparent w-full"
+          />
+        </div>
+        <p
+          *ngIf="hasError('author', 'required')"
+          class="text-red-500 text-xs mt-1"
+        >
+          Author is required
+        </p>
+      </div>
+
+      <!-- Book Status -->
+      <div class="flex items-center gap-4 mb-4">
+        <label class="font-semibold w-32">Status</label>
+        <select
+          formControlName="bookStatus"
+          class="w-full border border-gray-300 p-2 rounded"
+        >
+          <option *ngFor="let s of statusOptions" [value]="s">{{ s }}</option>
+        </select>
+      </div>
+
+      <!-- Image Upload -->
+      <div class="flex items-center gap-4 mb-4">
+        <label class="font-semibold w-32">Image</label>
+        <input type="file" (change)="onFileChange($event)" class="flex-auto" />
+      </div>
+      <p *ngIf="bookFormGroup.value.imageUrl">
+        Selected: {{ bookFormGroup.value.imageUrl }}
+      </p>
+
+      <!-- Buttons -->
+      <div class="flex justify-end gap-3">
+        <p-button
+          label="Cancel"
+          severity="secondary"
+          (click)="visible = false"
+        />
+        <p-button label="Save" type="submit" />
+      </div>
+    </form>
+  </p-dialog>
+</div>

@@ -1,0 +1,165 @@
+<div class="container mx-auto flex flex-col gap-4">
+    <div class="intro ">
+        <div class="w-full  border border-blue-200/60 bg-red-100/40 p-8 rounded-2xl">
+            <div class="flex flex-col gap-6 ">
+                <div class="info flex flex-col">
+                    <div>
+                        <span class="text-red-500/70 mr-2 text-xl"><i class="fa-solid fa-recycle"></i></span>
+                        <span class="text-red-800">Sustainability Hub</span>
+                    </div>
+                    <span class="text-red-500">Together we're making a difference - one book at a time</span>
+                </div>
+                <div class="num flex justify-around flex-wrap">
+                    <div class="flex flex-col text-center gap-2">
+                        <span class="text-3xl text-red-500/70 font-light"><i class="fa-solid fa-recycle"></i></span>
+                        <span class="text-3xl">1,247</span>
+                        <span class="text-gray-500">Books Recycled</span>
+                    </div>
+                    <div class="flex flex-col text-center gap-2">
+                        <span class="text-3xl text-indigo-400 font-light"><i class="fa-solid fa-share-nodes"></i></span>
+                        <span class="text-3xl">892</span>
+                        <span class="text-gray-500">Students Sharing</span>
+                    </div>
+                    <div class="flex flex-col text-center gap-2">
+                        <span class="text-green-600 text-3xl font-light"><i class="fa-solid fa-leaf"></i></span>
+                        <span class="text-3xl">3.2 tons</span>
+                        <span class="text-gray-500">CO2 Saved</span>
+                    </div>
+                    <div class="flex flex-col text-center gap-2">
+                        <span class="text-indigo-600 text-3xl font-light"><i class="fa-solid fa-chart-line"></i></span>
+                        <span class="text-3xl">+23%</span>
+                        <span class="text-gray-500">Growth This Month</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main grid grid-cols-2 gap-4">
+        <div class="left-side w-full border border-gray-400 rounded-2xl my-3 px-6 py-4">
+            <div class="mb-2 flex flex-col ">
+                <div class="book-detail flex flex-col mb-4">
+                    <span>The Midnight Library</span>
+                    <span class="text-gray-400">Matt Haig</span>
+                </div>
+                <div>
+                    <div>
+                        <div class="upper-section w-full flex justify-between space-y-2">
+                            <div class="title">Book Recycle</div>
+                            <div class="data">12 / 18</div>
+                        </div>
+                        <div class="progess-bar1 w-full">
+                            <div class="w-full h-2  rounded-full overflow-hidden bg-gray-400">
+                                <div class="h-full bg-black" [style.width.%]="progressWidth"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <div class="upper-section w-full flex justify-between space-y-2">
+                            <div class="title">Book donated</div>
+                            <div class="data">8 / 15</div>
+                        </div>
+                        <div class="progess-bar1 w-full">
+                            <div class="w-full h-2  rounded-full overflow-hidden bg-gray-400">
+                                <div class="h-full bg-black" [style.width.%]="progressWidth2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p-divider />
+            </div>
+            <div class="right-side flex flex-col gap-2">
+                <div>
+                    <span class="bg-green-600 text-white px-2 py-1 rounded-md text-xs">Eco Warrior Level 2</span>
+                </div>
+                <span class="text-gray-500">Keep going! 8 more books to reach Level 3</span>
+            </div>
+        </div>
+        <div class="right-side w-full border border-gray-400 rounded-2xl my-3 px-6 py-4">
+            <div class="mb-2 flex flex-col">
+                <div class="book-detail flex flex-col mb-4">
+                    <span>How It Works</span>
+                    <span class="text-gray-400">The book recycling cycle</span>
+                </div>
+                <div class="points">
+                    <div class="pb-6 flex gap-4 flex-wrap items-center">
+                        <div class="items-center size-9 rounded-full bg-red-100 flex justify-center ">
+                            <span class="text-red-500 ">1</span>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <span>Donate Books</span>
+                            <span class="text-gray-500">Bring books you no longer need to the library</span>
+                        </div>
+
+                    </div>
+                    <div class="pb-6 flex gap-4 flex-wrap items-center">
+                        <div class="items-center size-9 rounded-full bg-red-100 flex justify-center ">
+                            <span class="text-red-500 ">2</span>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <span>Quality Check</span>
+                            <span class="text-gray-500">We ensure books are in good condition for sharing</span>
+                        </div>
+
+                    </div>
+                    <div class="pb-6 flex gap-4 flex-wrap items-center">
+                        <div class="items-center size-9 rounded-full bg-red-100 flex justify-center ">
+                            <span class="text-red-500 ">3</span>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <span>Share & Circulate
+                            </span>
+                            <span class="text-gray-500">Books are made available to other students</span>
+                        </div>
+
+                    </div>
+                    <div class="pb-6 flex gap-4 flex-wrap items-center">
+                        <div class="items-center size-9 rounded-full bg-red-100 flex justify-center ">
+                            <span class="text-red-500 ">4</span>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <span>Reduce Waste</span>
+                            <span class="text-gray-500">Together we reduce paper waste and carbon footprint
+
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="last">
+         <div class="intro mb-4">
+        <div class="w-full  border border-blue-200/60 p-8 rounded-2xl">
+            <div class="flex flex-col gap-6">
+                <div class="info ">
+                    <div>
+                        <span >Environmental Impact</span>
+                    </div>
+                </div>
+                <div class="image">
+                    <div>
+                        <img src="cycle.jpg" alt="image" class="w-full h-110 object-cover rounded-2xl">
+                    </div>
+                </div>
+                <div class="num flex justify-around">
+                    <div class="flex flex-col text-center">
+                        <span class="text-3xl text-red-500">432kg</span>
+                        <span class="text-gray-500">Paper Saved</span>
+                    </div>
+                    <div class="flex flex-col text-center">
+                        <span class="text-3xl text-indigo-400">2,847L</span>
+                        <span class="text-gray-500">Water Saved</span>
+                    </div>
+                    <div class="flex flex-col text-center">
+                        <span class="text-3xl text-indigo-400">1,234kWh</span>
+                        <span class="text-gray-500">Energy Saved</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</div>

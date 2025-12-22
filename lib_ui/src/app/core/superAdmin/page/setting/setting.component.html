@@ -1,0 +1,22 @@
+<div class="max-w-3xl mx-auto space-y-2">
+
+  <!-- Account Details -->
+  <div class="border rounded-lg p-3 shadow">
+    <h2 class="text-xl font-semibold mb-3">Account Details</h2>
+    <p><strong>Account Id:</strong>{{ user.userId}}</p>
+    <p><strong>Name:</strong> {{ user.name }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Phone:</strong> {{ user.phone }}</p>
+  </div>
+
+  <!-- Change Password Button -->
+  <button *ngIf="!showPasswordForm"
+    (click)="togglePasswordForm()"
+    class="border px-4 py-2 rounded hover:bg-gray-100"
+  >
+    Change Password
+  </button>
+  <div *ngIf="showPasswordForm">
+    <app-reset-password></app-reset-password>
+  </div>
+</div>

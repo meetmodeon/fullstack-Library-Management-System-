@@ -1,0 +1,88 @@
+<div class="flex justify-center h-auto w-full py-10">
+  <div class="main grid grid-cols-1 md:grid-cols-2 p-4 border border-gray-200 shadow-md shadow-gray-300 rounded-md gap-4">
+
+    <!-- LEFT -->
+    <div class="flex gap-4 justify-center items-center" (click)="fileInput.click()" >
+      <img
+        [src]="preview || imageUrl"
+        alt="libr.jpg"
+        class="object-cover rounded-md w-20 h-20 md:w-40 md:h-40"
+      />
+      <p *ngIf="!preview">Click here to upload an image</p>
+
+    </div>
+    <div>
+      <input
+    #fileInput
+    type="file"
+    accept="image/jpeg,image/png"
+    (change)="onFileSelected($event)"
+    hidden
+     />
+     <button *ngIf="file" (click)="upload()" class="mt-2 p-2 bg-blue-500 text-white rounded">
+      Upload
+    </button>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="space-y-3 ">
+
+      <!-- VIEW MODE -->
+      <ng-container *ngIf="!isEditMode; else editMode" >
+        <p><strong>Id:</strong>{{user.userId }}</p>
+        <p><strong>Name:</strong> {{ user.name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Phone:</strong> {{ user.phoneNumber }}</p>
+        <p><strong>Role:</strong> {{user.userRole}}</p>
+
+        <button
+          class="mt-2 px-4 py-1 border rounded"
+          (click)="enableEdit()"
+        >
+          ✏️ Edit
+        </button>
+      </ng-container>
+
+      <!-- EDIT MODE -->
+      <ng-template #editMode>
+        <form [formGroup]="profileForm" class="space-y-2">
+
+          <div>
+            <label>Name</label>
+            <input formControlName="name" class="border p-1 w-full" />
+          </div>
+
+          <div>
+            <label>Email</label>
+            <input formControlName="email" class="border p-1 w-full" />
+          </div>
+
+          <div>
+            <label>Phone</label>
+            <input formControlName="phoneNumber" class="border p-1 w-full" />
+          </div>
+
+          <div class="flex gap-2 mt-2">
+            <button
+              type="button"
+              class="px-4 py-1 border rounded bg-green-500 text-white"
+              (click)="save()"
+            >
+              Save
+            </button>
+
+            <button
+              type="button"
+              class="px-4 py-1 border rounded"
+              (click)="cancelEdit()"
+            >
+              Cancel
+            </button>
+          </div>
+
+        </form>
+      </ng-template>
+
+    </div>
+  </div>
+</div>

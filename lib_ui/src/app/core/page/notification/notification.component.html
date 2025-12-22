@@ -1,0 +1,112 @@
+<div class="w-full">
+  <p-drawer [(visible)]="visible" position="right" [style]="{ width: '28%' }">
+    <ng-template #header>
+      <div class="flex flex-col gap-2 w-full text-sm">
+        <span class="text-xl font-semibold">Notifications</span>
+        <span class="text-gray-500 text-xs"
+          >Stay updated with your library activities</span
+        >
+      </div>
+    </ng-template>
+
+    <div class="containt mt-8 w-full flex flex-col gap-2">
+      @for (item of getAllNewBookNotify('BOOK_DUE'); track $index) {
+      <div class="card relative" (click)="markRead(item.announcementId)">
+        <div
+          class="left flex gap-2 justify-baseline flex-wrap border border-blue-200  hover:bg-gray-200 rounded-md p-1"
+          [ngClass]="item.read?'bg-red-100/20':'bg-blue-100/40'"
+        >
+          <div class="logo">
+            <span class="text-red-400 text-xl"
+              ><i class="fa-regular fa-calendar"></i
+            ></span>
+          </div>
+
+          <div class="details1 flex basis-3/4 flex-col gap-1">
+            <span class="font-bold text-sm text-black">Book Due Soon</span>
+            <span class="text-sm text-gray-500"
+              >The Midnight Library is due in 2 days</span
+            >
+            <span class="text-xs text-gray-500">2 hours ago</span>
+          </div>
+        </div>
+        <div class="dot absolute top-2 right-2 size-2 rounded-full bg-black" *ngIf="!item.read">
+          <!-- <span><i class="pi pi-circle-on" style="color: black"></i></span> -->
+        </div>
+      </div>
+      }
+     @for (item of getAllNewBookNotify('NEW_BOOK'); track $index) {
+       <div class="card2 relative">
+        <div
+          class="left flex gap-3 justify-baseline flex-wrap border border-blue-200 bg-blue-100/40 hover:bg-gray-200 rounded-md p-1"
+        >
+          <div class="logo">
+            <span class="text-indigo-400 text-xl"
+              ><i class="fa-regular fa-star"></i
+            ></span>
+          </div>
+          <div class="details1 flex basis-3/4 flex-col gap-1">
+            <span class="font-bold text-sm text-black">New Books Added</span>
+            <span class="text-sm text-gray-500">{{ item.message }}</span>
+            <span class="text-xs text-gray-500">5 hours ago</span>
+          </div>
+          
+        </div>
+        <div class="dot absolute top-2 right-2 size-2 rounded-full bg-black">
+          <!-- <span><i class="pi pi-circle-on" style="color: black"></i></span> -->
+        </div>
+      </div>
+     }
+      @for (item of getAllNewBookNotify('MEETING'); track $index) {
+        <div class="card3 relative">
+        <div
+          class="left flex gap-3 justify-baseline flex-wrap border border-blue-200 bg-blue-100/40 hover:bg-gray-200 rounded-md p-1"
+        >
+          <div class="logo">
+            <span class="text-indigo-400 text-xl"
+              ><i class="fa-regular fa-bell"></i
+            ></span>
+          </div>
+        
+          <div class="details1 flex basis-3/4 flex-col gap-1">
+            <span class="font-bold text-sm text-black">Book Club Meeting</span>
+            <span class="text-sm text-gray-500"
+              >Join us this Friday for our monthly book discussion</span
+            >
+            <span class="text-sm text-gray-500">1 day ago</span>
+          </div>
+          
+        </div>
+        <div class="dot absolute top-2 right-2 size-2 rounded-full bg-black">
+          <!-- <span><i class="pi pi-circle-on" style="color: black"></i></span> -->
+        </div>
+      </div>
+      }
+      @for (item of getAllNewBookNotify('MILESTONE'); track $index) {
+        <div class="card4 relative">
+        <div
+          class="left flex gap-3 justify-baseline flex-wrap border border-blue-200 bg-blue-100/40 hover:bg-gray-200 rounded-md p-1"
+        >
+          <div class="logo">
+            <span
+              class="text-red-400 size-1 border border-red-500 rounded-full bg-red-200"
+              ><i class="fa-regular fa-exclamation"></i
+            ></span>
+          </div>
+          <div class="details1 flex basis-3/4 flex-col gap-1" >
+            <span class="font-bold text-sm text-black"
+              >Recycling Milestone</span
+            >
+            <span class="text-sm text-gray-500">item.message</span>
+            <span class="text-xs text-gray-500">2 days ago</span>
+          </div>
+          
+        </div>
+        <div class="dot absolute top-2 right-2 size-2 rounded-full bg-black">
+          <!-- <span><i class="pi pi-circle-on" style="color: black"></i></span> -->
+        </div>
+      </div>
+      }
+    </div>
+  </p-drawer>
+</div>

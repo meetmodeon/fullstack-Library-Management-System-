@@ -1,0 +1,53 @@
+<div class="User-Details">
+  <p-table
+    #tt
+    [value]="listOfUserResponseData"
+    [paginator]="true"
+    [rows]="5"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    [loading]="false"
+  >
+    <ng-template #header>
+      <tr>
+        <th style="width: 8%">User Id</th>
+        <th style="width: 12%">User Profile</th>
+        <th style="width: 15%">User_Name</th>
+        <th style="width: 25%">User_Email</th>
+        <th style="width: 15%">Phone No</th>
+        <th style="width: 25%">User Roles</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-user>
+      <tr>
+        <td>
+          {{ user.userId }}
+        </td>
+        <td>
+          <div>
+            <img
+              [src]="getUserImage(user.email) || 'libr.jpg'"
+              alt="User Profile"
+              class="w-8 h-8 rounded-full object-cover"
+              pTooltip="{{ user.email }}"
+            />
+          </div>
+        </td>
+        <td>
+          {{ user.name }}
+        </td>
+        <td>
+          <span pTooltip="{{ user.email }}">{{ user.email }}</span>
+        </td>
+        <td>
+          {{ user.phoneNumber }}
+        </td>
+        <td>
+          <ng-container *ngFor="let role of user.userRole">
+            <p-chip [label]="role" class="mr-1"></p-chip>
+          </ng-container>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

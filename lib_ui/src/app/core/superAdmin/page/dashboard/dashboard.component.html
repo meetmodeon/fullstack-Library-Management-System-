@@ -1,0 +1,317 @@
+<div class="content h-screen p-2">
+  <div
+    class="main flex border border-gray-400 rounded-md h-full overflow-y-auto"
+  >
+    <!-- LEFT SIDEBAR -->
+    <div
+      class="left sm:w-[10%] md:w-[20%] flex flex-col justify-between border-r border-gray-100 shadow-2xl shadow-gray-200 px-4"
+    >
+      <!-- LOGO -->
+      <div class="mt-8">
+        <div class="logo flex gap-1 justify-center items-center">
+          <span>
+            <img
+              src="libr.jpg"
+              alt=""
+              class="size-10 rounded-full object-cover border-2 border-black"
+            />
+          </span>
+          <span class="text-black font-semibold hidden md:inline-block">
+            Meet_Library
+          </span>
+        </div>
+      </div>
+
+      <ul class="roles flex flex-col gap-2 *:px-2">
+        <!-- Dashboard -->
+        <li
+          (click)="onShow('dashboard')"
+          class="flex *:text-xl items-center hover:bg-blue-100/40 rounded-md w-full py-1"
+        >
+          <span
+            class="text-black rounded-md p-2"
+            [ngClass]="false ? 'text-blue' : 'text-black'"
+          >
+            <i class="fa-regular fa-house"></i>
+          </span>
+
+          <span class="text-black hidden md:inline-block">Dashboard</span>
+        </li>
+
+        <!-- Category -->
+        <li
+          (click)="onShow('category')"
+          class="flex *:text-xl items-center hover:bg-blue-100/40 rounded-md w-full py-1"
+        >
+          <span class="text-black rounded-md p-2">
+            <i class="fa-solid fa-icons"></i>
+          </span>
+
+          <span class="text-black hidden md:inline-block">Category</span>
+        </li>
+
+        <!-- SubCategory -->
+        <li
+          (click)="onShow('subCategory')"
+          class="flex *:text-xl items-center hover:bg-blue-100/40 rounded-md w-full py-1"
+        >
+          <span class="text-black rounded-md p-2">
+            <i class="fa-solid fa-icons"></i>
+          </span>
+
+          <span class="text-black hidden md:inline-block">SubCategory</span>
+        </li>
+
+        <!-- Book -->
+        <li
+          (click)="onShow('book')"
+          class="flex *:text-xl items-center hover:bg-blue-100/40 rounded-md w-full py-1"
+        >
+          <span class="text-black rounded-md p-2">
+            <i class="fa-solid fa-book"></i>
+          </span>
+
+          <span class="text-black hidden md:inline-block">Book</span>
+        </li>
+
+        <!-- Borrowed Book -->
+        <li
+          (click)="onShow('borrowed')"
+          class="flex *:text-xl items-center hover:bg-blue-100/40 rounded-md w-full py-1"
+        >
+          <span class="text-black rounded-md p-2">
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+          </span>
+
+          <span class="text-black hidden md:inline-block">Borrowed_Book</span>
+        </li>
+
+        <!-- Users -->
+        <li
+          (click)="onShow('user')"
+          class="flex *:text-xl items-center hover:bg-blue-100/40 rounded-md w-full py-1"
+        >
+          <span class="text-black rounded-md p-2">
+            <i class="fa-solid fa-user"></i>
+          </span>
+
+          <span class="text-black hidden md:inline-block">Users</span>
+        </li>
+      </ul>
+
+      <!-- SETTINGS SECTION -->
+      <ul class="roles flex flex-col gap-2 *:text-xl *:px-2">
+        <!-- My Profile -->
+        <li
+          (click)="onShow('profile')"
+          class="flex items-center hover:bg-blue-100/40 rounded-md w-full py-1"
+        >
+          <span class="text-black rounded-md p-2">
+            <i class="fa-regular fa-user"></i>
+          </span>
+
+          <span class="text-black hidden md:inline-block">My Profile</span>
+        </li>
+
+        <!-- Settings -->
+        <li
+          (click)="onShow('setting')"
+          class="flex items-center hover:bg-blue-100/40 rounded-md w-full py-1"
+        >
+          <span class="text-black rounded-md p-2">
+            <i class="fa-solid fa-gear"></i>
+          </span>
+
+          <span class="text-black hidden md:inline-block">Settings</span>
+        </li>
+      </ul>
+
+      <!-- LOGOUT -->
+      <div
+        class="logout w-full flex justify-center hover:bg-blue-100/40 rounded-md"
+      >
+        <ul>
+          <li
+            (click)="onShow('logout')"
+            class="flex *:text-xl items-center w-full py-1"
+          >
+            <span class="text-black rounded-md p-2">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            </span>
+
+            <span class="text-black hidden md:inline-block">Logout</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="right sm:w-[90%] md:w-[80%]">
+      <div class="header flex justify-between p-4 flex-wrap-reverse">
+        <div>
+          <span class="text-black font-bold">{{
+            option() | capitalization
+          }}</span>
+        </div>
+        <div
+          class="rounded-2xl bg-gray-100 p-1 flex justify-center items-center"
+        >
+          <span>
+            <i class="fa-solid fa-search text-gray-400"></i>
+            <input
+              type="text"
+              (keyup.enter)="onSearch()"
+              [(ngModel)]="searchingData"
+              class="focus:outline-none pl-2"
+              placeholder="Searching book"
+            />
+          </span>
+        </div>
+        <div
+          class="p-1 rounded-md bg-black *:text-white space-x-2 transform active:scale-90 cursor-pointer"
+          (click)="visible.set(true)"
+        >
+          <span><i class="fa-solid fa-bullhorn"></i></span>
+          <span>Announcement</span>
+        </div>
+        <div class="user-detail flex gap-2 justify-between items-center">
+          <span>{{userName()}}</span>
+          <span >
+            <img 
+              [src]="imageUrl || 'libr.jpg'"
+              alt="loading image"
+              class="size-9 rounded-full object-cover"
+            />
+          </span>
+        </div>
+      </div>
+      <p-divider></p-divider>
+      @switch (option()) { @case ('dashboard') {
+      <div>
+        <app-dashboard-page></app-dashboard-page>
+      </div>
+      }@case ('category') {
+      <div>
+        <app-categories-operation></app-categories-operation>
+      </div>
+      }@case ('subCategory') {
+      <div>
+        <app-sub-category></app-sub-category>
+      </div>
+      }@case ('book') {
+      <div>
+        <app-book-component></app-book-component>
+      </div>
+      }@case ('borrowed') {
+      <div>
+        <app-book-borrowed></app-book-borrowed>
+      </div>
+      }@case ('user') {
+      <div>
+        <app-user></app-user>
+      </div>
+      }@case ('profile') {
+      <div>
+        <app-my-profile></app-my-profile>
+      </div>
+      }@case ('setting') {
+      <div>
+        <app-setting></app-setting>
+      </div>
+      } }
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="card flex justify-center">
+    <p-dialog [(visible)]="visible" [modal]="true" [style]="{ width: '25rem' }">
+      <ng-template #header>
+        <div class="inline-flex items-center justify-center gap-2">
+          <p-avatar image="libr.jpg" shape="circle" />
+          <span class="font-bold whitespace-nowrap">Amy Elsner</span>
+        </div>
+      </ng-template>
+      <span class="text-surface-500 dark:text-surface-400 block mb-8"
+        >Announcement Form</span
+      >
+      <form [formGroup]="announcementForm">
+        <div class="announcementType flex flex-col gap-1">
+          <div>
+            <label for=""><strong>AnnouncementType:</strong></label>
+            <select
+              name=""
+              id=""
+              formControlName="announcementType"
+              class="py-1 px-10 focus:outline-none border border-indigo-300 rounded-md"
+            >
+              <option value="NEW_BOOK">NEW_BOOK</option>
+              <option value="BOOK_DUE">BOOK_DUE</option>
+              <option value="MEETING">MEETING</option>
+              <option value="MILESTONE">MILESTONE</option>
+            </select>
+          </div>
+          <small
+          *ngIf="hasError('announcementType', 'required')"
+          class="text-red-500 text-sm"
+        >
+          Type is required field
+        </small>
+        </div>
+        
+
+        <div class="header">
+          <div class="flex items-center gap-4">
+          <label><strong>Header</strong></label>
+          <input
+            type="text"
+            formControlName="header"
+            placeholder="Give announcement title"
+            class="w-full p-2 focus:outline-none focus:border-none focus:outline-1 focus:outline-indigo-300 focus:ring-1 focus:ring-indigo-300 rounded-md border border-indigo-200"
+          />
+        </div>
+        <small
+          *ngIf="hasError('header', 'required')"
+          class="text-red-500 text-sm"
+        >
+          Header is required field
+        </small>
+
+        </div>
+       <div class="message">
+         <div class="flex items-center gap-4 mb-2">
+          <label><strong>message</strong></label>
+          <textarea
+            name=""
+            id=""
+            formControlName="message"
+            rows="4"
+            class="w-full focus:outline-none focus:border-none focus:outline-1 focus:outline-indigo-300 focus:ring-1 focus:ring-indigo-300 rounded-md border border-indigo-200"
+          ></textarea>
+        </div>
+        <small
+          *ngIf="hasError('message', 'required')"
+          class="text-red-500 text-sm"
+        >
+          message is required field
+        </small>
+       </div>
+      </form>
+      <ng-template #footer>
+        <p-button
+          label="Cancel"
+          [text]="true"
+          severity="secondary"
+          (onClick)="visible.set(false)"
+        />
+        <p-button
+          label="Save"
+          [outlined]="true"
+          severity="secondary"
+          (click)="onAnnouncement()"
+        />
+      </ng-template>
+    </p-dialog>
+  </div>
+</div>
+

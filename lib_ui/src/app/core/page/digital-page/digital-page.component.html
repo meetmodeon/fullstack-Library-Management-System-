@@ -1,0 +1,136 @@
+<div class="container mx-auto">
+    <div class="intro mb-4">
+        <div class="w-full  border-1 border-blue-200/60 bg-blue-100/40 p-8 rounded-2xl">
+            <div class="flex flex-col gap-6">
+                <div class="info [&>*]:text-blue-500 flex flex-col">
+                    <div>
+                        <span class="text-blue-600"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                        <span class="text-blue-800">Digital Library</span>
+                    </div>
+                    <span>Instant access to e-books and PDFs - anytime, anywhere</span>
+                </div>
+                <div class="image">
+                    <div>
+                        <img src="digital-page.jpg" alt="image" class="w-full h-110 object-cover rounded-2xl">
+                    </div>
+                </div>
+                <div class="num flex justify-around">
+                    <div class="flex flex-col text-center">
+                        <span class="text-3xl">249</span>
+                        <span class="text-gray-500">E-Books Available</span>
+                    </div>
+                    <div class="flex flex-col text-center">
+                        <span class="text-3xl">12</span>
+                        <span class="text-gray-500">Your Downloads</span>
+                    </div>
+                    <div class="flex flex-col text-center">
+                        <span class="text-3xl">∞</span>
+                        <span class="text-gray-500">Limit</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="download-history w-full border-1 border-gray-400/40 p-8 rounded-2xl">
+        <div class="digital-collection flex flex-col mb-4">
+            <div>
+                <span class="text-black text-xl">Your Digital Collection</span>
+            </div>
+            <span class="text-gray-500">Access your downloaded books offline anytime</span>
+        </div>
+        @for (item of items; track $index) {
+        <div
+            class="container mx-auto rounded-2xl border-1 border-gray-400/40 hover:bg-gray-100 flex flex-wrap justify-between items-center px-4 mb-2">
+            <div class="left-side h-auto py-4 flex gap-1 ">
+                <div class="image bg-gray-300/30 h-20 w-15 flex justify-center items-center overflow-hidden rounded-xl">
+
+                    @if (false) {
+                    <!-- ICON centered -->
+                    <i class="fa-regular fa-file-zipper text-2xl"></i>
+                    } @else {
+                    <!-- IMAGE covers the parent -->
+                    <img src="libr.jpg" alt="book-image" class="w-full h-full object-cover">
+                    }
+
+                </div>
+                <div class="details flex flex-col gap-1">
+                    <span class="book-name">
+                        Introduction to Computer Science
+                    </span>
+                    <span class="book-author text-gray-500">
+                        Dr. Sarah Johnson
+                    </span>
+                    <div class="book-formate-size flex gap-1 items-center">
+                        <span class="formate border-1 border-gray-400 px-3 rounded-xl font-semibold text-xs">PDF</span>
+                        <span class="book-size text-xs text-gray-500">12 M.B</span>
+                    </div>
+                </div>
+            </div>
+            <div class="right-side">
+                @if(true){
+                <div class="flex gap-3 items-center  bg-black px-4 py-2 rounded-xl text-white text-sm">
+                    <span class=""><i class="pi pi-download" style="color: white"></i></span>
+                    <span class="">Download</span>
+                </div>
+                }@else{
+                <div class="flex gap-3 items-center px-4 py-1 rounded-xl border-1 border-gray-300 hover:bg-gray-200">
+                    <span class=""><i class="pi pi-download" style="color: black"></i></span>
+                    <span>Read</span>
+                </div>
+                }
+            </div>
+        </div>
+        }
+    </div>
+    <div class="footer w-full border-1 border-gray-400/40 px-6 py-4 rounded-2xl mt-6">
+        <div class="digital-collection flex flex-col mb-4">
+            <div>
+                <span class="text-black text-xl">Benefits of Digital Borrowing</span>
+            </div>
+            <div class="md:grid md:grid-cols-2 mt-8">
+                <div class="pb-6 flex gap-2 flex-wrap items-center">
+                    <div class="items-center size-10 rounded-full bg-red-300/40 flex justify-center ">
+                        <span class=" "><i class="pi pi-download" style="color: red"></i></span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span>Instant Access</span>
+                        <span class="text-gray-500">Download and start reading immediately, no waiting</span>
+                    </div>
+
+                </div>
+
+                <div class="pb-6 flex gap-2 flex-wrap items-center">
+                    <div class="items-center size-10 rounded-full bg-blue-200/40 flex justify-center ">
+                        <span class=" "><i class="fa-regular fa-file-zipper text-violet-500"></i></span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span>Eco-Friendly</span>
+                        <span class="text-gray-500">Zero paper usage, reducing environmental impact</span>
+                    </div>
+
+                </div>
+                <div class="pb-6 flex gap-2 flex-wrap items-center">
+                    <div class="items-center size-10 rounded-full bg-blue-200/40 flex justify-center ">
+                        <span class=" "><i class="fa-solid fa-mobile-screen-button  text-violet-500"></i></span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span>Multi-Device</span>
+                        <span class="text-gray-500">Read on phone, tablet, or computer seamlessly</span>
+                    </div>
+
+                </div>
+                <div class="pb-6 flex gap-2 flex-wrap items-center">
+                    <div class="items-center size-10 rounded-full bg-yellow-200/40 flex justify-center ">
+                        <span class=" "><i class="pi pi-download" style="color: red"></i></span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span>Offline Reading</span>
+                        <span class="text-gray-500">Download once, read anytime without internet</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

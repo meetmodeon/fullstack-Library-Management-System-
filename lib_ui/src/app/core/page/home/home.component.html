@@ -1,0 +1,63 @@
+
+<div class="w-full h-fit bg-gradient-to-br from-blue-50 to-blue-100">
+  <div
+  class="main md:mx-30 grid sm:grid-col-1 md:grid-cols-2 gap-12 pt-10 "
+>
+  <div class="left-side h-screen">
+    <div class="Lib-book h-1/3 mb-3">
+      <div class="section-1 flex gap-2 mb-5">
+        <span class="text-blue-500 text-4xl mt-2"
+          ><i class="fa-solid fa-book-open"></i
+        ></span>
+        <div class="containt flex flex-col">
+          <span class="text-2xl font-bold text-blue-500">Meet_Library</span>
+          <span class="text-gray-400">Sustainable Reading Platform</span>
+        </div>
+      </div>
+      <div class="section-2 flex gap-2 mb-5">
+        <span class="bg-red-100 rounded-4xl p-3 text-red-500"
+          ><i class="fa-solid fa-book-open"></i
+        ></span>
+        <div class="containt flex flex-col">
+          <span class="font-sans font-bold text-gray-800">Borrow & Return</span>
+          <span class="text-gray-400">Interactive digital flow for seamless book management</span>
+        </div>
+      </div>
+       <div class="section-3 flex gap-2 mb-5">
+        <span class="bg-blue-200 rounded-4xl p-3 text-blue-500"
+          ><i class="fa-solid fa-recycle"></i
+        ></span>
+        <div class="containt flex flex-col">
+          <span class="font-sans font-bold text-gray-800">Sustainability Focused</span>
+          <span class="text-gray-400">Promate book recycling and reduce environmental impact</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="image h-1/2">
+        <img src="libr.jpg" alt="alter" class="h-90 w-full object-cover rounded-2xl">
+    </div>
+  </div>
+  <div class="right-side">
+    
+     <div class="">
+       @if (isLoginPage) {
+        <div class="pt-20 ">
+          
+        <app-login ></app-login>
+  
+        </div>
+    }@else {
+      <div>
+        <app-register></app-register>
+      </div>
+    }
+    <p (click)="option()" class="cursor-pointer  rounded-2xl text-center">
+  Do you want to <span class="underline text-blue-500 cursor-pointer">{{ isLoginPage ? 'Register' : 'Login' }}?</span>
+</p>
+    
+   
+    </div>
+  </div>
+</div>
+</div>

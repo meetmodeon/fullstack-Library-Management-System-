@@ -5,8 +5,9 @@ import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angula
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputOtpModule } from 'primeng/inputotp';
-import { sendOtp, SendOtp$Params } from '../../../../services/functions';
+import { sendOtp, SendOtp$Params, verifyOtp, VerifyOtp$Params, verifyOtpAndChangePassword, VerifyOtpAndChangePassword$Params } from '../../../../services/functions';
 import { environment } from '../../../../../environments/environment';
+import { PasswordResetData } from '../../../../services/models';
 type Step = 'EMAIL' | 'OTP' | 'RESET';
 
 @Component({
@@ -73,11 +74,14 @@ export class ResetPasswordComponent {
 
   verifyOtp() {
     this.otpToken = this.otpForm.value.otp;
-  
-    this.http.post('/auth/password/verify-token', {
-      email: this.email,
-      token: this.otpToken
-    }).subscribe(() => {
+    const data:PasswordResetData={
+      email:this.email,
+      otp:this.otpToken
+    }
+    const params:VerifyOtp$Params={
+      body:data
+    }
+    verifyOtp(this.http,this.apiUrl,params,new HttpContext()).subscribe(() => {
       this.stopCountdown();
       this.step = 'RESET';
     });
@@ -91,13 +95,23 @@ export class ResetPasswordComponent {
   /* ================= RESET STEP ================= */
 
   resetPassword() {
-    this.http.put('/auth/password/reset', {
-      email: this.email,
-      token: this.otpToken,
-      newPassword: this.passwordForm.value.newPassword
-    }).subscribe(() => {
+
+    const data:PasswordResetData={
+      email:this.email,
+      otp:this.otpToken,
+      newPassword:this.passwordForm.value.newPassword
+    }
+    const params:VerifyOtpAndChangePassword$Params={
+      body:data
+    }
+    verifyOtpAndChangePassword(this.http,this.apiUrl,params,new HttpContext()).subscribe({
+      next:() => {
       alert('Password updated successfully');
       this.resetAll();
+    },
+    error:()=>{
+      this.step='OTP';
+    }
     });
   }
 

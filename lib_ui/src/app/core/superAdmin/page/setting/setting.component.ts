@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ResetPasswordComponent } from "../../../page/password-reset/reset-password/reset-password.component";
+import { UserResponse } from '../../../../services/models';
+import { UserServiceService } from '../../../../services/StateMangeSerivce/User/user-service.service';
+import { AuthServiceService } from '../../../../services/auth/auth-service.service';
 
 @Component({
   selector: 'app-setting',
@@ -16,18 +19,17 @@ import { ResetPasswordComponent } from "../../../page/password-reset/reset-passw
 export class SettingComponent implements OnInit{
 
   passwordForm!:FormGroup;
-  user = {
-    userId:233,
-    name: 'Sharwan Mahato',
-    email: 'sharwan@gmail.com',
-    phone: '98XXXXXXXX'
-  };
+  user:UserResponse={};
 
   showPasswordForm = false;
 
 
   
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+    private userService:UserServiceService,
+    private authService:AuthServiceService,
+
+  ) {
     this.passwordForm = this.fb.group({
     email: ['', Validators.required,Validators.email],
     newPassword: ['', [Validators.required, Validators.minLength(6)]],
@@ -36,7 +38,12 @@ export class SettingComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    if(this.authService.isLoggedIn()){
+    this.userService.onLoadAllUserOnce();
+    this.userService.user$.subscribe((value)=>{
+      this.user=value.find(u=>u.email===this.authService.getUserName()) as UserResponse;
+    })
+    }
   }
  
   togglePasswordForm() {

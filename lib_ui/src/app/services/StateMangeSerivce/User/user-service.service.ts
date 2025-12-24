@@ -69,6 +69,11 @@ export class UserServiceService {
     return this.userImageCache.get(email)??'libr.jpg';
   }
 
+  refreshUser(data:UserResponse):void{
+    const currentList=this.userSubject.getValue();
+    this.userSubject.next([data,...currentList]);
+  }
+
   ngOnDestroy():void{
     this.userImageCache.forEach(url=>{
       if(url.startsWith('blob: ')){

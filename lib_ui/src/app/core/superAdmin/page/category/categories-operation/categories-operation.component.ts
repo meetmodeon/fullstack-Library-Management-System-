@@ -10,7 +10,8 @@ import { TableModule } from "primeng/table";
 import { CapitalizationPipe } from '../../../../../pipe/capitalization.pipe';
 import { Toast } from "primeng/toast";
 import { CategoryServiceService } from '../../../../../services/StateMangeSerivce/category/category-service.service';
-import { addCategory, deleteCategory, DeleteCategory$Params, UpdateCategory$Params } from '../../../../../services/functions';
+import { addCategory, AddCategory$Params, deleteCategoryById, DeleteCategoryById$Params, updateCategory, UpdateCategory$Params } from '../../../../../services/functions';
+import { SubCategoryService } from '../../../../../services/StateMangeSerivce/subCategoryService/sub-category.service';
 
 @Component({
   selector: 'app-categories-operation',
@@ -43,7 +44,9 @@ export class CategoriesOperationComponent implements OnInit {
     private fb: FormBuilder,
     private httpClient: HttpClient,
     private messageService: MessageService,
-    private categoryService: CategoryServiceService
+    private categoryService: CategoryServiceService,
+    private subCategorySerivce:SubCategoryService,
+
   ) {
     this.categoryFormGroup = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]]
@@ -84,12 +87,15 @@ export class CategoriesOperationComponent implements OnInit {
  
   /** Create category */
   private createCategory() {
-    const payload = this.categoryFormGroup.value;
-    addCategory(this.httpClient, this.basicUrl, payload).subscribe({
-      next: () => {
+    const data = this.categoryFormGroup.value as CategoryRequest;
+    const params:AddCategory$Params={
+      body:data
+    }
+    addCategory(this.httpClient, this.basicUrl, params,new HttpContext()).subscribe({
+      next: (value) => {
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Category created' });
         this.categoryFormGroup.reset();
-        this.categoryService.loadCategoriesOnce();
+        this.categoryService.refreshCategories(value.body as CategoryResponse);
       },
       error: () => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to create category' });
@@ -114,23 +120,24 @@ export class CategoriesOperationComponent implements OnInit {
       id:this.selectedId(),
       body:this.categoryFormGroup.value as CategoryRequest
     }
-   const current =this.categoryService.getCurrentCategories()??[];
-
-   const updatedList=current.map(cat=>
-    cat.categoryId === payload.id?payload:cat
-   );
-
-   this.allCategoryResponse=updatedList as CategoryResponse[];
+   updateCategory(this.httpClient,this.basicUrl,payload,new HttpContext())
+   .subscribe((response)=>{
+    const data=response.body as CategoryResponse;
+    this.categoryService.refreshCategories(data);
+    this.subCategorySerivce.reloadSubCategory();
+   })
   }
 
   /** Delete category */
   onDelete(id: number) {
     if (!confirm('Are you sure to delete this category?')) return;
-    const deleteParams:DeleteCategory$Params={
+    const deleteParams:DeleteCategoryById$Params={
       id:id
     }
-    deleteCategory(this.httpClient, this.basicUrl, deleteParams,new HttpContext()).subscribe({
+    deleteCategoryById(this.httpClient, this.basicUrl, deleteParams,new HttpContext()).subscribe({
       next: () => {
+        this.categoryService.reloadCategory()
+        this.subCategorySerivce.reloadSubCategory();
         this.messageService.add({ severity: 'success', summary: 'Deleted', detail: 'Category removed' });
       },
       error: () => {
@@ -138,7 +145,7 @@ export class CategoriesOperationComponent implements OnInit {
       }
     });
 
-    this.allCategoryResponse=this.allCategoryResponse.filter(m=>m.categoryId!==id);
+    
   }
 
   /** Cancel edit */

@@ -37,4 +37,8 @@ export class BorrowedBookServiceService {
       }
     })
   }
+  refreshBorrowedBooks(borrowedBookResponse:BorrowedResponse):void{
+    const currentList=this.borrowedSubject.getValue();
+    this.borrowedSubject.next([borrowedBookResponse,...currentList]);
+  }
 }

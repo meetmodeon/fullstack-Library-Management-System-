@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { markRead, MarkRead$Params } from '../../../services/functions';
 import { environment } from '../../../../environments/environment';
 import { HttpClient, HttpContext, HttpErrorResponse } from '@angular/common/http';
+import { NotificationService } from '../../../services/StateMangeSerivce/notification/notification.service';
 
 export type AnnouncementType =
   | 'NEW_BOOK'
@@ -38,22 +39,19 @@ export class NotificationComponent {
   }];
   noticeType!:AnnouncementType;
   
-  constructor(private webService:WebSocketServicProgramService,
+  constructor(
     private httpClient:HttpClient,
-
+    private noticeService:NotificationService
   ){}
   ngOnInit(){
-    this.webService.allNotification$.subscribe(data=>{
-      this.getAllNotification=data;
-    })
+    console.log("notification service: ")
+    this.noticeService.loadAllNotification();
   }
   onShow(){
     this.visible=true;
   }
   getAllNewBookNotify(notice:AnnouncementType):AnnouncementResponse[]{
-    const data= this.getAllNotification.filter(a=>a.type?.includes(notice));
-    console.log(data);
-    return data;
+    return this.noticeService.getNotificationByType(notice);
   }
   markRead(announcementId:number|undefined){
     const params:MarkRead$Params={

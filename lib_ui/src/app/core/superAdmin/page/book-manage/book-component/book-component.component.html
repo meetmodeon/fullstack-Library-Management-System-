@@ -4,7 +4,7 @@
       <div
         class="text-black rounded-2xl shadow shadow-gray-800 px-4 border border-black inline-block transform active:scale-90 cursor-pointer"
       >
-        <button (click)="onShowCard()">Add New Book</button>
+        <button (click)="openAddForm()">Add New Book</button>
       </div>
     </div>
   </div>
@@ -86,18 +86,22 @@
                   #fileInput
                   style="display: none"
                   (change)="onFileSelected($event)"
-                  [accept]="fileType()==='BOOK_IMAGE'?'image/jpeg,image/png':'application/pdf'"
+                  [accept]="
+                    fileType() === 'BOOK_IMAGE'
+                      ? 'image/jpeg,image/png'
+                      : 'application/pdf'
+                  "
                 />
                 <div class="flex-auto gap-1 *:transform *:active:scale-90">
                   <button
                     class="px-4 text-black hover:bg-gray-200 rounded-2xl border border-black"
-                    (click)="onUploadFile(book.bookId,fileInput,'image')"
+                    (click)="onUploadFile(book.bookId, fileInput, 'image')"
                   >
                     uploadBookImage
                   </button>
                   <button
                     class="px-4 text-black hover:bg-gray-200 rounded-2xl border border-black"
-                    (click)="onUploadFile(book.bookId,fileInput,'pdf')"
+                    (click)="onUploadFile(book.bookId, fileInput, 'pdf')"
                   >
                     UploadBookPdf
                   </button>
@@ -128,7 +132,7 @@
         <input
           pInputText
           formControlName="name"
-          class="flex-auto rounded-md w-full border border-gray-300 py-2"
+          class="flex-auto rounded-md w-full border border-gray-300 p-2"
           autocomplete="off"
         />
       </div>
@@ -139,16 +143,17 @@
       <!-- Sub Categories -->
       <div class="flex items-start gap-4 mb-6">
         <label class="font-semibold w-32 pt-2">SubCategories</label>
-
-        <p-multiSelect
-          [options]="listOfSubCategory"
-          optionLabel="name"
-          optionValue="subCategoryId"
-          formControlName="subCategoryId"
-          display="chip"
-          class="w-full"
-          placeholder="Select SubCategories"
-        ></p-multiSelect>
+        <select
+          class="w-full px-2 py-2 rounded-md border border-gray-300 focus:outline-3 focus:outline-gray-800"
+          formControlName="subCategoriesId"
+        >
+          <option value="" disabled selected>-- Select Sub Category --</option>
+          @for (item of listOfSubCategory; track $index) {
+          <option [value]="item.subCategoryId">
+            {{ getSubCategoryName(item.subCategoryId) }}
+          </option>
+          }
+        </select>
       </div>
 
       <!-- ISBN -->
@@ -157,7 +162,7 @@
         <input
           pInputText
           formControlName="isbn"
-          class="flex-auto rounded-md w-full border border-gray-300 py-2"
+          class="flex-auto rounded-md w-full border border-gray-300 p-2"
           autocomplete="off"
         />
       </div>
@@ -171,7 +176,7 @@
         <input
           pInputText
           formControlName="publication"
-          class="flex-auto rounded-md w-full border border-gray-300 py-2"
+          class="flex-auto rounded-md w-full border border-gray-300 p-2"
           autocomplete="off"
         />
       </div>
@@ -222,7 +227,7 @@
       </div>
 
       <!-- Book Status -->
-      <div class="flex items-center gap-4 mb-4">
+      <!-- <div class="flex items-center gap-4 mb-4">
         <label class="font-semibold w-32">Status</label>
         <select
           formControlName="bookStatus"
@@ -230,16 +235,16 @@
         >
           <option *ngFor="let s of statusOptions" [value]="s">{{ s }}</option>
         </select>
-      </div>
+      </div> -->
 
       <!-- Image Upload -->
-      <div class="flex items-center gap-4 mb-4">
+      <!-- <div class="flex items-center gap-4 mb-4">
         <label class="font-semibold w-32">Image</label>
         <input type="file" (change)="onFileChange($event)" class="flex-auto" />
       </div>
       <p *ngIf="bookFormGroup.value.imageUrl">
         Selected: {{ bookFormGroup.value.imageUrl }}
-      </p>
+      </p> -->
 
       <!-- Buttons -->
       <div class="flex justify-end gap-3">

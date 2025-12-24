@@ -71,7 +71,10 @@ export class BookServiceService {
     getBookImage(bookId:number):string{
       return this.bookImageCache.get(bookId)??'libr.jpg';
     }
-
+    refreshBooks(bookResponse:BookResponse):void{
+      const currentList:BookResponse[]=this.bookSubject.getValue();
+      this.bookSubject.next([bookResponse,...currentList]);
+    }
     
   ngOnDestroy():void{
     this.bookImageCache.forEach(url=>{

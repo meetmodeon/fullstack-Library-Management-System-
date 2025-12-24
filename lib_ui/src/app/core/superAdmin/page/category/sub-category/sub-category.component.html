@@ -4,7 +4,7 @@
       <div
         class="text-black rounded-2xl shadow shadow-gray-800 px-4 border border-black inline-block transform active:scale-90 cursor-pointer"
       >
-        <button (click)="onShowCard()">New Sub_Category</button>
+        <button (click)="openAddForm()">New Sub_Category</button>
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@
                 <div class="space-x-10 gap-2 *:transform *:active:scale-90">
                   <button
                     class="px-4 text-black hover:bg-gray-200 rounded-2xl border border-black"
-                    (click)="onUpdate(subCategory.subCategoryId)"
+                    (click)="openEditForm(subCategory.subCategoryId)"
                   >
                     Edit
                   </button>
@@ -66,7 +66,10 @@
     [(visible)]="visible"
     [style]="{ width: '35rem' }"
   >
-    <span class="p-text-secondary block mb-8">Add New SubCategory.</span>
+  <ng-template #header>
+     <span><strong>{{isEditMode?'Update':'Add'}} SubCategory</strong></span>
+  </ng-template>
+   
     <form [formGroup]="sub_categoryFormGroup" (ngSubmit)="addSubCategory()">
       <div class="flex items-center gap-4 mb-4">
         <label for="sub_categoryName" class="font-semibold w-24"
@@ -120,7 +123,7 @@
           severity="secondary"
           (click)="visible = false"
         />
-        <p-button type="submit" label="Save"  />
+        <p-button type="submit" [label]="isEditMode?'Update':'Save'"  />
       </div>
     </form>
   </p-dialog>

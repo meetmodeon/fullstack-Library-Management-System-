@@ -40,10 +40,17 @@ export class CategoryServiceService {
         }
       });
   }
-
+  refreshCategories(categoryResponse:CategoryResponse):void{
+    const currentList:CategoryResponse[]=this.categorySubject.getValue();
+    this.categorySubject.next([categoryResponse,...currentList]);
+  }
   /** Optional sync access */
   getCurrentCategories(): CategoryResponse[] {
     return this.categorySubject.getValue() ?? [];
+  }
+  reloadCategory(){
+    this.loaded=false;
+    this.loadCategoriesOnce();
   }
 
 }

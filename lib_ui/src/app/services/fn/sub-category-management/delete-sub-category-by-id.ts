@@ -8,12 +8,12 @@ import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
 
-export interface DeleteCategory1$Params {
+export interface DeleteSubCategoryById$Params {
   id: number;
 }
 
-export function deleteCategory1(http: HttpClient, rootUrl: string, params: DeleteCategory1$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-  const rb = new RequestBuilder(rootUrl, deleteCategory1.PATH, 'delete');
+export function deleteSubCategoryById(http: HttpClient, rootUrl: string, params: DeleteSubCategoryById$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
+  const rb = new RequestBuilder(rootUrl, deleteSubCategoryById.PATH, 'delete');
   if (params) {
     rb.path('id', params.id, {});
   }
@@ -28,4 +28,4 @@ export function deleteCategory1(http: HttpClient, rootUrl: string, params: Delet
   );
 }
 
-deleteCategory1.PATH = '/categories/{id}';
+deleteSubCategoryById.PATH = '/subCategories/{id}';

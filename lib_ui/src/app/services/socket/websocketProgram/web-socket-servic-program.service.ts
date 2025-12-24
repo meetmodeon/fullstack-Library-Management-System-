@@ -33,29 +33,36 @@ export class WebSocketServicProgramService {
     this.client.onConnect=()=>{
       console.log('Connected to WebSocket');
 
-      //Subscribe to new notifications
-      this.client.subscribe('/topic/getNewNotification',(msg:IMessage)=>{
-        if(msg.body){
-          const data=JSON.parse(msg.body);
-          this.newNotificationSubject.next(data.response);
-          console.log('New Notification: ',data.response);
-        }
-      })
-
-      //Subscribe to all notifications
       this.client.subscribe('/topic/getAllNotification',(msg:IMessage)=>{
         if(msg.body){
           const data=JSON.parse(msg.body);
           this.allNotificationSubject.next(data.listResponse);
-          console.log('All Notification: ',data.listResponse);
         }
       })
 
-      this.client.subscribe('/topic/getCount',(msg:IMessage)=>{
+      //Subscribe to new notifications
+      this.client.subscribe('/topic/getNewNotification',(msg:IMessage)=>{
         if(msg.body){
           const data=JSON.parse(msg.body);
+          const newNotification:AnnouncementResponse=data.response;
+
+          this.newNotificationSubject.next(newNotification);
+
+          const currentList= this.allNotificationSubject.getValue();
+          this.allNotificationSubject.next([newNotification,...currentList])
+
+          this.unreadCountSubject.next(this.unreadCountSubject.getValue()+1);
+
+        }
+      })
+
+      //Subscribe to all notifications
+
+      this.client.subscribe('/topic/getCount',(msg:IMessage)=>{
+        if(msg.body){
+          console.log("The message bofy count is:: ",msg);
+          const data=JSON.parse(msg.body);
           this.unreadCountSubject.next(data.count);
-          console.log('Unread Count:',data.count);
         }
       })
     }

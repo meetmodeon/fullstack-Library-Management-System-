@@ -12,9 +12,7 @@ import { HttpClient, HttpContext } from '@angular/common/http';
 import { UserResponse } from '../../../../services/models';
 import { AuthServiceService } from '../../../../services/auth/auth-service.service';
 import { UserServiceService } from '../../../../services/StateMangeSerivce/User/user-service.service';
-import { getUserById, GetUserById$Params } from '../../../../services/functions';
-
-
+import { getUserByEmail, GetUserByEmail$Params } from '../../../../services/functions';
 @Component({
   selector: 'app-header',
   imports: [
@@ -34,9 +32,7 @@ export class HeaderComponent {
   @ViewChild('profile') profile!:ProfileSettingComponent;
   unreadCount=signal<number>(0);
   userData!:UserResponse;
-  onShowNotification(){
-    this.notify.onShow();
-  }
+  
   constructor(
     private router:Router,
     private webService:WebSocketServicProgramService,
@@ -44,43 +40,37 @@ export class HeaderComponent {
     private authSerivce:AuthServiceService,
     private userService:UserServiceService
   ){}
+
+  onShowNotification(){
+    this.notify.onShow();
+  }
   
   items=[{}];
   
   ngOnInit(){
+    this.webService.unreadCount$.subscribe((value)=>{
+      console.log("count unread msg: ",value)
+      this.unreadCount.set(value);
+    })
     if(this.authSerivce.isLoggedIn()){
-      const params:GetUserById$Params={
+      const params:GetUserByEmail$Params={
         email:this.authSerivce.getUserName() as string
       }
-      getUserById(this.http,this.apiUrl,params,new HttpContext()).subscribe({
+      getUserByEmail(this.http,this.apiUrl,params,new HttpContext()).subscribe({
         next:(value)=>{
           if(value.body){
             this.userData=value.body as UserResponse;
-          }
-        },
-        error:(error)=>{
-          alert('something went wrong to fetch user'+error.error);
-        }
-      })
-    }
-
-    this.webService.unreadCount$.subscribe(data=>{
-      if(data){
-        console.log("count data: ",data);
-        this.unreadCount.set(data);
-      }
-    })
-    console.log("The user name is:: "+this.authSerivce.getUserName());
-    this.items = [
+            console.log("User Data is: ",this.userData);
+            this.items = [
             {
                 label: 'Student Profile',
                 items: [
                     {
-                        label: 'Name'+' :'+this.authSerivce.getUserName(),
+                        label: `Name: ${this.userData.name?.toUpperCase()}`,
                        
                     },
                     {
-                        label: 'Email'+" :"+"hiralal@gmail.com", 
+                        label: `Email: ${this.userData.email}`, 
                     },
                     {
                       label:"Book Recycle :"+"12 books"
@@ -96,8 +86,14 @@ export class HeaderComponent {
                 ]
             }
         ];
+          }
+        },
+        error:(error)=>{
+          alert('something went wrong to fetch user'+error.error);
+        }
+      })
+    }
   }
 
-
-
+  
 }

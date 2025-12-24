@@ -9,7 +9,7 @@ import { RequestBuilder } from '../../request-builder';
 
 
 export interface UploadProfile$Params {
-      body: FormData
+      body?:FormData
 }
 
 export function uploadProfile(http: HttpClient, rootUrl: string, params?: UploadProfile$Params, context?: HttpContext): Observable<StrictHttpResponse<{

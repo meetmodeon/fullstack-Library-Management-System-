@@ -34,7 +34,6 @@ constructor(
 
 ngOnInit(){
   this.borrowedService.loadAllBorrowedBookOnce();
-
   this.borrowedService.borrwed$.subscribe((listOfBorrowed)=>{
     if(listOfBorrowed){
       this.listOfBorrowedBook=listOfBorrowed;
@@ -46,7 +45,6 @@ ngOnInit(){
       this.listOfBook=books;
     }
   })
-
   this.userService.onLoadAllUserOnce();
   this.userService.user$.subscribe({
     next:(value)=>{
@@ -57,8 +55,6 @@ ngOnInit(){
   })
 }
 getListOfBookName(id: number): string {
- 
-
   return this.listOfBook
   .find(book=>book.bookId===id)?.name??'';
 }

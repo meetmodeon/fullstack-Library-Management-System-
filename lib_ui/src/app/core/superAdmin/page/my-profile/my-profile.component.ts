@@ -4,7 +4,7 @@ import { UserResponse } from '../../../../services/models';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthServiceService } from '../../../../services/auth/auth-service.service';
-import { downloadFile, DownloadFile$Params, getUserById, GetUserById$Params, uploadProfile, UploadProfile$Params } from '../../../../services/functions';
+import { downloadFile, DownloadFile$Params, getUserByEmail, GetUserByEmail$Params, uploadProfile, UploadProfile$Params } from '../../../../services/functions';
 import { HttpClient, HttpContext, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../../../environments/environment';
 import { MessageService } from 'primeng/api';
@@ -44,10 +44,10 @@ export class MyProfileComponent {
   ngOnInit(){
     if(this.authService.isLoggedIn()){
       const userEmail=this.authService.getUserName() as string;
-      const params:GetUserById$Params={
+      const params:GetUserByEmail$Params={
         email:userEmail
       }
-      getUserById(this.http,this.apiUrl,params,new HttpContext()).subscribe({
+      getUserByEmail(this.http,this.apiUrl,params,new HttpContext()).subscribe({
         next:(value)=>{
           this.user=value.body as UserResponse;
           this.loadImage();

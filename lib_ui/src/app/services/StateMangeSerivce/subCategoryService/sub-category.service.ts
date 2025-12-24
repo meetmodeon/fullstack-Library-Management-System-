@@ -46,5 +46,13 @@ export class SubCategoryService {
   setAllSubCategorySubject(list:SubCategoryResponse[]){
     this.subCategorySubject.next(list);
   }
+  refreshSubCategory(data:SubCategoryResponse):void{
+    const currentList=this.subCategorySubject.getValue();
+    this.subCategorySubject.next([data,...currentList]);
+  }
+  reloadSubCategory(){
+    this.loding=false;
+    this.loadSubCategoriesOnce();
+  }
 
 }

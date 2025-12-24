@@ -25,7 +25,7 @@ import { BookServiceService } from '../../../../../services/StateMangeSerivce/Bo
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { environment } from '../../../../../../environments/environment';
 import { SubCategoryService } from '../../../../../services/StateMangeSerivce/subCategoryService/sub-category.service';
-import { uploadBookImage, UploadBookImage$Params } from '../../../../../services/functions';
+import { addBook, AddBook$Params, uploadBookImage, UploadBookImage$Params } from '../../../../../services/functions';
 import { MessageService } from 'primeng/api';
 type bookTypes='BOOK_IMAGE'|'BOOK_PDF'
 @Component({
@@ -63,6 +63,7 @@ export class BookComponentComponent {
   listOfSubCategory!: SubCategoryResponse[];
   selectedBookId:number|null=null;
   fileType=signal<bookTypes>('BOOK_IMAGE');
+  
 
   constructor(
     private fb: FormBuilder,
@@ -74,27 +75,17 @@ export class BookComponentComponent {
     this.authorInput = this.fb.control('');
     this.bookFormGroup = this.fb.group({
       author: this.fb.control<string[]>(
-        this.isEdit ? this.book.author ?? [] : [],
+       [],Validators.required
+      ),
+      isbn: this.fb.control('',Validators.required
+      ),
+      name: this.fb.control( '',
         Validators.required
       ),
-      bookStatus: this.fb.control<
-        'AVAILABLE' | 'BORROWED' | 'LOST' | null | undefined
-      >('AVAILABLE'),
-      imageUrl: this.fb.control<string | null | undefined>(''),
-      isbn: this.fb.control(
-        this.isEdit ? this.book.isbn : '',
+      publication: this.fb.control( '',
         Validators.required
       ),
-      name: this.fb.control(
-        this.isEdit ? this.book.name : '',
-        Validators.required
-      ),
-      publication: this.fb.control(
-        this.isEdit ? this.book.publication : '',
-        Validators.required
-      ),
-      subCategoryId: this.fb.control<number|any>(
-        this.isEdit ? this.book.subCategoriesId:'',
+      subCategoriesId: this.fb.control('',
         Validators.required
       ),
     });
@@ -115,8 +106,7 @@ export class BookComponentComponent {
     });
     
   }
-  ngAfterInit(){
-  }
+
   onFileChange(event: any) {
     const file = event.target.files[0];
 
@@ -147,25 +137,68 @@ export class BookComponentComponent {
     this.bookFormGroup.patchValue({ author: authors });
   }
 
-  onShowCard() {
-    this.visible = !this.visible;
-  }
 
-  getSubCategoryName(subCategoryId: number): string {
+  getSubCategoryName(subCategoryId: number | undefined): string {
     if (this.listOfSubCategory.length === 0) {
       return '';
     }
-    const name:string = this.listOfSubCategory.find(s=>s.subCategoryId===subCategoryId)?.name??'';
+    const name:string = this.listOfSubCategory.find(s=>s.subCategoryId===subCategoryId as number)?.name??'';
       return name;
   }
 
+    openAddForm(){
+    this.isEdit=false;
+    this.selectedBookId=null;
+    this.bookFormGroup.reset();
+    this.visible=true;
+  }
+
+  openEditForm(id:number){
+    this.isEdit=true;
+    this.selectedBookId=id;
+    const data:BookResponse=this.bookListData.find(b=>b.bookId===this.selectedBookId) as BookResponse;
+
+    this.bookFormGroup.patchValue({
+      name:data.name,
+      author:data.author,
+      isbn:data.isbn,
+      publication:data.publication,
+      subCategoriesId:data.subCategoryId
+    })
+    this.visible=true;
+  }
+
   submit() {
-    if (this.bookFormGroup.invalid) {
-      this.bookFormGroup.markAllAsTouched;
+    console.log("click submit button")
+   if(this.isEdit){
+    console.log("inside edit form");
+    return;
+   }else{
+    console.log("inside else block")
+     if (this.bookFormGroup.invalid) {
+      this.bookFormGroup.markAllAsTouched();
       return;
     }
-    console.log('The book form data is:: ' + this.bookFormGroup.value);
+    const params:AddBook$Params={
+      body:this.bookFormGroup.value as BookRequest
+    }
+    console.log(params);
+    addBook(this.httpClient,this.baseUrl,params,new HttpContext()).subscribe({
+      next:(value)=>{
+        const data=value.body as BookResponse;
+        const currentList=this.bookListData;
+        this.bookListData=[...currentList,data];
+        this.messageService.add({severity:"success",summary:"Added Book",detail:"Book added successfully",life:3000});
+        this.bookFormGroup.reset();
+        this.visible=false;
+      },
+      error:(error)=>{
+        this.messageService.add({severity:'error',summary:"Error",detail:"Something went wrong",life:3000});
+        this.bookFormGroup.reset();
+      }
+    })
     this.bookFormGroup.reset();
+   }
   }
 
   onUpdate(id: number) {
@@ -185,8 +218,6 @@ export class BookComponentComponent {
     });
   }
   onDelete(id: number) {}
- 
-
 
 
   getBookImage(bookId:number):string{

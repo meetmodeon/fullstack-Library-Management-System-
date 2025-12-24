@@ -9,12 +9,12 @@ import { RequestBuilder } from '../../request-builder';
 
 import { UserResponse } from '../../models/user-response';
 
-export interface GetUserById$Params {
+export interface GetUserByEmail$Params {
   email: string;
 }
 
-export function getUserById(http: HttpClient, rootUrl: string, params: GetUserById$Params, context?: HttpContext): Observable<StrictHttpResponse<UserResponse>> {
-  const rb = new RequestBuilder(rootUrl, getUserById.PATH, 'get');
+export function getUserByEmail(http: HttpClient, rootUrl: string, params: GetUserByEmail$Params, context?: HttpContext): Observable<StrictHttpResponse<UserResponse>> {
+  const rb = new RequestBuilder(rootUrl, getUserByEmail.PATH, 'get');
   if (params) {
     rb.path('email', params.email, {});
   }
@@ -29,4 +29,4 @@ export function getUserById(http: HttpClient, rootUrl: string, params: GetUserBy
   );
 }
 
-getUserById.PATH = '/user/email/{email}';
+getUserByEmail.PATH = '/user/email/{email}';

@@ -70,5 +70,5 @@ Full Stack Java + Angular Developer
 Nepal 🇳🇵
 `;
 
-fs.writeFileSync('README.md', content.trim());
+fs.writeFileSync('D:/LBM/README.md', content.trim());
 console.log("✅ README.md generated successfully");

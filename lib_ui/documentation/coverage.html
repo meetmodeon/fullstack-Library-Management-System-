@@ -1,0 +1,3026 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>lib-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">lib-ui documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content coverage">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Documentation coverage</li>
+</ol>
+
+<div>
+    <img src="./images/coverage-badge-documentation.svg">
+</div>
+
+<table class="table table-bordered coverage" id="coverage-table">
+    <thead class="coverage-header">
+        <tr>
+            <th>File</th>
+            <th>Type</th>
+            <th>Identifier</th>
+            <th style="text-align:right" class="statements" data-sort-default>Statements</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/AppComponent.html">src/app/app.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>AppComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/variables.html#appConfig">src/app/app.config.ts</a>
+            </td>
+            <td>variable</td>
+            <td>appConfig</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/variables.html#routes">src/app/app.routes.ts</a>
+            </td>
+            <td>variable</td>
+            <td>routes</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/LoginCallbackComponent.html">src/app/core/auth/login-callback/login-callback.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>LoginCallbackComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/LoginComponent.html">src/app/core/auth/login/login.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>LoginComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/RegisterComponent.html">src/app/core/auth/register/register.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>RegisterComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/BookCardComponent.html">src/app/core/page/book-card/book-card.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>BookCardComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/37)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/BookLayoutComponent.html">src/app/core/page/book-layout/book-layout.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>BookLayoutComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/ChatAiComponent.html">src/app/core/page/chat-ai/chat-ai.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ChatAiComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/ChatMessage.html">src/app/core/page/chat-ai/chat-ai.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>ChatMessage</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/CommonHomeComponent.html">src/app/core/page/common-home/common-home.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CommonHomeComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/15)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/CycleHubComponent.html">src/app/core/page/cycle-hub/cycle-hub.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CycleHubComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/RecycleHubResponse.html">src/app/core/page/cycle-hub/cycle-hub.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>RecycleHubResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/DashboardComponent.html">src/app/core/page/dashboard/dashboard.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>DashboardComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/30)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/DigitalPageComponent.html">src/app/core/page/digital-page/digital-page.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>DigitalPageComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/DigitalResponse.html">src/app/core/page/digital-page/digital-page.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>DigitalResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/HeaderComponent.html">src/app/core/page/header/header/header.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>HeaderComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/13)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/HomeComponent.html">src/app/core/page/home/home.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>HomeComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/MyBookComponent.html">src/app/core/page/my-book/my-book.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>MyBookComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/13)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/NotFoundComponent.html">src/app/core/page/not-found/not-found.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>NotFoundComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/NotificationComponent.html">src/app/core/page/notification/notification.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>NotificationComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/11)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/typealiases.html#AnnouncementType">src/app/core/page/notification/notification.component.ts</a>
+            </td>
+            <td>type alias</td>
+            <td>AnnouncementType</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/ResetPasswordComponent.html">src/app/core/page/password-reset/reset-password/reset-password.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ResetPasswordComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/20)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/typealiases.html#Step">src/app/core/page/password-reset/reset-password/reset-password.component.ts</a>
+            </td>
+            <td>type alias</td>
+            <td>Step</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/ProfileSettingComponent.html">src/app/core/page/profile-setting/profile-setting.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ProfileSettingComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/BookBorrowedComponent.html">src/app/core/superAdmin/page/book-manage/book-borrowed/book-borrowed.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>BookBorrowedComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/BookComponentComponent.html">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>BookComponentComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/28)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/typealiases.html#bookTypes">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts</a>
+            </td>
+            <td>type alias</td>
+            <td>bookTypes</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="medium">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/CategoriesOperationComponent.html">src/app/core/superAdmin/page/category/categories-operation/categories-operation.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CategoriesOperationComponent</td>
+            <td align="right" data-sort="42">
+                <span class="coverage-percent">42 %</span>
+                <span class="coverage-count">(8/19)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/SubCategoryComponent.html">src/app/core/superAdmin/page/category/sub-category/sub-category.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>SubCategoryComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/20)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/DashboardPageComponent.html">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>DashboardPageComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/19)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/DashboardComponent.html">src/app/core/superAdmin/page/dashboard/dashboard.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>DashboardComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/MyProfileComponent.html">src/app/core/superAdmin/page/my-profile/my-profile.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>MyProfileComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/SettingComponent.html">src/app/core/superAdmin/page/setting/setting.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>SettingComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/SuperAdminRegisterComponent.html">src/app/core/superAdmin/page/super-admin-register/super-admin-register.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>SuperAdminRegisterComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/UserComponent.html">src/app/core/superAdmin/page/user_manage/user/user.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>UserComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./components/SearchBoxComponent.html">src/app/core/superAdmin/searchin/search-box/search-box.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>SearchBoxComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/18)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./directives/AnimatedCounterDirective.html">src/app/directive/animated-counter.directive.ts</a>
+            </td>
+            <td>directive</td>
+            <td>AnimatedCounterDirective</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/variables.html#authGuard">src/app/guards/auth.guard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>authGuard</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/variables.html#loadGuard">src/app/guards/load.guard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>loadGuard</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/variables.html#authService">src/app/guards/role.guard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>authService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/variables.html#roleGuard">src/app/guards/role.guard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>roleGuard</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/variables.html#authInterceptor">src/app/interceptors/auth.interceptor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>authInterceptor</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./pipes/CapitalizationPipe.html">src/app/pipe/capitalization.pipe.ts</a>
+            </td>
+            <td>pipe</td>
+            <td>CapitalizationPipe</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./pipes/SortContentPipePipe.html">src/app/pipe/sortContent/sort-content-pipe.pipe.ts</a>
+            </td>
+            <td>pipe</td>
+            <td>SortContentPipePipe</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./pipes/TimePipePipe.html">src/app/pipe/timepipe/time-pipe.pipe.ts</a>
+            </td>
+            <td>pipe</td>
+            <td>TimePipePipe</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./injectables/BookServiceService.html">src/app/services/StateMangeSerivce/Book/book-service.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>BookServiceService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/13)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./injectables/BorrowedBookServiceService.html">src/app/services/StateMangeSerivce/Borrowed/borrowed-book-service.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>BorrowedBookServiceService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/13)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./injectables/UserServiceService.html">src/app/services/StateMangeSerivce/User/user-service.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>UserServiceService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/15)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./injectables/CategoryServiceService.html">src/app/services/StateMangeSerivce/category/category-service.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>CategoryServiceService</td>
+            <td align="right" data-sort="20">
+                <span class="coverage-percent">20 %</span>
+                <span class="coverage-count">(2/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./injectables/SubCategoryService.html">src/app/services/StateMangeSerivce/subCategoryService/sub-category.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>SubCategoryService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./injectables/UserStorageSerivceService.html">src/app/services/UserStorageService/user-storage-serivce.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>UserStorageSerivceService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/variables.html#TOKEN">src/app/services/UserStorageService/user-storage-serivce.service.ts</a>
+            </td>
+            <td>variable</td>
+            <td>TOKEN</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/variables.html#USER">src/app/services/UserStorageService/user-storage-serivce.service.ts</a>
+            </td>
+            <td>variable</td>
+            <td>USER</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="medium">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./injectables/ApiConfiguration.html">src/app/services/api-configuration.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>ApiConfiguration</td>
+            <td align="right" data-sort="50">
+                <span class="coverage-percent">50 %</span>
+                <span class="coverage-count">(1/2)</span>
+            </td>
+        </tr>
+        <tr class="very-good">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#provideApiConfiguration">src/app/services/api-configuration.ts</a>
+            </td>
+            <td>function</td>
+            <td>provideApiConfiguration</td>
+            <td align="right" data-sort="100">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(1/1)</span>
+            </td>
+        </tr>
+        <tr class="medium">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./injectables/Api.html">src/app/services/api.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>Api</td>
+            <td align="right" data-sort="33">
+                <span class="coverage-percent">33 %</span>
+                <span class="coverage-count">(3/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/typealiases.html#ApiFnOptional">src/app/services/api.ts</a>
+            </td>
+            <td>type alias</td>
+            <td>ApiFnOptional</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/typealiases.html#ApiFnRequired">src/app/services/api.ts</a>
+            </td>
+            <td>type alias</td>
+            <td>ApiFnRequired</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./injectables/AuthServiceService.html">src/app/services/auth/auth-service.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>AuthServiceService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/17)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/MyJwtPayload.html">src/app/services/auth/auth-service.service.ts</a>
+            </td>
+            <td>interface</td>
+            <td>MyJwtPayload</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/AddBook$Params.html">src/app/services/fn/book-management/add-book.ts</a>
+            </td>
+            <td>interface</td>
+            <td>AddBook$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#addBook">src/app/services/fn/book-management/add-book.ts</a>
+            </td>
+            <td>function</td>
+            <td>addBook</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/AllBookBySubCategoryId$Params.html">src/app/services/fn/book-management/all-book-by-sub-category-id.ts</a>
+            </td>
+            <td>interface</td>
+            <td>AllBookBySubCategoryId$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#allBookBySubCategoryId">src/app/services/fn/book-management/all-book-by-sub-category-id.ts</a>
+            </td>
+            <td>function</td>
+            <td>allBookBySubCategoryId</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/ChatStream$Params.html">src/app/services/fn/book-management/chat-stream.ts</a>
+            </td>
+            <td>interface</td>
+            <td>ChatStream$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#chatStream">src/app/services/fn/book-management/chat-stream.ts</a>
+            </td>
+            <td>function</td>
+            <td>chatStream</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/DeleteBookById$Params.html">src/app/services/fn/book-management/delete-book-by-id.ts</a>
+            </td>
+            <td>interface</td>
+            <td>DeleteBookById$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#deleteBookById">src/app/services/fn/book-management/delete-book-by-id.ts</a>
+            </td>
+            <td>function</td>
+            <td>deleteBookById</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/DownloadBookFile$Params.html">src/app/services/fn/book-management/download-book-file.ts</a>
+            </td>
+            <td>interface</td>
+            <td>DownloadBookFile$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#downloadBookFile">src/app/services/fn/book-management/download-book-file.ts</a>
+            </td>
+            <td>function</td>
+            <td>downloadBookFile</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetAllBooks$Params.html">src/app/services/fn/book-management/get-all-books.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetAllBooks$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getAllBooks">src/app/services/fn/book-management/get-all-books.ts</a>
+            </td>
+            <td>function</td>
+            <td>getAllBooks</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetAllRecycleHubDetails$Params.html">src/app/services/fn/book-management/get-all-recycle-hub-details.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetAllRecycleHubDetails$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getAllRecycleHubDetails">src/app/services/fn/book-management/get-all-recycle-hub-details.ts</a>
+            </td>
+            <td>function</td>
+            <td>getAllRecycleHubDetails</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetBookById$Params.html">src/app/services/fn/book-management/get-book-by-id.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetBookById$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getBookById">src/app/services/fn/book-management/get-book-by-id.ts</a>
+            </td>
+            <td>function</td>
+            <td>getBookById</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetBookByName$Params.html">src/app/services/fn/book-management/get-book-by-name.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetBookByName$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getBookByName">src/app/services/fn/book-management/get-book-by-name.ts</a>
+            </td>
+            <td>function</td>
+            <td>getBookByName</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetBookDetails$Params.html">src/app/services/fn/book-management/get-book-details.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetBookDetails$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getBookDetails">src/app/services/fn/book-management/get-book-details.ts</a>
+            </td>
+            <td>function</td>
+            <td>getBookDetails</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetSimilarBooks$Params.html">src/app/services/fn/book-management/get-similar-books.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetSimilarBooks$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getSimilarBooks">src/app/services/fn/book-management/get-similar-books.ts</a>
+            </td>
+            <td>function</td>
+            <td>getSimilarBooks</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetTopRatingBook$Params.html">src/app/services/fn/book-management/get-top-rating-book.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetTopRatingBook$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getTopRatingBook">src/app/services/fn/book-management/get-top-rating-book.ts</a>
+            </td>
+            <td>function</td>
+            <td>getTopRatingBook</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/IsBookBorrowed$Params.html">src/app/services/fn/book-management/is-book-borrowed.ts</a>
+            </td>
+            <td>interface</td>
+            <td>IsBookBorrowed$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#isBookBorrowed">src/app/services/fn/book-management/is-book-borrowed.ts</a>
+            </td>
+            <td>function</td>
+            <td>isBookBorrowed</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/MostPopularBook$Params.html">src/app/services/fn/book-management/most-popular-book.ts</a>
+            </td>
+            <td>interface</td>
+            <td>MostPopularBook$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#mostPopularBook">src/app/services/fn/book-management/most-popular-book.ts</a>
+            </td>
+            <td>function</td>
+            <td>mostPopularBook</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/RecommendationBook$Params.html">src/app/services/fn/book-management/recommendation-book.ts</a>
+            </td>
+            <td>interface</td>
+            <td>RecommendationBook$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#recommendationBook">src/app/services/fn/book-management/recommendation-book.ts</a>
+            </td>
+            <td>function</td>
+            <td>recommendationBook</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/SearchBook$Params.html">src/app/services/fn/book-management/search-book.ts</a>
+            </td>
+            <td>interface</td>
+            <td>SearchBook$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#searchBook">src/app/services/fn/book-management/search-book.ts</a>
+            </td>
+            <td>function</td>
+            <td>searchBook</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/TrendingBook$Params.html">src/app/services/fn/book-management/trending-book.ts</a>
+            </td>
+            <td>interface</td>
+            <td>TrendingBook$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#trendingBook">src/app/services/fn/book-management/trending-book.ts</a>
+            </td>
+            <td>function</td>
+            <td>trendingBook</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/UpdateBookById$Params.html">src/app/services/fn/book-management/update-book-by-id.ts</a>
+            </td>
+            <td>interface</td>
+            <td>UpdateBookById$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#updateBookById">src/app/services/fn/book-management/update-book-by-id.ts</a>
+            </td>
+            <td>function</td>
+            <td>updateBookById</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/UpdateBookStatus$Params.html">src/app/services/fn/book-management/update-book-status.ts</a>
+            </td>
+            <td>interface</td>
+            <td>UpdateBookStatus$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#updateBookStatus">src/app/services/fn/book-management/update-book-status.ts</a>
+            </td>
+            <td>function</td>
+            <td>updateBookStatus</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/UploadBookImage$Params.html">src/app/services/fn/book-management/upload-book-image.ts</a>
+            </td>
+            <td>interface</td>
+            <td>UploadBookImage$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#uploadBookImage">src/app/services/fn/book-management/upload-book-image.ts</a>
+            </td>
+            <td>function</td>
+            <td>uploadBookImage</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/BorrowedBook$Params.html">src/app/services/fn/borrowed-book-management/borrowed-book.ts</a>
+            </td>
+            <td>interface</td>
+            <td>BorrowedBook$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#borrowedBook">src/app/services/fn/borrowed-book-management/borrowed-book.ts</a>
+            </td>
+            <td>function</td>
+            <td>borrowedBook</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetAllBorrowedList$Params.html">src/app/services/fn/borrowed-book-management/get-all-borrowed-list.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetAllBorrowedList$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getAllBorrowedList">src/app/services/fn/borrowed-book-management/get-all-borrowed-list.ts</a>
+            </td>
+            <td>function</td>
+            <td>getAllBorrowedList</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetBorrowedByUserId$Params.html">src/app/services/fn/borrowed-book-management/get-borrowed-by-user-id.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetBorrowedByUserId$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getBorrowedByUserId">src/app/services/fn/borrowed-book-management/get-borrowed-by-user-id.ts</a>
+            </td>
+            <td>function</td>
+            <td>getBorrowedByUserId</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetDigitalPage$Params.html">src/app/services/fn/borrowed-book-management/get-digital-page.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetDigitalPage$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getDigitalPage">src/app/services/fn/borrowed-book-management/get-digital-page.ts</a>
+            </td>
+            <td>function</td>
+            <td>getDigitalPage</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/ReturnedBook$Params.html">src/app/services/fn/borrowed-book-management/returned-book.ts</a>
+            </td>
+            <td>interface</td>
+            <td>ReturnedBook$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#returnedBook">src/app/services/fn/borrowed-book-management/returned-book.ts</a>
+            </td>
+            <td>function</td>
+            <td>returnedBook</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/UpdateBookReturnIssueDate$Params.html">src/app/services/fn/borrowed-book-management/update-book-return-issue-date.ts</a>
+            </td>
+            <td>interface</td>
+            <td>UpdateBookReturnIssueDate$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#updateBookReturnIssueDate">src/app/services/fn/borrowed-book-management/update-book-return-issue-date.ts</a>
+            </td>
+            <td>function</td>
+            <td>updateBookReturnIssueDate</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/AddCategory$Params.html">src/app/services/fn/category-management/add-category.ts</a>
+            </td>
+            <td>interface</td>
+            <td>AddCategory$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#addCategory">src/app/services/fn/category-management/add-category.ts</a>
+            </td>
+            <td>function</td>
+            <td>addCategory</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/DeleteCategoryById$Params.html">src/app/services/fn/category-management/delete-category-by-id.ts</a>
+            </td>
+            <td>interface</td>
+            <td>DeleteCategoryById$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#deleteCategoryById">src/app/services/fn/category-management/delete-category-by-id.ts</a>
+            </td>
+            <td>function</td>
+            <td>deleteCategoryById</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetAllCategories$Params.html">src/app/services/fn/category-management/get-all-categories.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetAllCategories$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getAllCategories">src/app/services/fn/category-management/get-all-categories.ts</a>
+            </td>
+            <td>function</td>
+            <td>getAllCategories</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetCategoryByName$Params.html">src/app/services/fn/category-management/get-category-by-name.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetCategoryByName$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getCategoryByName">src/app/services/fn/category-management/get-category-by-name.ts</a>
+            </td>
+            <td>function</td>
+            <td>getCategoryByName</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/UpdateCategory$Params.html">src/app/services/fn/category-management/update-category.ts</a>
+            </td>
+            <td>interface</td>
+            <td>UpdateCategory$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#updateCategory">src/app/services/fn/category-management/update-category.ts</a>
+            </td>
+            <td>function</td>
+            <td>updateCategory</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/AdminRegister$Params.html">src/app/services/fn/common-operation/admin-register.ts</a>
+            </td>
+            <td>interface</td>
+            <td>AdminRegister$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#adminRegister">src/app/services/fn/common-operation/admin-register.ts</a>
+            </td>
+            <td>function</td>
+            <td>adminRegister</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/Login$Params.html">src/app/services/fn/common-operation/login.ts</a>
+            </td>
+            <td>interface</td>
+            <td>Login$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#login">src/app/services/fn/common-operation/login.ts</a>
+            </td>
+            <td>function</td>
+            <td>login</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/RefreshToken$Params.html">src/app/services/fn/common-operation/refresh-token.ts</a>
+            </td>
+            <td>interface</td>
+            <td>RefreshToken$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#refreshToken">src/app/services/fn/common-operation/refresh-token.ts</a>
+            </td>
+            <td>function</td>
+            <td>refreshToken</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/Register$Params.html">src/app/services/fn/common-operation/register.ts</a>
+            </td>
+            <td>interface</td>
+            <td>Register$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#register">src/app/services/fn/common-operation/register.ts</a>
+            </td>
+            <td>function</td>
+            <td>register</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/SendOtp$Params.html">src/app/services/fn/common-operation/send-otp.ts</a>
+            </td>
+            <td>interface</td>
+            <td>SendOtp$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#sendOtp">src/app/services/fn/common-operation/send-otp.ts</a>
+            </td>
+            <td>function</td>
+            <td>sendOtp</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/VerifyOtpAndChangePassword$Params.html">src/app/services/fn/common-operation/verify-otp-and-change-password.ts</a>
+            </td>
+            <td>interface</td>
+            <td>VerifyOtpAndChangePassword$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#verifyOtpAndChangePassword">src/app/services/fn/common-operation/verify-otp-and-change-password.ts</a>
+            </td>
+            <td>function</td>
+            <td>verifyOtpAndChangePassword</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/VerifyOtp$Params.html">src/app/services/fn/common-operation/verify-otp.ts</a>
+            </td>
+            <td>interface</td>
+            <td>VerifyOtp$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#verifyOtp">src/app/services/fn/common-operation/verify-otp.ts</a>
+            </td>
+            <td>function</td>
+            <td>verifyOtp</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/PostAnnouncement$Params.html">src/app/services/fn/notification-controller/post-announcement.ts</a>
+            </td>
+            <td>interface</td>
+            <td>PostAnnouncement$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#postAnnouncement">src/app/services/fn/notification-controller/post-announcement.ts</a>
+            </td>
+            <td>function</td>
+            <td>postAnnouncement</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetAll$Params.html">src/app/services/fn/post-notification/get-all.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetAll$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getAll">src/app/services/fn/post-notification/get-all.ts</a>
+            </td>
+            <td>function</td>
+            <td>getAll</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/MarkRead$Params.html">src/app/services/fn/post-notification/mark-read.ts</a>
+            </td>
+            <td>interface</td>
+            <td>MarkRead$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#markRead">src/app/services/fn/post-notification/mark-read.ts</a>
+            </td>
+            <td>function</td>
+            <td>markRead</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/PostAnnouncement$Params.html">src/app/services/fn/post-notification/post-announcement.ts</a>
+            </td>
+            <td>interface</td>
+            <td>PostAnnouncement$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#postAnnouncement">src/app/services/fn/post-notification/post-announcement.ts</a>
+            </td>
+            <td>function</td>
+            <td>postAnnouncement</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/UnreadCount$Params.html">src/app/services/fn/post-notification/unread-count.ts</a>
+            </td>
+            <td>interface</td>
+            <td>UnreadCount$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#unreadCount">src/app/services/fn/post-notification/unread-count.ts</a>
+            </td>
+            <td>function</td>
+            <td>unreadCount</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/AddComment$Params.html">src/app/services/fn/rating-management/add-comment.ts</a>
+            </td>
+            <td>interface</td>
+            <td>AddComment$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#addComment">src/app/services/fn/rating-management/add-comment.ts</a>
+            </td>
+            <td>function</td>
+            <td>addComment</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/DeleteComment$Params.html">src/app/services/fn/rating-management/delete-comment.ts</a>
+            </td>
+            <td>interface</td>
+            <td>DeleteComment$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#deleteComment">src/app/services/fn/rating-management/delete-comment.ts</a>
+            </td>
+            <td>function</td>
+            <td>deleteComment</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/DeleteFeedBack$Params.html">src/app/services/fn/rating-management/delete-feed-back.ts</a>
+            </td>
+            <td>interface</td>
+            <td>DeleteFeedBack$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#deleteFeedBack">src/app/services/fn/rating-management/delete-feed-back.ts</a>
+            </td>
+            <td>function</td>
+            <td>deleteFeedBack</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetAllRatingByBookId$Params.html">src/app/services/fn/rating-management/get-all-rating-by-book-id.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetAllRatingByBookId$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getAllRatingByBookId">src/app/services/fn/rating-management/get-all-rating-by-book-id.ts</a>
+            </td>
+            <td>function</td>
+            <td>getAllRatingByBookId</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetDetailsUpperRating$Params.html">src/app/services/fn/rating-management/get-details-upper-rating.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetDetailsUpperRating$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getDetailsUpperRating">src/app/services/fn/rating-management/get-details-upper-rating.ts</a>
+            </td>
+            <td>function</td>
+            <td>getDetailsUpperRating</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetRatingFeedBackByUserId$Params.html">src/app/services/fn/rating-management/get-rating-feed-back-by-user-id.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetRatingFeedBackByUserId$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getRatingFeedBackByUserId">src/app/services/fn/rating-management/get-rating-feed-back-by-user-id.ts</a>
+            </td>
+            <td>function</td>
+            <td>getRatingFeedBackByUserId</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GiveBookRating$Params.html">src/app/services/fn/rating-management/give-book-rating.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GiveBookRating$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#giveBookRating">src/app/services/fn/rating-management/give-book-rating.ts</a>
+            </td>
+            <td>function</td>
+            <td>giveBookRating</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/UpdateComment$Params.html">src/app/services/fn/rating-management/update-comment.ts</a>
+            </td>
+            <td>interface</td>
+            <td>UpdateComment$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#updateComment">src/app/services/fn/rating-management/update-comment.ts</a>
+            </td>
+            <td>function</td>
+            <td>updateComment</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/AddSubCategory$Params.html">src/app/services/fn/sub-category-management/add-sub-category.ts</a>
+            </td>
+            <td>interface</td>
+            <td>AddSubCategory$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#addSubCategory">src/app/services/fn/sub-category-management/add-sub-category.ts</a>
+            </td>
+            <td>function</td>
+            <td>addSubCategory</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/DeleteSubCategoryById$Params.html">src/app/services/fn/sub-category-management/delete-sub-category-by-id.ts</a>
+            </td>
+            <td>interface</td>
+            <td>DeleteSubCategoryById$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#deleteSubCategoryById">src/app/services/fn/sub-category-management/delete-sub-category-by-id.ts</a>
+            </td>
+            <td>function</td>
+            <td>deleteSubCategoryById</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetAllSubCategory$Params.html">src/app/services/fn/sub-category-management/get-all-sub-category.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetAllSubCategory$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getAllSubCategory">src/app/services/fn/sub-category-management/get-all-sub-category.ts</a>
+            </td>
+            <td>function</td>
+            <td>getAllSubCategory</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetSubCategoryByCategoryId$Params.html">src/app/services/fn/sub-category-management/get-sub-category-by-category-id.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetSubCategoryByCategoryId$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getSubCategoryByCategoryId">src/app/services/fn/sub-category-management/get-sub-category-by-category-id.ts</a>
+            </td>
+            <td>function</td>
+            <td>getSubCategoryByCategoryId</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetSubCategoryId$Params.html">src/app/services/fn/sub-category-management/get-sub-category-id.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetSubCategoryId$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getSubCategoryId">src/app/services/fn/sub-category-management/get-sub-category-id.ts</a>
+            </td>
+            <td>function</td>
+            <td>getSubCategoryId</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/UpdateSubCategory$Params.html">src/app/services/fn/sub-category-management/update-sub-category.ts</a>
+            </td>
+            <td>interface</td>
+            <td>UpdateSubCategory$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#updateSubCategory">src/app/services/fn/sub-category-management/update-sub-category.ts</a>
+            </td>
+            <td>function</td>
+            <td>updateSubCategory</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/DownloadFile$Params.html">src/app/services/fn/user-management/download-file.ts</a>
+            </td>
+            <td>interface</td>
+            <td>DownloadFile$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#downloadFile">src/app/services/fn/user-management/download-file.ts</a>
+            </td>
+            <td>function</td>
+            <td>downloadFile</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetAllUser$Params.html">src/app/services/fn/user-management/get-all-user.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetAllUser$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getAllUser">src/app/services/fn/user-management/get-all-user.ts</a>
+            </td>
+            <td>function</td>
+            <td>getAllUser</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetUserByEmail$Params.html">src/app/services/fn/user-management/get-user-by-email.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetUserByEmail$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getUserByEmail">src/app/services/fn/user-management/get-user-by-email.ts</a>
+            </td>
+            <td>function</td>
+            <td>getUserByEmail</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/GetUserByRole$Params.html">src/app/services/fn/user-management/get-user-by-role.ts</a>
+            </td>
+            <td>interface</td>
+            <td>GetUserByRole$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#getUserByRole">src/app/services/fn/user-management/get-user-by-role.ts</a>
+            </td>
+            <td>function</td>
+            <td>getUserByRole</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/MakeUnRead$Params.html">src/app/services/fn/user-management/make-un-read.ts</a>
+            </td>
+            <td>interface</td>
+            <td>MakeUnRead$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#makeUnRead">src/app/services/fn/user-management/make-un-read.ts</a>
+            </td>
+            <td>function</td>
+            <td>makeUnRead</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/UpdateUserInfo$Params.html">src/app/services/fn/user-management/update-user-info.ts</a>
+            </td>
+            <td>interface</td>
+            <td>UpdateUserInfo$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#updateUserInfo">src/app/services/fn/user-management/update-user-info.ts</a>
+            </td>
+            <td>function</td>
+            <td>updateUserInfo</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/UploadProfile$Params.html">src/app/services/fn/user-management/upload-profile.ts</a>
+            </td>
+            <td>interface</td>
+            <td>UploadProfile$Params</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/functions.html#uploadProfile">src/app/services/fn/user-management/upload-profile.ts</a>
+            </td>
+            <td>function</td>
+            <td>uploadProfile</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/AnnouncementRequest.html">src/app/services/models/announcement-request.ts</a>
+            </td>
+            <td>interface</td>
+            <td>AnnouncementRequest</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/AnnouncementResponse.html">src/app/services/models/announcement-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>AnnouncementResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/BookBorrowCheckRequest.html">src/app/services/models/book-borrow-check-request.ts</a>
+            </td>
+            <td>interface</td>
+            <td>BookBorrowCheckRequest</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/BookDetailResponse.html">src/app/services/models/book-detail-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>BookDetailResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/BookRequest.html">src/app/services/models/book-request.ts</a>
+            </td>
+            <td>interface</td>
+            <td>BookRequest</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/BookResponse.html">src/app/services/models/book-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>BookResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/BorrowedRequest.html">src/app/services/models/borrowed-request.ts</a>
+            </td>
+            <td>interface</td>
+            <td>BorrowedRequest</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/BorrowedResponse.html">src/app/services/models/borrowed-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>BorrowedResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/CategoryRequest.html">src/app/services/models/category-request.ts</a>
+            </td>
+            <td>interface</td>
+            <td>CategoryRequest</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/CategoryResponse.html">src/app/services/models/category-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>CategoryResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/DeleteCommentRequest.html">src/app/services/models/delete-comment-request.ts</a>
+            </td>
+            <td>interface</td>
+            <td>DeleteCommentRequest</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/DigitalResponse.html">src/app/services/models/digital-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>DigitalResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/LoginRequest.html">src/app/services/models/login-request.ts</a>
+            </td>
+            <td>interface</td>
+            <td>LoginRequest</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/LoginResponse.html">src/app/services/models/login-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>LoginResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/PageBookResponse.html">src/app/services/models/page-book-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>PageBookResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/PageBorrowedResponse.html">src/app/services/models/page-borrowed-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>PageBorrowedResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/PageCategoryResponse.html">src/app/services/models/page-category-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>PageCategoryResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/PageRatingFeedBackResponse.html">src/app/services/models/page-rating-feed-back-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>PageRatingFeedBackResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/PageSubCategoryResponse.html">src/app/services/models/page-sub-category-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>PageSubCategoryResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/PageUserResponse.html">src/app/services/models/page-user-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>PageUserResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/PageableObject.html">src/app/services/models/pageable-object.ts</a>
+            </td>
+            <td>interface</td>
+            <td>PageableObject</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/PasswordResetData.html">src/app/services/models/password-reset-data.ts</a>
+            </td>
+            <td>interface</td>
+            <td>PasswordResetData</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/RatingFeedBackResponse.html">src/app/services/models/rating-feed-back-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>RatingFeedBackResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/RatingFeedbackDetailResponse.html">src/app/services/models/rating-feedback-detail-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>RatingFeedbackDetailResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/RatingRequest.html">src/app/services/models/rating-request.ts</a>
+            </td>
+            <td>interface</td>
+            <td>RatingRequest</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/RatingUpperDetailsResponse.html">src/app/services/models/rating-upper-details-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>RatingUpperDetailsResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/RecycleHubResponse.html">src/app/services/models/recycle-hub-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>RecycleHubResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/ServerSentEventString.html">src/app/services/models/server-sent-event-string.ts</a>
+            </td>
+            <td>interface</td>
+            <td>ServerSentEventString</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/SortObject.html">src/app/services/models/sort-object.ts</a>
+            </td>
+            <td>interface</td>
+            <td>SortObject</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/SubCategoryRequest.html">src/app/services/models/sub-category-request.ts</a>
+            </td>
+            <td>interface</td>
+            <td>SubCategoryRequest</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/SubCategoryResponse.html">src/app/services/models/sub-category-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>SubCategoryResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/UpdateCommentRequest.html">src/app/services/models/update-comment-request.ts</a>
+            </td>
+            <td>interface</td>
+            <td>UpdateCommentRequest</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/UserRequest.html">src/app/services/models/user-request.ts</a>
+            </td>
+            <td>interface</td>
+            <td>UserRequest</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/UserResponse.html">src/app/services/models/user-response.ts</a>
+            </td>
+            <td>interface</td>
+            <td>UserResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./classes/HeaderParameter.html">src/app/services/request-builder.ts</a>
+            </td>
+            <td>class</td>
+            <td>HeaderParameter</td>
+            <td align="right" data-sort="14">
+                <span class="coverage-percent">14 %</span>
+                <span class="coverage-count">(1/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./classes/Parameter.html">src/app/services/request-builder.ts</a>
+            </td>
+            <td>class</td>
+            <td>Parameter</td>
+            <td align="right" data-sort="16">
+                <span class="coverage-percent">16 %</span>
+                <span class="coverage-count">(1/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./classes/ParameterCodec.html">src/app/services/request-builder.ts</a>
+            </td>
+            <td>class</td>
+            <td>ParameterCodec</td>
+            <td align="right" data-sort="20">
+                <span class="coverage-percent">20 %</span>
+                <span class="coverage-count">(1/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./classes/PathParameter.html">src/app/services/request-builder.ts</a>
+            </td>
+            <td>class</td>
+            <td>PathParameter</td>
+            <td align="right" data-sort="14">
+                <span class="coverage-percent">14 %</span>
+                <span class="coverage-count">(1/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./classes/QueryParameter.html">src/app/services/request-builder.ts</a>
+            </td>
+            <td>class</td>
+            <td>QueryParameter</td>
+            <td align="right" data-sort="14">
+                <span class="coverage-percent">14 %</span>
+                <span class="coverage-count">(1/7)</span>
+            </td>
+        </tr>
+        <tr class="medium">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./classes/RequestBuilder.html">src/app/services/request-builder.ts</a>
+            </td>
+            <td>class</td>
+            <td>RequestBuilder</td>
+            <td align="right" data-sort="37">
+                <span class="coverage-percent">37 %</span>
+                <span class="coverage-count">(6/16)</span>
+            </td>
+        </tr>
+        <tr class="medium">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./interfaces/ParameterOptions.html">src/app/services/request-builder.ts</a>
+            </td>
+            <td>interface</td>
+            <td>ParameterOptions</td>
+            <td align="right" data-sort="33">
+                <span class="coverage-percent">33 %</span>
+                <span class="coverage-count">(1/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/variables.html#ParameterCodecInstance">src/app/services/request-builder.ts</a>
+            </td>
+            <td>variable</td>
+            <td>ParameterCodecInstance</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./injectables/WebSocketServicProgramService.html">src/app/services/socket/websocketProgram/web-socket-servic-program.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>WebSocketServicProgramService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="very-good">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/typealiases.html#StrictHttpResponse">src/app/services/strict-http-response.ts</a>
+            </td>
+            <td>type alias</td>
+            <td>StrictHttpResponse</td>
+            <td align="right" data-sort="100">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(1/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                        <a href="./miscellaneous/variables.html#environment">src/environments/environment.ts</a>
+            </td>
+            <td>variable</td>
+            <td>environment</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<script src="js/libs/tablesort.min.js"></script>
+<script src="js/libs/tablesort.number.min.js"></script>
+<script>
+    new Tablesort(document.getElementById('coverage-table'));
+</script>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'coverage';
+            var COMPODOC_CURRENT_PAGE_URL = 'coverage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

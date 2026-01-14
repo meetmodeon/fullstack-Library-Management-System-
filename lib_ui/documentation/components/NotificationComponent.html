@@ -1,0 +1,1035 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>lib-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">lib-ui documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  NotificationComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/core/page/notification/notification.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-notification</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>DrawerModule</code>
+                            <code>ButtonModule</code>
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./notification.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./notification.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getAllNotification" >getAllNotification</a>
+                            </li>
+                            <li>
+                                <a href="#groupedByType" >groupedByType</a>
+                            </li>
+                            <li>
+                                <a href="#noticeType" >noticeType</a>
+                            </li>
+                            <li>
+                                <a href="#url" >url</a>
+                            </li>
+                            <li>
+                                <a href="#visible" >visible</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getAllNewBookNotify" >getAllNewBookNotify</a>
+                            </li>
+                            <li>
+                                <a href="#markRead" >markRead</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onShow" >onShow</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(httpClient: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, socketService: <a href="../injectables/WebSocketServicProgramService.html" target="_self">WebSocketServicProgramService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/core/page/notification/notification.component.ts:39</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>httpClient</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>socketService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/WebSocketServicProgramService.html" target="_self" >WebSocketServicProgramService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllNewBookNotify"></a>
+                    <span class="name">
+                        <span ><b>getAllNewBookNotify</b></span>
+                        <a href="#getAllNewBookNotify"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllNewBookNotify(notice: <a href="../miscellaneous/typealiases.html#AnnouncementType" target="_self">AnnouncementType</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">src/app/core/page/notification/notification.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>notice</td>
+                                            <td>
+                                                            <code><a href="../miscellaneous/typealiases.html#AnnouncementType" target="_self" >AnnouncementType</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/AnnouncementResponse.html" target="_self" >AnnouncementResponse[]</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="markRead"></a>
+                    <span class="name">
+                        <span ><b>markRead</b></span>
+                        <a href="#markRead"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>markRead(announcementId: number | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/core/page/notification/notification.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>announcementId</td>
+                                            <td>
+                                                        <code>number | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/core/page/notification/notification.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onShow"></a>
+                    <span class="name">
+                        <span ><b>onShow</b></span>
+                        <a href="#onShow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onShow()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/app/core/page/notification/notification.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllNotification"></a>
+                    <span class="name">
+                        <span ><b>getAllNotification</b></span>
+                        <a href="#getAllNotification"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/AnnouncementResponse.html" target="_self" >AnnouncementResponse[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/core/page/notification/notification.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="groupedByType"></a>
+                    <span class="name">
+                        <span ><b>groupedByType</b></span>
+                        <a href="#groupedByType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/AnnouncementResponse.html" target="_self" >Record&lt;AnnouncementType | AnnouncementResponse[]&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+      NEW_BOOK: [],
+      BOOK_DUE: [],
+      MEETING: [],
+      MILESTONE: [],
+    }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/core/page/notification/notification.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="noticeType"></a>
+                    <span class="name">
+                        <span ><b>noticeType</b></span>
+                        <a href="#noticeType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#AnnouncementType" target="_self" >AnnouncementType</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/core/page/notification/notification.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="url"></a>
+                    <span class="name">
+                        <span ><b>url</b></span>
+                        <a href="#url"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>environment.apiUrl</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/core/page/notification/notification.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="visible"></a>
+                    <span class="name">
+                        <span ><b>visible</b></span>
+                        <a href="#visible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/core/page/notification/notification.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, signal } from &#x27;@angular/core&#x27;;
+import { DrawerModule } from &#x27;primeng/drawer&#x27;;
+import { ButtonModule } from &#x27;primeng/button&#x27;;
+import { WebSocketServicProgramService } from &#x27;../../../services/socket/websocketProgram/web-socket-servic-program.service&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import {  MakeUnRead$Params } from &#x27;../../../services/functions&#x27;;
+import { environment } from &#x27;../../../../environments/environment&#x27;;
+import { HttpClient, HttpContext, HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
+import { markRead, MarkRead$Params } from &#x27;../../../services/fn/post-notification/mark-read&#x27;;
+import { AnnouncementResponse } from &#x27;../../../services/models&#x27;;
+
+export type AnnouncementType &#x3D;
+  | &#x27;NEW_BOOK&#x27;
+  | &#x27;BOOK_DUE&#x27;
+  | &#x27;MEETING&#x27;
+  | &#x27;MILESTONE&#x27;;
+
+@Component({
+  selector: &#x27;app-notification&#x27;,
+  imports: [
+    DrawerModule,
+    ButtonModule,
+    CommonModule,
+    
+],
+  templateUrl: &#x27;./notification.component.html&#x27;,
+  styleUrl: &#x27;./notification.component.scss&#x27;
+})
+export class NotificationComponent {
+  url&#x3D;environment.apiUrl;
+  visible&#x3D;false;
+  getAllNotification:AnnouncementResponse[]&#x3D;[];
+  noticeType!:AnnouncementType;
+   groupedByType: Record&lt;AnnouncementType, AnnouncementResponse[]&gt; &#x3D; {
+      NEW_BOOK: [],
+      BOOK_DUE: [],
+      MEETING: [],
+      MILESTONE: [],
+    };
+  constructor(
+    private httpClient:HttpClient,
+    private socketService:WebSocketServicProgramService
+  ){}
+  ngOnInit(){
+    this.socketService.connectIfNeeded();
+    this.socketService.allNotification$.subscribe(data &#x3D;&gt; {
+    if (data) {
+      this.getAllNotification &#x3D; data;
+    }
+  });
+  }
+  onShow(){
+    this.visible&#x3D;true;
+  }
+  getAllNewBookNotify(notice:AnnouncementType):AnnouncementResponse[]{
+    this.groupedByType &#x3D; {
+        NEW_BOOK: [],
+        BOOK_DUE: [],
+        MEETING: [],
+        MILESTONE: [],
+      };
+      this.getAllNotification.forEach((n) &#x3D;&gt; {
+        if (!this.groupedByType[n.type as AnnouncementType]) {
+          this.groupedByType[n.title as AnnouncementType] &#x3D; [];
+        }
+        this.groupedByType[n.type as AnnouncementType].push(n);
+      });
+    return this.groupedByType[notice]??[];
+  }
+  markRead(announcementId:number|undefined){
+    const params:MarkRead$Params&#x3D;{
+      id:announcementId as number
+    };
+    markRead(this.httpClient,this.url,params,new HttpContext()).subscribe({
+      next:(_HttpResponse:any)&#x3D;&gt;{
+        // const index&#x3D;this.getAllNotification.findIndex(notic&#x3D;&gt;notic.announcementId&#x3D;&#x3D;&#x3D;announcementId);
+        this.getAllNotification.forEach(n&#x3D;&gt;{
+          if(n.announcementId&#x3D;&#x3D;&#x3D;announcementId){
+            n.read&#x3D;true
+          }
+        });
+      },error:(HttpErrorResponse:any)&#x3D;&gt;{
+
+      }
+    })
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;w-full&quot;&gt;
+  &lt;p-drawer [(visible)]&#x3D;&quot;visible&quot; position&#x3D;&quot;right&quot; [style]&#x3D;&quot;{ width: &#x27;28%&#x27; }&quot;&gt;
+    &lt;ng-template #header&gt;
+      &lt;div class&#x3D;&quot;flex flex-col gap-2 w-full text-sm&quot;&gt;
+        &lt;span class&#x3D;&quot;text-xl font-semibold&quot;&gt;Notifications&lt;/span&gt;
+        &lt;span class&#x3D;&quot;text-gray-500 text-xs&quot;
+          &gt;Stay updated with your library activities&lt;/span
+        &gt;
+      &lt;/div&gt;
+    &lt;/ng-template&gt;
+
+    &lt;div class&#x3D;&quot;containt mt-8 w-full flex flex-col gap-2&quot;&gt;
+      @for (item of getAllNewBookNotify(&#x27;BOOK_DUE&#x27;); track $index) {
+      &lt;div class&#x3D;&quot;card relative&quot; (click)&#x3D;&quot;item.read?null:markRead(item.announcementId)&quot;&gt;
+        &lt;div
+          class&#x3D;&quot;left flex gap-2 justify-baseline flex-wrap border border-blue-200  hover:bg-gray-200 rounded-md p-1&quot;
+          [ngClass]&#x3D;&quot;item.read?&#x27;bg-red-100/20&#x27;:&#x27;bg-blue-100/40&#x27;&quot;
+        &gt;
+          &lt;div class&#x3D;&quot;logo&quot;&gt;
+            &lt;span class&#x3D;&quot;text-red-400 text-xl&quot;
+              &gt;&lt;i class&#x3D;&quot;fa-regular fa-calendar&quot;&gt;&lt;/i
+            &gt;&lt;/span&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;details1 flex basis-3/4 flex-col gap-1&quot;&gt;
+            &lt;span class&#x3D;&quot;font-bold text-sm text-black&quot;&gt;Book Due Soon&lt;/span&gt;
+            &lt;span class&#x3D;&quot;text-sm text-gray-500&quot;
+              &gt;{{item.message}}&lt;/span
+            &gt;
+            &lt;span class&#x3D;&quot;text-xs text-gray-500&quot;&gt;{{item.createdAt}}&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;dot absolute top-2 right-2 size-2 rounded-full bg-black&quot; *ngIf&#x3D;&quot;!item.read&quot;&gt;
+          &lt;!-- &lt;span&gt;&lt;i class&#x3D;&quot;pi pi-circle-on&quot; style&#x3D;&quot;color: black&quot;&gt;&lt;/i&gt;&lt;/span&gt; --&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      }
+     @for (item of getAllNewBookNotify(&#x27;NEW_BOOK&#x27;); track $index) {
+       &lt;div class&#x3D;&quot;card2 relative&quot; (click)&#x3D;&quot;item.read?null:(item.announcementId)&quot;&gt;
+        &lt;div
+          class&#x3D;&quot;left flex gap-3 justify-baseline flex-wrap border border-blue-200 bg-blue-100/40 hover:bg-gray-200 rounded-md p-1&quot;
+          [ngClass]&#x3D;&quot;item.read?&#x27;bg-red-100/20&#x27;:&#x27;bg-blue-100/40&#x27;&quot;
+        &gt;
+          &lt;div class&#x3D;&quot;logo&quot;&gt;
+            &lt;span class&#x3D;&quot;text-indigo-400 text-xl&quot;
+              &gt;&lt;i class&#x3D;&quot;fa-regular fa-star&quot;&gt;&lt;/i
+            &gt;&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;details1 flex basis-3/4 flex-col gap-1&quot;&gt;
+            &lt;span class&#x3D;&quot;font-bold text-sm text-black&quot;&gt;New Books Added&lt;/span&gt;
+            &lt;span class&#x3D;&quot;text-sm text-gray-500&quot;&gt;{{ item.message }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;text-xs text-gray-500&quot;&gt;{{ item.createdAt }}&lt;/span&gt;
+          &lt;/div&gt;
+          
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;dot absolute top-2 right-2 size-2 rounded-full bg-black&quot; *ngIf&#x3D;&quot;!item.read&quot;&gt;
+          &lt;!-- &lt;span&gt;&lt;i class&#x3D;&quot;pi pi-circle-on&quot; style&#x3D;&quot;color: black&quot;&gt;&lt;/i&gt;&lt;/span&gt; --&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+     }
+      @for (item of getAllNewBookNotify(&#x27;MEETING&#x27;); track $index) {
+        &lt;div class&#x3D;&quot;card3 relative&quot; (click)&#x3D;&quot;item.read?null:(item.announcementId)&quot;&gt;
+        &lt;div
+          class&#x3D;&quot;left flex gap-3 justify-baseline flex-wrap border border-blue-200 bg-blue-100/40 hover:bg-gray-200 rounded-md p-1&quot;
+          [ngClass]&#x3D;&quot;item.read?&#x27;bg-red-100/20&#x27;:&#x27;bg-blue-100/40&#x27;&quot;
+        &gt;
+          &lt;div class&#x3D;&quot;logo&quot;&gt;
+            &lt;span class&#x3D;&quot;text-indigo-400 text-xl&quot;
+              &gt;&lt;i class&#x3D;&quot;fa-regular fa-bell&quot;&gt;&lt;/i
+            &gt;&lt;/span&gt;
+          &lt;/div&gt;
+        
+          &lt;div class&#x3D;&quot;details1 flex basis-3/4 flex-col gap-1&quot;&gt;
+            &lt;span class&#x3D;&quot;font-bold text-sm text-black&quot;&gt;Book Club Meeting&lt;/span&gt;
+            &lt;span class&#x3D;&quot;text-sm text-gray-500&quot;
+              &gt;{{item.message}}&lt;/span
+            &gt;
+            &lt;span class&#x3D;&quot;text-sm text-gray-500&quot;&gt;{{item.createdAt}}&lt;/span&gt;
+          &lt;/div&gt;
+          
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;dot absolute top-2 right-2 size-2 rounded-full bg-black&quot; *ngIf&#x3D;&quot;!item.read&quot;&gt;
+          &lt;!-- &lt;span&gt;&lt;i class&#x3D;&quot;pi pi-circle-on&quot; style&#x3D;&quot;color: black&quot;&gt;&lt;/i&gt;&lt;/span&gt; --&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      }
+      @for (item of getAllNewBookNotify(&#x27;MILESTONE&#x27;); track $index) {
+        &lt;div class&#x3D;&quot;card4 relative&quot; (click)&#x3D;&quot;item.read?null:(item.announcementId)&quot;&gt;
+        &lt;div
+          class&#x3D;&quot;left flex gap-3 justify-baseline flex-wrap border border-blue-200 bg-blue-100/40 hover:bg-gray-200 rounded-md p-1&quot;
+          [ngClass]&#x3D;&quot;item.read?&#x27;bg-red-100/20&#x27;:&#x27;bg-blue-100/40&#x27;&quot;
+        &gt;
+          &lt;div class&#x3D;&quot;logo&quot;&gt;
+            &lt;span
+              class&#x3D;&quot;text-red-400 size-1 border border-red-500 rounded-full bg-red-200&quot;
+              &gt;&lt;i class&#x3D;&quot;fa-regular fa-exclamation&quot;&gt;&lt;/i
+            &gt;&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;details1 flex basis-3/4 flex-col gap-1&quot; &gt;
+            &lt;span class&#x3D;&quot;font-bold text-sm text-black&quot;
+              &gt;Recycling Milestone&lt;/span
+            &gt;
+            &lt;span class&#x3D;&quot;text-sm text-gray-500&quot;&gt;{{item.message}}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;text-xs text-gray-500&quot;&gt;{{ item.createdAt }}&lt;/span&gt;
+          &lt;/div&gt;
+          
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;dot absolute top-2 right-2 size-2 rounded-full bg-black&quot; *ngIf&#x3D;&quot;!item.read&quot;&gt;
+          &lt;!-- &lt;span&gt;&lt;i class&#x3D;&quot;pi pi-circle-on&quot; style&#x3D;&quot;color: black&quot;&gt;&lt;/i&gt;&lt;/span&gt; --&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      }
+    &lt;/div&gt;
+  &lt;/p-drawer&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="w-full">  <p-drawer [(visible)]="visible" position="right" [style]="{ width: \'28%\' }">    <ng-template #header>      <div class="flex flex-col gap-2 w-full text-sm">        <span class="text-xl font-semibold">Notifications</span>        <span class="text-gray-500 text-xs"          >Stay updated with your library activities</span        >      </div>    </ng-template>    <div class="containt mt-8 w-full flex flex-col gap-2">      @for (item of getAllNewBookNotify(\'BOOK_DUE\'); track $index) {      <div class="card relative" (click)="item.read?null:markRead(item.announcementId)">        <div          class="left flex gap-2 justify-baseline flex-wrap border border-blue-200  hover:bg-gray-200 rounded-md p-1"          [ngClass]="item.read?\'bg-red-100/20\':\'bg-blue-100/40\'"        >          <div class="logo">            <span class="text-red-400 text-xl"              ><i class="fa-regular fa-calendar"></i            ></span>          </div>          <div class="details1 flex basis-3/4 flex-col gap-1">            <span class="font-bold text-sm text-black">Book Due Soon</span>            <span class="text-sm text-gray-500"              >{{item.message}}</span            >            <span class="text-xs text-gray-500">{{item.createdAt}}</span>          </div>        </div>        <div class="dot absolute top-2 right-2 size-2 rounded-full bg-black" *ngIf="!item.read">          <!-- <span><i class="pi pi-circle-on" style="color: black"></i></span> -->        </div>      </div>      }     @for (item of getAllNewBookNotify(\'NEW_BOOK\'); track $index) {       <div class="card2 relative" (click)="item.read?null:(item.announcementId)">        <div          class="left flex gap-3 justify-baseline flex-wrap border border-blue-200 bg-blue-100/40 hover:bg-gray-200 rounded-md p-1"          [ngClass]="item.read?\'bg-red-100/20\':\'bg-blue-100/40\'"        >          <div class="logo">            <span class="text-indigo-400 text-xl"              ><i class="fa-regular fa-star"></i            ></span>          </div>          <div class="details1 flex basis-3/4 flex-col gap-1">            <span class="font-bold text-sm text-black">New Books Added</span>            <span class="text-sm text-gray-500">{{ item.message }}</span>            <span class="text-xs text-gray-500">{{ item.createdAt }}</span>          </div>                  </div>        <div class="dot absolute top-2 right-2 size-2 rounded-full bg-black" *ngIf="!item.read">          <!-- <span><i class="pi pi-circle-on" style="color: black"></i></span> -->        </div>      </div>     }      @for (item of getAllNewBookNotify(\'MEETING\'); track $index) {        <div class="card3 relative" (click)="item.read?null:(item.announcementId)">        <div          class="left flex gap-3 justify-baseline flex-wrap border border-blue-200 bg-blue-100/40 hover:bg-gray-200 rounded-md p-1"          [ngClass]="item.read?\'bg-red-100/20\':\'bg-blue-100/40\'"        >          <div class="logo">            <span class="text-indigo-400 text-xl"              ><i class="fa-regular fa-bell"></i            ></span>          </div>                  <div class="details1 flex basis-3/4 flex-col gap-1">            <span class="font-bold text-sm text-black">Book Club Meeting</span>            <span class="text-sm text-gray-500"              >{{item.message}}</span            >            <span class="text-sm text-gray-500">{{item.createdAt}}</span>          </div>                  </div>        <div class="dot absolute top-2 right-2 size-2 rounded-full bg-black" *ngIf="!item.read">          <!-- <span><i class="pi pi-circle-on" style="color: black"></i></span> -->        </div>      </div>      }      @for (item of getAllNewBookNotify(\'MILESTONE\'); track $index) {        <div class="card4 relative" (click)="item.read?null:(item.announcementId)">        <div          class="left flex gap-3 justify-baseline flex-wrap border border-blue-200 bg-blue-100/40 hover:bg-gray-200 rounded-md p-1"          [ngClass]="item.read?\'bg-red-100/20\':\'bg-blue-100/40\'"        >          <div class="logo">            <span              class="text-red-400 size-1 border border-red-500 rounded-full bg-red-200"              ><i class="fa-regular fa-exclamation"></i            ></span>          </div>          <div class="details1 flex basis-3/4 flex-col gap-1" >            <span class="font-bold text-sm text-black"              >Recycling Milestone</span            >            <span class="text-sm text-gray-500">{{item.message}}</span>            <span class="text-xs text-gray-500">{{ item.createdAt }}</span>          </div>                  </div>        <div class="dot absolute top-2 right-2 size-2 rounded-full bg-black" *ngIf="!item.read">          <!-- <span><i class="pi pi-circle-on" style="color: black"></i></span> -->        </div>      </div>      }    </div>  </p-drawer></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookBorrowedComponent', 'selector': 'app-book-borrowed'},{'name': 'BookCardComponent', 'selector': 'app-book-card'},{'name': 'BookComponentComponent', 'selector': 'app-book-component'},{'name': 'BookLayoutComponent', 'selector': 'app-book-layout'},{'name': 'CategoriesOperationComponent', 'selector': 'app-categories-operation'},{'name': 'ChatAiComponent', 'selector': 'app-chat-ai'},{'name': 'CommonHomeComponent', 'selector': 'app-common-home'},{'name': 'CycleHubComponent', 'selector': 'app-cycle-hub'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardPageComponent', 'selector': 'app-dashboard-page'},{'name': 'DigitalPageComponent', 'selector': 'app-digital-page'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginCallbackComponent', 'selector': 'app-login-callback'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MyBookComponent', 'selector': 'app-my-book'},{'name': 'MyProfileComponent', 'selector': 'app-my-profile'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NotificationComponent', 'selector': 'app-notification'},{'name': 'ProfileSettingComponent', 'selector': 'app-profile-setting'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SearchBoxComponent', 'selector': 'app-search-box'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'SubCategoryComponent', 'selector': 'app-sub-category'},{'name': 'SuperAdminRegisterComponent', 'selector': 'app-super-admin-register'},{'name': 'UserComponent', 'selector': 'app-user'}];
+    var DIRECTIVES = [{'name': 'AnimatedCounterDirective', 'selector': '[animatedCounter]'}];
+    var ACTUAL_COMPONENT = {'name': 'NotificationComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NotificationComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

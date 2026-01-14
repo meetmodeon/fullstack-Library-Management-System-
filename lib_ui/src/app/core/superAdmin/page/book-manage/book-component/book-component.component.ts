@@ -22,11 +22,14 @@ import {
 } from '../../../../../services/models';
 import { BookServiceService } from '../../../../../services/StateMangeSerivce/Book/book-service.service';
 
-import { HttpClient, HttpContext } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpErrorResponse, HttpResponse, HttpResponseBase } from '@angular/common/http';
 import { environment } from '../../../../../../environments/environment';
 import { SubCategoryService } from '../../../../../services/StateMangeSerivce/subCategoryService/sub-category.service';
-import { addBook, AddBook$Params, uploadBookImage, UploadBookImage$Params } from '../../../../../services/functions';
+import { addBook, AddBook$Params, updateBookById, UpdateBookById$Params, uploadBookImage, UploadBookImage$Params } from '../../../../../services/functions';
 import { MessageService } from 'primeng/api';
+import { QuillModule } from 'ngx-quill';
+
+
 type bookTypes='BOOK_IMAGE'|'BOOK_PDF'
 @Component({
   selector: 'app-book-component',
@@ -41,8 +44,9 @@ type bookTypes='BOOK_IMAGE'|'BOOK_PDF'
     ButtonModule,
     Divider,
     TableModule,
+    QuillModule
   ],
-  providers:[MessageService],
+  providers:[],
   templateUrl: './book-component.component.html',
   styleUrl: './book-component.component.scss',
 })
@@ -85,6 +89,7 @@ export class BookComponentComponent {
       publication: this.fb.control( '',
         Validators.required
       ),
+      detail:this.fb.control('',[Validators.maxLength(5000)]),
       subCategoriesId: this.fb.control('',
         Validators.required
       ),
@@ -143,7 +148,7 @@ export class BookComponentComponent {
       return '';
     }
     const name:string = this.listOfSubCategory.find(s=>s.subCategoryId===subCategoryId as number)?.name??'';
-      return name;
+    return name;
   }
 
     openAddForm(){
@@ -162,6 +167,7 @@ export class BookComponentComponent {
       name:data.name,
       author:data.author,
       isbn:data.isbn,
+      detail:data.detail??'',
       publication:data.publication,
       subCategoriesId:data.subCategoryId
     })
@@ -169,12 +175,39 @@ export class BookComponentComponent {
   }
 
   submit() {
-    console.log("click submit button")
    if(this.isEdit){
-    console.log("inside edit form");
+    if(!this.selectedBookId){
+      console.error("Invalid bookId",this.selectedBookId)
+      return;
+    }
+
+    const params:UpdateBookById$Params={
+      bookId:this.selectedBookId as number,
+      body: this.bookFormGroup.value as BookRequest
+    }
+
+    updateBookById(this.httpClient,this.baseUrl,params,new HttpContext()).subscribe({
+      next:(value)=>{
+        if(value){
+          console.log("the updated value is: ",value);
+          this.bookService.refreshBooks(value.body as BookResponse);
+          this.messageService.add({severity:"success",summary:"Updated",detail:"Book Updated successfully",life:300});
+          this.bookFormGroup.reset();
+          this.visible=false;
+        }
+      },
+      error:(error:HttpErrorResponse)=>{
+        this.messageService.add({
+          severity:'error',
+          summary:'Error',
+          detail:error.statusText,
+          life:3000
+        });
+      }
+    })
+
     return;
    }else{
-    console.log("inside else block")
      if (this.bookFormGroup.invalid) {
       this.bookFormGroup.markAllAsTouched();
       return;
@@ -186,6 +219,7 @@ export class BookComponentComponent {
     addBook(this.httpClient,this.baseUrl,params,new HttpContext()).subscribe({
       next:(value)=>{
         const data=value.body as BookResponse;
+        console.log('book response data when added',data);
         const currentList=this.bookListData;
         this.bookListData=[...currentList,data];
         this.messageService.add({severity:"success",summary:"Added Book",detail:"Book added successfully",life:3000});
@@ -232,17 +266,20 @@ export class BookComponentComponent {
 
     onFileSelected(event:any){
       const file:File=event.target.files[0];
+        
       if(file && this.selectedBookId !==null){
-        const formData=new FormData();
-        formData.append('file',file);
         const params:UploadBookImage$Params={
-          bookId:this.selectedBookId,
-          type:this.fileType(),
-          body:formData
+         bookId:this.selectedBookId,
+         type:this.fileType(),
+         body:file
         }
+
+        console.log("params data is: ",params);
         uploadBookImage(this.httpClient,this.baseUrl,params,new HttpContext()).subscribe({
           next:value=>{
-            this.messageService.add({severity:'success',summary:"Ok",detail:"Upload book pdf success",life:3000});
+            this.getBookImage(this.selectedBookId as number);
+            this.messageService.add({severity:'success',summary:"Ok",detail:`Upload book ${this.fileType()} success`,life:3000});
+            
           },
           error:error=>{
             this.messageService.add({severity:'error',summary:'Error',detail:'error some things',life:3000});

@@ -1,0 +1,41 @@
+
+<p-dialog header="AI Chat" [modal]="true" [(visible)]="visible"
+ (onHide)="resetChat()"
+[style]="{ width: '50rem' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+    <div class="chat-container">
+
+  <!-- Header -->
+  <div class="chat-header">
+    📚 Book AI Assistant
+  </div>
+
+  <!-- Messages -->
+  <div class="chat-body" #chatBody>
+    <div *ngFor="let msg of messages"
+         class="message"
+         [ngClass]="msg.role">
+
+      <div class="bubble">
+        {{ msg.content }}
+      </div>
+    </div>
+
+    <div *ngIf="loading" class="message ai">
+      <div class="bubble typing">Typing...</div>
+    </div>
+  </div>
+
+  <!-- Input -->
+  <div class="chat-input flex justify-between gap-2">
+    <input
+      type="text"
+      class="w-full focus:outline-none border border-gray-300 px-2"
+      placeholder="Ask about books..."
+      [(ngModel)]="prompt"
+      (keyup.enter)="sendMessage()"
+    />
+    <button (click)="sendMessage()" class="block px-4 rounded-md border border-gray-500">Send</button>
+  </div>
+
+</div>
+</p-dialog>

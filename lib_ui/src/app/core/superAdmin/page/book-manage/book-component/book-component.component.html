@@ -11,6 +11,7 @@
   <p-divider></p-divider>
 
   <div class="container mx-auto">
+    @if (bookListData) {
     <div class="show-category">
       <div class="card">
         <p-table
@@ -30,7 +31,8 @@
               <th style="width: 5%">Rating</th>
               <th style="width: 10%">ISBN</th>
               <th style="width: 5%">Pulication</th>
-              <th style="width: 13%">Sub_Category Name</th>
+              <th style="width: 8%">Detail</th>
+              <th style="width: 5%">Sub_Category Name</th>
               <th style="width: 20%">Action</th>
               <th style="width: 15%">Book pdf</th>
             </tr>
@@ -63,12 +65,25 @@
               </td>
               <td>{{ book.isbn }}</td>
               <td>{{ book.publication }}</td>
+              <!-- <td [innerHTML]="book.detail"></td> -->
+
+              <td>
+                <details class="border rounded p-2 bg-gray-50 transition-transform ease-in-out duration-500">
+                <summary
+                  class="cursor-pointer font-semibold text-blue-600 hover:text-blue-800 "
+                >
+                  View Details
+                </summary>
+                <div class="mt-2" [innerHTML]="book.detail"></div>
+              </details>
+              </td>
+
               <td>{{ getSubCategoryName(book.subCategoryId) }}</td>
               <td>
                 <div class="flex-auto space-x-2 *:transform *:active:scale-90">
                   <button
                     class="px-4 text-black hover:bg-gray-200 rounded-2xl border border-black"
-                    (click)="onUpdate(book.bookId)"
+                    (click)="openEditForm(book.bookId)"
                   >
                     Edit
                   </button>
@@ -112,6 +127,7 @@
         </p-table>
       </div>
     </div>
+    }
   </div>
 </div>
 <div class="dialog-form">
@@ -147,7 +163,14 @@
           class="w-full px-2 py-2 rounded-md border border-gray-300 focus:outline-3 focus:outline-gray-800"
           formControlName="subCategoriesId"
         >
-          <option value="" disabled selected>-- Select Sub Category --</option>
+          <option value="subCategoriesId" *ngIf="isEdit" selected disabled>
+            {{
+              getSubCategoryName(bookFormGroup.get("subCategoriesId")?.value)
+            }}
+          </option>
+          <option value="" disabled selected *ngIf="!isEdit">
+            -- Select Sub Category --
+          </option>
           @for (item of listOfSubCategory; track $index) {
           <option [value]="item.subCategoryId">
             {{ getSubCategoryName(item.subCategoryId) }}
@@ -187,6 +210,21 @@
         Publication is required
       </p>
 
+      <div class="flex items-center gap-4 mb-4">
+        <label class="font-semibold w-32">Details</label>
+        <quill-editor
+          formControlName="detail"
+          [styles]="{ height: '200px' }"
+          placeholder="Write book details here..."
+        >
+        </quill-editor>
+      </div>
+      <p
+        *ngIf="hasError('detail', 'maxlength')"
+        class="text-red-500 text-xs mb-2"
+      >
+        Details have maxlength is 5000
+      </p>
       <!-- Author Multi-select -->
       <div class="flex gap-2 mb-4">
         <label class="font-semibold w-32 pt-2">Authors</label>
@@ -199,7 +237,6 @@
             *ngFor="let a of bookFormGroup.value.author; let i = index"
             class="bg-blue-200 text-blue-800 px-2 py-1 rounded-full flex items-center gap-1"
           >
-            {{ a }}
             <button
               type="button"
               (click)="removeAuthor(i)"
@@ -253,7 +290,7 @@
           severity="secondary"
           (click)="visible = false"
         />
-        <p-button label="Save" type="submit" />
+        <p-button [label]="isEdit ? 'Update' : 'Save'" type="submit" />
       </div>
     </form>
   </p-dialog>

@@ -1,5 +1,5 @@
 import { CommonModule, NgClass } from '@angular/common';
-import { Component, effect, OnInit, signal } from '@angular/core';
+import { Component, effect, OnInit, signal, ViewChild } from '@angular/core';
 import { Divider } from 'primeng/divider';
 import { DashboardPageComponent } from '../dashboard-page/dashboard-page.component';
 import { CapitalizationPipe } from '../../../../pipe/capitalization.pipe';
@@ -25,7 +25,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { AvatarModule } from 'primeng/avatar';
 import { AnnouncementType } from '../../../page/notification/notification.component';
-import { downloadFile, DownloadFile$Params, postAnnouncement } from '../../../../services/functions';
+import { downloadFile, DownloadFile$Params } from '../../../../services/functions';
 import { environment } from '../../../../../environments/environment';
 import { HttpClient, HttpContext } from '@angular/common/http';
 import {
@@ -33,6 +33,8 @@ import {
   AnnouncementResponse,
 } from '../../../../services/models';
 import { MessageService } from 'primeng/api';
+import { WebSocketServicProgramService } from '../../../../services/socket/websocketProgram/web-socket-servic-program.service';
+import { SearchBoxComponent } from '../../searchin/search-box/search-box.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -54,7 +56,8 @@ import { MessageService } from 'primeng/api';
     InputTextModule,
     AvatarModule,
     ReactiveFormsModule,
-    BookComponentComponent
+    BookComponentComponent,
+    SearchBoxComponent
 ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
@@ -68,12 +71,16 @@ export class DashboardComponent implements OnInit {
   userName = signal<string | null>('');
   imageUrl!: any;
   announcementForm!: FormGroup;
+  @ViewChild('search') searchChild!:SearchBoxComponent;
+
+
   constructor(
     private authService: AuthServiceService,
     private router: Router,
     private fb: FormBuilder,
     private http: HttpClient,
-    private messageSerivce: MessageService
+    private messageSerivce: MessageService,
+    private webService:WebSocketServicProgramService
   ) {
     this.announcementForm = this.fb.group({
       header: ['', Validators.required],
@@ -124,8 +131,7 @@ export class DashboardComponent implements OnInit {
     this.option.set(value);
   }
   onSearch() {
-    console.log('on searching data: ' + this.searchingData);
-    this.searchingData = '';
+    this.searchChild.showDialog();
   }
   onAnnouncement() {
     if (this.announcementForm.invalid) {
@@ -138,36 +144,49 @@ export class DashboardComponent implements OnInit {
       type: this.announcementForm.get('announcementType')?.value,
     };
 
-    if (this.announcementForm.valid) {
-      postAnnouncement(
-        this.http,
-        this.url,
-        { body: data },
-        new HttpContext()
-      ).subscribe({
-        next: (_HttpResponse: any) => {
-          const data = _HttpResponse.body as AnnouncementResponse;
-          this.messageSerivce.add({
+    // if (this.announcementForm.valid) {
+    //   postAnnouncement(
+    //     this.http,
+    //     this.url,
+    //     { body: data },
+    //     new HttpContext()
+    //   ).subscribe({
+    //     next: (_HttpResponse: any) => {
+    //       const data = _HttpResponse.body as AnnouncementResponse;
+    //       this.messageSerivce.add({
+    //         severity: 'success',
+    //         summary: 'Post Notice',
+    //         detail: 'Announcement no' + data.announcementId + 'is posted',
+    //         life: 3000,
+    //       });
+    //       this.announcementForm.reset();
+    //       this.visible.set(false);
+    //     },
+    //     error: (HttpErrorRespose: any) => {
+    //       const errorBody = HttpErrorRespose.error;
+    //       console.log('Error Respons: ', HttpErrorRespose);
+    //       this.visible.set(false);
+    //       this.messageSerivce.add({
+    //         severity: 'error',
+    //         summary: `Error status ${errorBody.status}`,
+    //         detail: `You have ${errorBody.errorMessage}`,
+    //         life: 3000,
+    //       });
+    //     },
+    //   });
+    // }
+
+    if(this.announcementForm.valid){
+      this.webService.sendAnnouncement(data);
+      
+       this.messageSerivce.add({
             severity: 'success',
             summary: 'Post Notice',
-            detail: 'Announcement no' + data.announcementId + 'is posted',
+            detail: 'Announcement was posted',
             life: 3000,
           });
           this.announcementForm.reset();
           this.visible.set(false);
-        },
-        error: (HttpErrorRespose: any) => {
-          const errorBody = HttpErrorRespose.error;
-          console.log('Error Respons: ', HttpErrorRespose);
-          this.visible.set(false);
-          this.messageSerivce.add({
-            severity: 'error',
-            summary: `Error status ${errorBody.status}`,
-            detail: `You have ${errorBody.errorMessage}`,
-            life: 3000,
-          });
-        },
-      });
     }
   }
 

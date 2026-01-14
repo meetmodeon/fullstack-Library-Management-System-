@@ -8,6 +8,7 @@ export interface BookResponse {
   bookImagePath?: string;
   bookPdfPath?: string;
   bookStatus?: 'AVAILABLE' | 'BORROWED' | 'LOST';
+  detail?: string;
   isbn?: string;
   name?: string;
   publication?: string;

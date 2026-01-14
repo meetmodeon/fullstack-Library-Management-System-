@@ -19,7 +19,7 @@ import { AuthServiceService } from '../../../../services/auth/auth-service.servi
 export class SettingComponent implements OnInit{
 
   passwordForm!:FormGroup;
-  user:UserResponse={};
+  user!:UserResponse;
 
   showPasswordForm = false;
 

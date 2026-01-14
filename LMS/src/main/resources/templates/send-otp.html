@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP</title>
+</head>
+<body>
+<div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f7f7f7;">
+    <h2>Hello,[[${email}]]</h2>
+    <p>Your OTP is:</p>
+    <h1 style="color: #4a90e2;">[[${otp}]]</h1>
+    <p>This OTP will expire in 2 minute. Do not share it with anyone.</p>
+    <p>Thanks,<br>LBM</p>
+</div>
+</body>
+</html>

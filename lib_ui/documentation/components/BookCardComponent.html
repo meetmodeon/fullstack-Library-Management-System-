@@ -1,0 +1,2850 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>lib-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">lib-ui documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  BookCardComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/core/page/book-card/book-card.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-book-card</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>Dialog</code>
+                            <code>ButtonModule</code>
+                            <code>ProgressBar</code>
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                            <code>DividerModule</code>
+                            <code>Rating</code>
+                                <code><a href="https://angular.io/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+                            <code>CapitalizationPipe</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./book-card.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./book-card.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#basicUrl" >basicUrl</a>
+                            </li>
+                            <li>
+                                <a href="#bookDes" >bookDes</a>
+                            </li>
+                            <li>
+                                <a href="#bookDetailsResponse" >bookDetailsResponse</a>
+                            </li>
+                            <li>
+                                <a href="#isShow" >isShow</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#nextCursor" >nextCursor</a>
+                            </li>
+                            <li>
+                                <a href="#ratingResponse" >ratingResponse</a>
+                            </li>
+                            <li>
+                                <a href="#ratingUpperData" >ratingUpperData</a>
+                            </li>
+                            <li>
+                                <a href="#selectedMenu" >selectedMenu</a>
+                            </li>
+                            <li>
+                                <a href="#title" >title</a>
+                            </li>
+                            <li>
+                                <a href="#userId" >userId</a>
+                            </li>
+                            <li>
+                                <a href="#userInfoList" >userInfoList</a>
+                            </li>
+                            <li>
+                                <a href="#value" >value</a>
+                            </li>
+                            <li>
+                                <a href="#visible" >visible</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#checkUserBorrowedBookOrNot" >checkUserBorrowedBookOrNot</a>
+                            </li>
+                            <li>
+                                <a href="#getBookDetails" >getBookDetails</a>
+                            </li>
+                            <li>
+                                <a href="#getBookImageByBookId" >getBookImageByBookId</a>
+                            </li>
+                            <li>
+                                <a href="#getPerValue" >getPerValue</a>
+                            </li>
+                            <li>
+                                <a href="#getReviewDetail" >getReviewDetail</a>
+                            </li>
+                            <li>
+                                <a href="#getUserImage" >getUserImage</a>
+                            </li>
+                            <li>
+                                <a href="#getUserNameById" >getUserNameById</a>
+                            </li>
+                            <li>
+                                <a href="#giveLoginUserRatingInfo" >giveLoginUserRatingInfo</a>
+                            </li>
+                            <li>
+                                <a href="#isGiveRating" >isGiveRating</a>
+                            </li>
+                            <li>
+                                <a href="#isUserImageHave" >isUserImageHave</a>
+                            </li>
+                            <li>
+                                <a href="#loadMore" >loadMore</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onBorrow" >onBorrow</a>
+                            </li>
+                            <li>
+                                <a href="#onMethod" >onMethod</a>
+                            </li>
+                            <li>
+                                <a href="#onScroll" >onScroll</a>
+                            </li>
+                            <li>
+                                <a href="#resetAllValue" >resetAllValue</a>
+                            </li>
+                            <li>
+                                <a href="#showDialog" >showDialog</a>
+                            </li>
+                            <li>
+                                <a href="#submitFeedBack" >submitFeedBack</a>
+                            </li>
+                            <li>
+                                <a href="#submitFeedBackOnComment" >submitFeedBackOnComment</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#bookId" >bookId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(httpClient: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, authService: <a href="../injectables/AuthServiceService.html" target="_self">AuthServiceService</a>, bookService: <a href="../injectables/BookServiceService.html" target="_self">BookServiceService</a>, messageService: MessageService, borrowedSerivce: <a href="../injectables/BorrowedBookServiceService.html" target="_self">BorrowedBookServiceService</a>, userService: <a href="../injectables/UserServiceService.html" target="_self">UserServiceService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:77</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>httpClient</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthServiceService.html" target="_self" >AuthServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>bookService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BookServiceService.html" target="_self" >BookServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>messageService</td>
+                                                  
+                                                        <td>
+                                                                    <code>MessageService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>borrowedSerivce</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BorrowedBookServiceService.html" target="_self" >BorrowedBookServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserServiceService.html" target="_self" >UserServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="bookId"></a>
+                        <b>bookId</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:66</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkUserBorrowedBookOrNot"></a>
+                    <span class="name">
+                        <span ><b>checkUserBorrowedBookOrNot</b></span>
+                        <a href="#checkUserBorrowedBookOrNot"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkUserBorrowedBookOrNot()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:116</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBookDetails"></a>
+                    <span class="name">
+                        <span ><b>getBookDetails</b></span>
+                        <a href="#getBookDetails"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBookDetails()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="186"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:186</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBookImageByBookId"></a>
+                    <span class="name">
+                        <span ><b>getBookImageByBookId</b></span>
+                        <a href="#getBookImageByBookId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBookImageByBookId(id: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="208"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:208</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPerValue"></a>
+                    <span class="name">
+                        <span ><b>getPerValue</b></span>
+                        <a href="#getPerValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPerValue(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="240"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:240</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getReviewDetail"></a>
+                    <span class="name">
+                        <span ><b>getReviewDetail</b></span>
+                        <a href="#getReviewDetail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getReviewDetail()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="213"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:213</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUserImage"></a>
+                    <span class="name">
+                        <span ><b>getUserImage</b></span>
+                        <a href="#getUserImage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUserImage(id: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="347"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:347</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUserNameById"></a>
+                    <span class="name">
+                        <span ><b>getUserNameById</b></span>
+                        <a href="#getUserNameById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUserNameById(id: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="340"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:340</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="giveLoginUserRatingInfo"></a>
+                    <span class="name">
+                        <span ><b>giveLoginUserRatingInfo</b></span>
+                        <a href="#giveLoginUserRatingInfo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>giveLoginUserRatingInfo()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="363"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:363</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../interfaces/RatingFeedBackResponse.html" target="_self" >RatingFeedBackResponse | null</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isGiveRating"></a>
+                    <span class="name">
+                        <span ><b>isGiveRating</b></span>
+                        <a href="#isGiveRating"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isGiveRating()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="350"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:350</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isUserImageHave"></a>
+                    <span class="name">
+                        <span ><b>isUserImageHave</b></span>
+                        <a href="#isUserImageHave"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isUserImageHave(id: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="344"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:344</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadMore"></a>
+                    <span class="name">
+                        <span ><b>loadMore</b></span>
+                        <a href="#loadMore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadMore()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="311"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:311</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:127</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="87"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:87</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onBorrow"></a>
+                    <span class="name">
+                        <span ><b>onBorrow</b></span>
+                        <a href="#onBorrow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onBorrow(bookId: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="149"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:149</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>bookId</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onMethod"></a>
+                    <span class="name">
+                        <span ><b>onMethod</b></span>
+                        <a href="#onMethod"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onMethod(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:141</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>value</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onScroll"></a>
+                    <span class="name">
+                        <span ><b>onScroll</b></span>
+                        <a href="#onScroll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onScroll(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="300"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:300</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetAllValue"></a>
+                    <span class="name">
+                        <span ><b>resetAllValue</b></span>
+                        <a href="#resetAllValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>resetAllValue()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="136"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:136</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showDialog"></a>
+                    <span class="name">
+                        <span ><b>showDialog</b></span>
+                        <a href="#showDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showDialog()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="133"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:133</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submitFeedBack"></a>
+                    <span class="name">
+                        <span ><b>submitFeedBack</b></span>
+                        <a href="#submitFeedBack"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>submitFeedBack()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="274"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:274</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submitFeedBackOnComment"></a>
+                    <span class="name">
+                        <span ><b>submitFeedBackOnComment</b></span>
+                        <a href="#submitFeedBackOnComment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>submitFeedBackOnComment(id: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="376"
+                                    class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:376</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="basicUrl"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>basicUrl</b></span>
+                        <a href="#basicUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>environment.apiUrl</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bookDes"></a>
+                    <span class="name">
+                        <span ><b>bookDes</b></span>
+                        <a href="#bookDes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bookDetailsResponse"></a>
+                    <span class="name">
+                        <span ><b>bookDetailsResponse</b></span>
+                        <a href="#bookDetailsResponse"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/BookDetailResponse.html" target="_self" >BookDetailResponse</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isShow"></a>
+                    <span class="name">
+                        <span ><b>isShow</b></span>
+                        <a href="#isShow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;boolean&gt;(true)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nextCursor"></a>
+                    <span class="name">
+                        <span ><b>nextCursor</b></span>
+                        <a href="#nextCursor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ratingResponse"></a>
+                    <span class="name">
+                        <span ><b>ratingResponse</b></span>
+                        <a href="#ratingResponse"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/RatingFeedbackDetailResponse.html" target="_self" >RatingFeedbackDetailResponse[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ratingUpperData"></a>
+                    <span class="name">
+                        <span ><b>ratingUpperData</b></span>
+                        <a href="#ratingUpperData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/RatingUpperDetailsResponse.html" target="_self" >RatingUpperDetailsResponse</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedMenu"></a>
+                    <span class="name">
+                        <span ><b>selectedMenu</b></span>
+                        <a href="#selectedMenu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;detail&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="title"></a>
+                    <span class="name">
+                        <span ><b>title</b></span>
+                        <a href="#title"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;home&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userId"></a>
+                    <span class="name">
+                        <span ><b>userId</b></span>
+                        <a href="#userId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userInfoList"></a>
+                    <span class="name">
+                        <span ><b>userInfoList</b></span>
+                        <a href="#userInfoList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/UserResponse.html" target="_self" >UserResponse[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:77</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="value"></a>
+                    <span class="name">
+                        <span ><b>value</b></span>
+                        <a href="#value"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="visible"></a>
+                    <span class="name">
+                        <span ><b>visible</b></span>
+                        <a href="#visible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/core/page/book-card/book-card.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, signal } from &#x27;@angular/core&#x27;;
+import { Dialog } from &#x27;primeng/dialog&#x27;;
+import { ButtonModule } from &#x27;primeng/button&#x27;;
+import { ProgressBar } from &#x27;primeng/progressbar&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { DividerModule } from &#x27;primeng/divider&#x27;;
+import { Rating } from &#x27;primeng/rating&#x27;;
+import { FormBuilder, FormGroup, FormsModule } from &#x27;@angular/forms&#x27;;
+import { HttpClient, HttpContext } from &#x27;@angular/common/http&#x27;;
+import {
+  addComment,
+  AddComment$Params,
+  getAllRatingByBookId,
+  GetAllRatingByBookId$Params,
+  getBookDetails,
+  GetBookDetails$Params,
+  getDetailsUpperRating,
+  GetDetailsUpperRating$Params,
+} from &#x27;../../../services/functions&#x27;;
+import { environment } from &#x27;../../../../environments/environment&#x27;;
+import {
+  BookDetailResponse,
+  RatingFeedbackDetailResponse,
+  RatingUpperDetailsResponse,
+} from &#x27;../../../services/models&#x27;;
+import { CapitalizationPipe } from &#x27;../../../pipe/capitalization.pipe&#x27;;
+import { AuthServiceService } from &#x27;../../../services/auth/auth-service.service&#x27;;
+import { BookServiceService } from &#x27;../../../services/StateMangeSerivce/Book/book-service.service&#x27;;
+import {
+  borrowedBook,
+  BorrowedBook$Params,
+  getUserByEmail,
+  GetUserByEmail$Params,
+  giveBookRating,
+  GiveBookRating$Params,
+} from &#x27;../../../services/functions&#x27;;
+import {
+  BorrowedRequest,
+  RatingFeedBackResponse,
+  RatingRequest,
+  UserResponse,
+} from &#x27;../../../services/models&#x27;;
+import { MessageService } from &#x27;primeng/api&#x27;;
+import { BorrowedBookServiceService } from &#x27;../../../services/StateMangeSerivce/Borrowed/borrowed-book-service.service&#x27;;
+import { UserServiceService } from &#x27;../../../services/StateMangeSerivce/User/user-service.service&#x27;;
+
+@Component({
+  selector: &#x27;app-book-card&#x27;,
+  imports: [
+    Dialog,
+    ButtonModule,
+    ProgressBar,
+    CommonModule,
+    DividerModule,
+    Rating,
+    FormsModule,
+    CapitalizationPipe,
+  ],
+  templateUrl: &#x27;./book-card.component.html&#x27;,
+  styleUrl: &#x27;./book-card.component.scss&#x27;,
+})
+export class BookCardComponent {
+  private basicUrl &#x3D; environment.apiUrl;
+  visible: boolean &#x3D; false;
+  title: string &#x3D; &#x27;home&#x27;;
+  @Input() bookId!: number;
+  selectedMenu: string &#x3D; &#x27;detail&#x27;;
+  value &#x3D; 1;
+  bookDetailsResponse!: BookDetailResponse;
+  userId!: number;
+  isShow &#x3D; signal&lt;boolean&gt;(true);
+  ratingUpperData: RatingUpperDetailsResponse &#x3D; {};
+  bookDes!: string;
+  loading &#x3D; false;
+  nextCursor: number | null &#x3D; 0;
+  ratingResponse: RatingFeedbackDetailResponse[] &#x3D; [];
+  userInfoList: UserResponse[] &#x3D; [];
+  constructor(
+    private httpClient: HttpClient,
+    private authService: AuthServiceService,
+    private bookService: BookServiceService,
+    private messageService: MessageService,
+    private borrowedSerivce: BorrowedBookServiceService,
+    private userService: UserServiceService
+  ) {}
+
+  ngOnInit() {
+    if (this.authService.isLoggedIn()) {
+      const params: GetUserByEmail$Params &#x3D; {
+        email: this.authService.getUserName() as string,
+      };
+      getUserByEmail(
+        this.httpClient,
+        this.basicUrl,
+        params,
+        new HttpContext()
+      ).subscribe({
+        next: (value) &#x3D;&gt; {
+          const data &#x3D; value.body as UserResponse;
+          this.userId &#x3D; data.userId as number;
+        },
+        error: (error) &#x3D;&gt; {
+          console.log(
+            &#x27;Something went wrong to fetch the user data from book-card-component ngOnInit method&#x27;
+          );
+        },
+      });
+
+      this.checkUserBorrowedBookOrNot();
+    }
+    this.userService.onLoadAllUserOnce();
+    this.userService.user$.subscribe((value) &#x3D;&gt; {
+      this.userInfoList.push(...value);
+    });
+  }
+  checkUserBorrowedBookOrNot() {
+    this.borrowedSerivce.loadAllBorrowedBookByUserId();
+    this.borrowedSerivce.borrowedListOfUser$.subscribe((value) &#x3D;&gt; {
+      value.forEach((b) &#x3D;&gt; {
+        if (b.status &#x3D;&#x3D;&#x3D; &#x27;BORROWED&#x27;) {
+          this.isShow.set(false);
+          return;
+        }
+      });
+    });
+  }
+  ngOnChanges() {
+    if (this.bookId) {
+      this.getBookDetails();
+    }
+  }
+
+  showDialog() {
+    this.visible &#x3D; true;
+  }
+  resetAllValue(){
+    this.selectedMenu&#x3D;&#x27;detail&#x27;;
+    this.visible&#x3D;false;
+  }
+
+  onMethod(value: string) {
+    if (value &#x3D;&#x3D;&#x3D; &#x27;detail&#x27;) {
+      this.selectedMenu &#x3D; &#x27;detail&#x27;;
+    } else {
+      this.selectedMenu &#x3D; &#x27;review&#x27;;
+      this.getReviewDetail();
+    }
+  }
+  onBorrow(bookId: any) {
+    let payload: BorrowedRequest &#x3D; {
+      bookId: bookId,
+      userId: this.userId,
+    };
+    const param: BorrowedBook$Params &#x3D; {
+      body: payload,
+    };
+
+    borrowedBook(
+      this.httpClient,
+      this.basicUrl,
+      param,
+      new HttpContext()
+    ).subscribe({
+      next: (value) &#x3D;&gt; {
+        if (value.status &#x3D;&#x3D; 201) {
+          this.bookDetailsResponse.bookStatus &#x3D; &#x27;BORROWED&#x27;;
+          this.messageService.add({
+            severity: &#x27;success&#x27;,
+            summary: &#x27;Borrowed&#x27;,
+            detail: &#x27;Successfull borrowed&#x27;,
+            life: 998,
+          });
+          setInterval(() &#x3D;&gt; {
+            window.location.reload();
+          }, 1000);
+        }
+      },
+      error: (error) &#x3D;&gt; {
+        console.log(
+          &#x27;Error on borrowed book in book-card-component on borrowedBook method&#x27;
+        );
+      },
+    });
+  }
+
+  getBookDetails() {
+    const param: GetBookDetails$Params &#x3D; {
+      bookId: this.bookId,
+    };
+
+    getBookDetails(
+      this.httpClient,
+      this.basicUrl,
+      param,
+      new HttpContext()
+    ).subscribe({
+      next: (value) &#x3D;&gt; {
+        this.bookDetailsResponse &#x3D; value.body as BookDetailResponse;
+      },
+      error: (error) &#x3D;&gt; {
+        console.log(
+          &#x27;Something error on fetching bookDetails data in book-card components&#x27;
+        );
+      },
+    });
+  }
+
+  getBookImageByBookId(id: any) {
+    this.bookService.loadBooksOnce();
+    return this.bookService.getBookImage(id as number);
+  }
+
+  getReviewDetail() {
+    const params: GetDetailsUpperRating$Params &#x3D; {
+      bookId: this.bookId as number,
+    };
+    getDetailsUpperRating(
+      this.httpClient,
+      this.basicUrl,
+      params,
+      new HttpContext()
+    ).subscribe({
+      next: (value) &#x3D;&gt; {
+        this.ratingUpperData &#x3D; value.body as RatingUpperDetailsResponse;
+        console.log(value.body as RatingUpperDetailsResponse);
+      },
+      error: (error: any) &#x3D;&gt; {
+        this.messageService.add({
+          severity: &#x27;error&#x27;,
+          summary: &#x27;Error on fetching rating details&#x27;,
+          detail: &#x27;Unable to get error&#x27;,
+          life: 3000,
+        });
+      },
+    });
+
+    this.loadMore();
+  }
+
+  getPerValue(value: any): number {
+    if (value &#x3D;&#x3D;&#x3D; &#x27;5&#x27;) {
+      const total &#x3D; this.ratingUpperData?.totalReviewNo ?? 0;
+      const rating5 &#x3D; this.ratingUpperData?.rating_5 ?? 0;
+
+      const res &#x3D; total &gt; 0 ? (rating5 / total) * 100 : 0;
+      return res;
+    } else if (value &#x3D;&#x3D;&#x3D; &#x27;4&#x27;) {
+      const total &#x3D; this.ratingUpperData?.totalReviewNo ?? 0;
+      const rating4 &#x3D; this.ratingUpperData?.rating_4 ?? 0;
+
+      const res &#x3D; total &gt; 0 ? (rating4 / total) * 100 : 0;
+      return res;
+    } else if (value &#x3D;&#x3D;&#x3D; &#x27;3&#x27;) {
+      const total &#x3D; this.ratingUpperData?.totalReviewNo ?? 0;
+      const rating_3 &#x3D; this.ratingUpperData?.rating_3 ?? 0;
+
+      const res &#x3D; total &gt; 0 ? rating_3 / total : 0;
+      return res;
+    } else if (value &#x3D;&#x3D;&#x3D; &#x27;2&#x27;) {
+      const total &#x3D; this.ratingUpperData?.totalReviewNo ?? 0;
+      const rating2 &#x3D; this.ratingUpperData?.rating_2 ?? 0;
+
+      const res &#x3D; total &gt; 0 ? (rating2 / total) * 100 : 0;
+      return res;
+    } else {
+      const total &#x3D; this.ratingUpperData?.totalReviewNo ?? 0;
+      const rating1 &#x3D; this.ratingUpperData?.rating_1 ?? 0;
+
+      const res &#x3D; total &gt; 0 ? (rating1 / total) * 100 : 0;
+      return res;
+    }
+  }
+
+  submitFeedBack() {
+    const data: RatingRequest &#x3D; {
+      bookId: this.bookId as number,
+      userId: this.userId as number,
+      rating: this.value as number,
+      comment: Array.of(this.bookDes as string),
+    };
+    const params: GiveBookRating$Params &#x3D; {
+      body: data as RatingRequest,
+    };
+    console.log(&#x27;the rating datas are: &#x27;, params);
+    giveBookRating(
+      this.httpClient,
+      this.basicUrl,
+      params,
+      new HttpContext()
+    ).subscribe({
+      next: (value) &#x3D;&gt; {
+        const data&#x3D;value.body as RatingFeedBackResponse;
+        this.ratingResponse.push(data);
+        this.bookDes&#x3D;&#x27;&#x27;;
+      },
+      error: (error) &#x3D;&gt; {},
+    });
+  }
+
+  onScroll(event: any) {
+    const element &#x3D; event.target;
+
+    const atBottom &#x3D;
+      element.scrollHeight - element.scrollTop &lt;&#x3D; element.clientHeight + 5;
+
+    if (atBottom &amp;&amp; !this.loading &amp;&amp; this.nextCursor !&#x3D;&#x3D; null) {
+      this.loadMore();
+    }
+  }
+
+  loadMore() {
+   
+
+    this.loading &#x3D; true;
+    console.log(&#x27;loadMore method call&#x27;);
+    const param: GetAllRatingByBookId$Params &#x3D; {
+      bookId: this.bookId as number,
+      cursor: this.nextCursor??0,
+    };
+    getAllRatingByBookId(
+      this.httpClient,
+      this.basicUrl,
+      param,
+      new HttpContext()
+    ).subscribe({
+      next: (value) &#x3D;&gt; {
+        console.log(&#x27;rating data is: &#x27;, value.body);
+        const data &#x3D; value.body as RatingFeedbackDetailResponse[];
+        this.ratingResponse&#x3D;data;
+        if (data.length &gt; 0) {
+          this.nextCursor &#x3D; Math.max(...data.map((r) &#x3D;&gt; r.id as number));
+        }
+       
+      },
+      error: (error) &#x3D;&gt; {
+      },
+    });
+  }
+
+  getUserNameById(id: any): string {
+    return this.userInfoList.find((u) &#x3D;&gt; u.userId &#x3D;&#x3D;&#x3D; (id as number))?.name as string;
+  }
+
+  isUserImageHave(id:any):boolean{
+    return this.userInfoList.find((u)&#x3D;&gt;u.userId &#x3D;&#x3D;&#x3D;id as number)?.profileUrl !&#x3D;&#x3D;null;
+  }
+  getUserImage(id: any) {
+    return this.userService.getUserImage(id);
+  }
+  isGiveRating():boolean{
+    if(this.authService.isLoggedIn()){
+      const data&#x3D; this.userInfoList.find((u)&#x3D;&gt;u.email&#x3D;&#x3D;&#x3D;this.authService.getUserName()) as UserResponse;
+      this.ratingResponse.forEach((r)&#x3D;&gt;{
+        if(r.userId &#x3D;&#x3D;&#x3D; data.userId){
+          return !r.active;
+        }else{
+          return true;
+        }
+      })
+    }
+    return true;
+  }
+  giveLoginUserRatingInfo():RatingFeedBackResponse|null{
+    if(this.authService.isLoggedIn()){
+      const data&#x3D; this.userInfoList.find((u)&#x3D;&gt;u.email&#x3D;&#x3D;&#x3D;this.authService.getUserName()) as UserResponse;
+      this.ratingResponse.forEach((r)&#x3D;&gt;{
+        if(r.userId &#x3D;&#x3D;&#x3D; data.userId){
+          return r;
+        }else{
+          return null;
+        }
+      })
+    }
+    return null;
+  }
+  submitFeedBackOnComment(id:any){
+    const param:AddComment$Params&#x3D;{
+      ratingId:id! as number,
+      comment:this.bookDes
+    }
+    console.log(param);
+    addComment(this.httpClient,this.basicUrl,param,new HttpContext())
+    .subscribe({
+      next:(value)&#x3D;&gt;{
+      if(value.status&#x3D;&#x3D;&#x3D;200){
+        this.messageService.add({severity:&quot;success&quot;,summary:&quot;Posted comment&quot;,detail:&quot;Comment are posted on the book&quot;,life:500})
+        this.ratingResponse.forEach(r&#x3D;&gt;{
+          if(r.id&#x3D;&#x3D;&#x3D;id){
+            r.comment?.push(this.bookDes);
+          }
+        })
+        this.bookDes&#x3D;&#x27;&#x27;;
+      }
+    },
+    error:(error)&#x3D;&gt;{
+      this.messageService.add({severity:&quot;error&quot;,summary:&quot;something went wrong&quot;,detail:&quot;Error on post comment&quot;,life:3000});
+    }
+  })
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;card flex justify-center&quot;&gt;
+  &lt;!-- &lt;p-button (click)&#x3D;&quot;showDialog()&quot; label&#x3D;&quot;Show&quot; /&gt; --&gt;
+  &lt;p-dialog
+    [modal]&#x3D;&quot;true&quot;
+    [(visible)]&#x3D;&quot;visible&quot;
+    [style]&#x3D;&quot;{ width: &#x27;35rem&#x27; }&quot;
+    [breakpoints]&#x3D;&quot;{ &#x27;1199px&#x27;: &#x27;75vw&#x27;, &#x27;575px&#x27;: &#x27;90vw&#x27; }&quot;
+    (scroll)&#x3D;&quot;onScroll($event)&quot;
+    (onHide)&#x3D;&quot;resetAllValue()&quot;
+  &gt;
+    @if(bookDetailsResponse){
+
+    &lt;ng-template #header&gt;
+      &lt;div class&#x3D;&quot;flex flex-col gap-2&quot;&gt;
+        &lt;span class&#x3D;&quot;font-bold whitespace-nowrap&quot;&gt;{{
+          bookDetailsResponse.name | capitalization
+        }}&lt;/span&gt;
+        &lt;span&gt;{{ bookDetailsResponse.authors }}&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/ng-template&gt;
+    &lt;div class&#x3D;&quot;parent1 w-full&quot;&gt;
+      &lt;div class&#x3D;&quot;main1-content grid grid-cols-3 gap-1&quot;&gt;
+        &lt;div class&#x3D;&quot;left1-side&quot;&gt;
+          &lt;div class&#x3D;&quot;h-[180px]&quot;&gt;
+            &lt;img
+              src&#x3D;&quot;{{ getBookImageByBookId(bookDetailsResponse.id) }}&quot;
+              alt&#x3D;&quot;alt&quot;
+              class&#x3D;&quot;object-cover h-full rounded-2xl bg-gray-600&quot;
+            /&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;flex gap-1 mt-2&quot;&gt;
+            &lt;span class&#x3D;&quot;text-yellow-400&quot;&gt;
+              &lt;i class&#x3D;&quot;fa-solid fa-star&quot;&gt;&lt;/i&gt;
+            &lt;/span&gt;
+            &lt;span&gt;{{ bookDetailsResponse.avgRating }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;text-gray-400&quot;
+              &gt;({{ bookDetailsResponse.ratingCount }} reviews)&lt;/span
+            &gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;flex flex-col gap-2 my-4&quot;&gt;
+            @if (bookDetailsResponse.bookStatus&#x3D;&#x3D;&#x3D;&#x27;AVAILABLE&#x27;) {
+            &lt;div class&#x3D;&quot;w-full&quot;&gt;
+              &lt;span class&#x3D;&quot;text-sm bg-black text-white rounded-xl px-2 py-0.5&quot;
+                &gt;Available&lt;/span
+              &gt;
+            &lt;/div&gt;
+            &lt;span
+              class&#x3D;&quot;bg-green-500 text-sm text-white font-semibold rounded-2xl overflow-hidden h-5&quot;
+              &gt;Recycled Book - Saving the Planet!&lt;/span
+            &gt;
+            &lt;div
+              class&#x3D;&quot;w-full bg-black rounded-xl flex justify-center items-center ring-2 ring-amber-300 active:scale-1 cursor-pointer&quot;
+              (click)&#x3D;&quot;onBorrow(bookDetailsResponse.id)&quot;
+              *ngIf&#x3D;&quot;isShow()&quot;
+            &gt;
+              &lt;div class&#x3D;&quot;text-white px-4 py-2&quot;&gt;
+                &lt;span&gt;Borrow Book&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            }@else {
+            &lt;div class&#x3D;&quot;btn-part&quot;&gt;
+              &lt;span
+                class&#x3D;&quot;border border-green-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold&quot;
+                &gt;{{ bookDetailsResponse.bookStatus }}&lt;/span
+              &gt;
+            &lt;/div&gt;
+            }
+            &lt;div class&#x3D;&quot;btn1 flex gap-1&quot;&gt;
+              &lt;div
+                class&#x3D;&quot;first-btn flex gap-1 border border-gray-200 rounded-xl px-1.5 py-0.5&quot;
+              &gt;
+                &lt;span class&#x3D;&quot;&quot;&gt; &lt;i class&#x3D;&quot;fa-regular fa-heart&quot;&gt;&lt;/i&gt; &lt;/span
+                &gt;&lt;span&gt;Save&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div
+                class&#x3D;&quot;second-btn border flex gap-1 border-gray-200 rounded-xl px-1.5 py-0.5&quot;
+              &gt;
+                &lt;span class&#x3D;&quot; &quot;&gt; &lt;i class&#x3D;&quot;fa-solid fa-share-nodes&quot;&gt;&lt;/i&gt; &lt;/span
+                &gt;&lt;span&gt;Share&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;right-side1 col-span-2&quot;&gt;
+          &lt;div class&#x3D;&quot;parent-container&quot;&gt;
+            &lt;div class&#x3D;&quot;nav-bar bg-gray-200/40 rounded-2xl w-full px-2 p-1&quot;&gt;
+              &lt;div class&#x3D;&quot;grid grid-cols-2 gap-4 *:hover:cursor-pointer&quot;&gt;
+                &lt;div
+                  (click)&#x3D;&quot;onMethod(&#x27;detail&#x27;)&quot;
+                  [className]&#x3D;&quot;
+                    selectedMenu &#x3D;&#x3D;&#x3D; &#x27;detail&#x27;
+                      ? &#x27;rounded-2xl flex justify-center items-center bg-white &#x27;
+                      : &#x27;rounded-2xl flex justify-center items-center&#x27;
+                  &quot;
+                &gt;
+                  &lt;div&gt;
+                    &lt;div class&#x3D;&quot;rounded-2xl&quot;&gt;
+                      &lt;span&gt;Details&lt;/span&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div
+                  (click)&#x3D;&quot;onMethod(&#x27;review&#x27;)&quot;
+                  [className]&#x3D;&quot;
+                    selectedMenu &#x3D;&#x3D;&#x3D; &#x27;review&#x27;
+                      ? &#x27;rounded-2xl flex justify-center items-center bg-white &#x27;
+                      : &#x27;rounded-2xl flex justify-center items-center&#x27;
+                  &quot;
+                &gt;
+                  &lt;div&gt;
+                    &lt;div class&#x3D;&quot;rounded-2xl&quot;&gt;
+                      &lt;span
+                        &gt;Reviews({{ bookDetailsResponse.ratingCount }})&lt;/span
+                      &gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            @if (selectedMenu&#x3D;&#x3D;&#x3D;&#x27;detail&#x27;) {
+            &lt;div class&#x3D;&quot;about-section&quot;&gt;
+              &lt;div class&#x3D;&quot;about&quot;&gt;
+                &lt;div class&#x3D;&quot;font-semibold my-2&quot;&gt;About this Book&lt;/div&gt;
+                &lt;div
+                  class&#x3D;&quot;h-30 w-full overflow-auto pl-2&quot;
+                  [innerHTML]&#x3D;&quot;bookDetailsResponse.detail&quot;
+                &gt;&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;footer-section my-4 grid grid-cols-2&quot;&gt;
+              &lt;div class&#x3D;&quot;first-section flex flex-col gap-1&quot;&gt;
+                &lt;div class&#x3D;&quot;left-side flex flex-col&quot;&gt;
+                  &lt;span class&#x3D;&quot;text-gray-400&quot;&gt; Category &lt;/span&gt;
+                  &lt;span class&#x3D;&quot;text-black&quot;&gt;
+                    {{ bookDetailsResponse.categoryName }}
+                  &lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;left-side flex flex-col&quot;&gt;
+                  &lt;span class&#x3D;&quot;text-gray-400&quot;&gt; Times Borrowed &lt;/span&gt;
+                  &lt;span class&#x3D;&quot;text-black&quot;&gt;
+                    {{ bookDetailsResponse.borrowedCount }}
+                  &lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;second-section flex flex-col gap-1&quot;&gt;
+                &lt;div class&#x3D;&quot;right-side flex flex-col pr-6&quot;&gt;
+                  &lt;span class&#x3D;&quot;text-gray-400&quot;&gt; Borrowed Period &lt;/span&gt;
+                  &lt;span class&#x3D;&quot;text-black&quot;&gt; 14 days &lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;right-side flex flex-col&quot;&gt;
+                  &lt;span class&#x3D;&quot;text-gray-400&quot;&gt; Sustainability Score &lt;/span&gt;
+                  &lt;div class&#x3D;&quot;high&quot;&gt;
+                    &lt;span class&#x3D;&quot;text-red-500 mr-1&quot;&gt;High&lt;/span&gt;
+                    &lt;span class&#x3D;&quot;font-bold&quot;
+                      &gt;&lt;i class&#x3D;&quot;fa-solid fa-recycle&quot;&gt;&lt;/i
+                    &gt;&lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            } @if(selectedMenu&#x3D;&#x3D;&#x3D;&#x27;review&#x27;){
+            &lt;div class&#x3D;&quot;first-section my-3 flex gap-1&quot;&gt;
+              &lt;div class&#x3D;&quot;left-side w-full&quot;&gt;
+                &lt;div class&#x3D;&quot;flex gap-2 text-2xl&quot;&gt;
+                  &lt;span class&#x3D;&quot;text-yellow-300&quot;&gt;
+                    &lt;i class&#x3D;&quot;fa-solid fa-star&quot;&gt;&lt;/i&gt;
+                  &lt;/span&gt;
+                  &lt;span&gt;{{ bookDetailsResponse.avgRating }}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;detail mt-4&quot;&gt;
+                  &lt;span class&#x3D;&quot;text-gray-500&quot;
+                    &gt;Based on {{ ratingUpperData.totalReviewNo }} reviews&lt;/span
+                  &gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;right-side w-full&quot; *ngIf&#x3D;&quot;ratingUpperData&quot;&gt;
+                &lt;div class&#x3D;&quot;fifth-star flex justify-center items-center&quot;&gt;
+                  &lt;div class&#x3D;&quot;text-sm&quot;&gt;
+                    &lt;span class&#x3D;&quot;text-black&quot;
+                      &gt;5&lt;i class&#x3D;&quot;fa-solid fa-star&quot;&gt;&lt;/i
+                    &gt;&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;bar pl-5 pr-2&quot;&gt;
+                    &lt;p-progressbar
+                      [value]&#x3D;&quot;getPerValue(&#x27;5&#x27;)&quot;
+                      [style]&#x3D;&quot;{
+                        height: &#x27;10px&#x27;,
+                        width: &#x27;60px&#x27;,
+                        color: &#x27;white&#x27;,
+                        backgound: &#x27;black&#x27;
+                      }&quot;
+                    /&gt;
+                  &lt;/div&gt;
+                  &lt;span class&#x3D;&quot;text-black&quot;&gt;{{ ratingUpperData.rating_5 }}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;fifth-star flex justify-center items-center&quot;&gt;
+                  &lt;div class&#x3D;&quot;text-sm&quot;&gt;
+                    &lt;span class&#x3D;&quot;text-black&quot;
+                      &gt;4&lt;i class&#x3D;&quot;fa-solid fa-star&quot;&gt;&lt;/i
+                    &gt;&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;bar pl-5 pr-2&quot;&gt;
+                    &lt;p-progressbar
+                      [value]&#x3D;&quot;getPerValue(&#x27;4&#x27;)&quot;
+                      [style]&#x3D;&quot;{
+                        height: &#x27;10px&#x27;,
+                        width: &#x27;60px&#x27;,
+                        color: &#x27;white&#x27;,
+                        backgound: &#x27;black&#x27;
+                      }&quot;
+                    /&gt;
+                  &lt;/div&gt;
+                  &lt;span class&#x3D;&quot;text-black&quot;&gt;{{ ratingUpperData.rating_4 }}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;fifth-star flex justify-center items-center&quot;&gt;
+                  &lt;div class&#x3D;&quot;text-sm&quot;&gt;
+                    &lt;span class&#x3D;&quot;text-black&quot;
+                      &gt;3&lt;i class&#x3D;&quot;fa-solid fa-star&quot;&gt;&lt;/i
+                    &gt;&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;bar pl-5 pr-2&quot;&gt;
+                    &lt;p-progressbar
+                      [value]&#x3D;&quot;getPerValue(&#x27;3&#x27;)&quot;
+                      [style]&#x3D;&quot;{
+                        height: &#x27;10px&#x27;,
+                        width: &#x27;60px&#x27;,
+                        color: &#x27;white&#x27;,
+                        backgound: &#x27;black&#x27;
+                      }&quot;
+                    /&gt;
+                  &lt;/div&gt;
+                  &lt;span class&#x3D;&quot;text-black&quot;&gt;{{ ratingUpperData.rating_3 }}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;fifth-star flex justify-center items-center&quot;&gt;
+                  &lt;div class&#x3D;&quot;text-sm&quot;&gt;
+                    &lt;span class&#x3D;&quot;text-black&quot;
+                      &gt;2&lt;i class&#x3D;&quot;fa-solid fa-star&quot;&gt;&lt;/i
+                    &gt;&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;bar pl-5 pr-2&quot;&gt;
+                    &lt;p-progressbar
+                      [value]&#x3D;&quot;getPerValue(&#x27;2&#x27;)&quot;
+                      [style]&#x3D;&quot;{
+                        height: &#x27;10px&#x27;,
+                        width: &#x27;60px&#x27;,
+                        color: &#x27;white&#x27;,
+                        backgound: &#x27;black&#x27;
+                      }&quot;
+                    /&gt;
+                  &lt;/div&gt;
+                  &lt;span class&#x3D;&quot;text-black&quot;&gt;{{ ratingUpperData.rating_2 }}&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;fifth-star flex justify-center items-center&quot;&gt;
+                  &lt;div class&#x3D;&quot;text-sm&quot;&gt;
+                    &lt;span class&#x3D;&quot;text-black&quot;
+                      &gt;1&lt;i class&#x3D;&quot;fa-solid fa-star&quot;&gt;&lt;/i
+                    &gt;&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;bar pl-5 pr-2&quot;&gt;
+                    &lt;p-progressbar
+                      [value]&#x3D;&quot;getPerValue(&#x27;1&#x27;)&quot;
+                      [style]&#x3D;&quot;{
+                        height: &#x27;10px&#x27;,
+                        width: &#x27;60px&#x27;,
+                        color: &#x27;white&#x27;,
+                        backgound: &#x27;black&#x27;
+                      }&quot;
+                    /&gt;
+                  &lt;/div&gt;
+                  &lt;span class&#x3D;&quot;text-black&quot;&gt;{{ ratingUpperData.rating_1 }}&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;p-divider /&gt;
+            &lt;div class&#x3D;&quot;second-section&quot;&gt;
+              &lt;div class&#x3D;&quot;write flex flex-col gap-2&quot;&gt;
+                &lt;div&gt;
+                  &lt;span class&#x3D;&quot;text-black&quot;&gt;Write a Review&lt;/span&gt;
+                &lt;/div&gt;
+                @if (isGiveRating()) {
+                &lt;div&gt;
+                  &lt;span&gt;
+                    &lt;p-rating [(ngModel)]&#x3D;&quot;value&quot; /&gt;
+                  &lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;w-full&quot;&gt;
+                  &lt;textarea
+                    class&#x3D;&quot;bg-gray-200 h-full w-full rounded-2xl p-2 resize-none&quot;
+                    row&#x3D;&quot;3&quot;
+                    [(ngModel)]&#x3D;&quot;bookDes&quot;
+                  &gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;mb-2&quot;&gt;
+                  &lt;span
+                    class&#x3D;&quot;px-4 py-2 text-white bg-black rounded-xl&quot;
+                    (click)&#x3D;&quot;submitFeedBack()&quot;
+                    &gt;Submit Review&lt;/span
+                  &gt;
+                &lt;/div&gt;
+                }@else{
+                &lt;div&gt;
+                  &lt;span&gt;
+                    &lt;p-rating
+                      [stars]&#x3D;&quot;giveLoginUserRatingInfo()?.rating&quot;
+                      [readonly]&#x3D;&quot;true&quot;
+                    /&gt;
+                  &lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;w-full&quot;&gt;
+                  &lt;textarea
+                    class&#x3D;&quot;bg-gray-200 h-full w-full rounded-2xl p-2 resize-none&quot;
+                    row&#x3D;&quot;3&quot;
+                    [(ngModel)]&#x3D;&quot;bookDes&quot;
+                  &gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+
+                &lt;div class&#x3D;&quot;mb-2&quot;&gt;
+                  &lt;span
+                    class&#x3D;&quot;px-4 py-2 text-white bg-black rounded-xl&quot;
+                    (click)&#x3D;&quot;submitFeedBackOnComment(giveLoginUserRatingInfo()?.id)&quot;
+                    &gt;Submit Review&lt;/span
+                  &gt;
+                &lt;/div&gt;
+                } @for (rating of ratingResponse; track $index) {
+                &lt;div class&#x3D;&quot;review-details flex justify-between gap-2&quot;&gt;
+                  &lt;div class&#x3D;&quot;profile inline-block py-2&quot;&gt;
+                    @if (isUserImageHave(rating.userId)) {
+                    &lt;div class&#x3D;&quot;size-12&quot;&gt;
+                      &lt;img
+                        [src]&#x3D;&quot;getUserImage(rating.userId)&quot;
+                        class&#x3D;&quot;h-10 w-10 object-cover rounded-full&quot;
+                        alt&#x3D;&quot;userImage&quot;
+                      /&gt;
+                    &lt;/div&gt;
+                    }@else {
+                    &lt;span class&#x3D;&quot;bg-gray-300 rounded-full p-2&quot;
+                      &gt;&lt;i class&#x3D;&quot;fa-regular fa-user&quot;&gt;&lt;/i
+                    &gt;&lt;/span&gt;
+                    }
+                  &lt;/div&gt;
+                  &lt;div class&#x3D;&quot;remain-details w-full&quot;&gt;
+                    &lt;div class&#x3D;&quot;upper-section flex justify-between&quot;&gt;
+                      &lt;div class&#x3D;&quot;profile-name flex flex-col gap-1&quot;&gt;
+                        &lt;span&gt; {{ getUserNameById(rating.userId) }} &lt;/span&gt;
+                        &lt;span&gt;
+                          &lt;p-rating
+                            [(ngModel)]&#x3D;&quot;rating.rating&quot;
+                            [disabled]&#x3D;&quot;true&quot;
+                          /&gt;
+                        &lt;/span&gt;
+                      &lt;/div&gt;
+                      &lt;div class&#x3D;&quot;date-section&quot;&gt;
+                        &lt;span&gt;
+                          {{ rating.updatedAt | date : &quot;MM:dd:yyyy&quot; }}
+                        &lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;comment h-20 w-full overflow-x-auto&quot;&gt;
+                      @for (comment of rating.comment; track $index) {
+                      &lt;span class&#x3D;&quot;my-4&quot;&gt;
+                        {{ comment }}
+                      &lt;/span&gt;
+                      }
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;p-divider&gt;&lt;/p-divider&gt;
+                }
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            }
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    }
+  &lt;/p-dialog&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="card flex justify-center">  <!-- <p-button (click)="showDialog()" label="Show" /> -->  <p-dialog    [modal]="true"    [(visible)]="visible"    [style]="{ width: \'35rem\' }"    [breakpoints]="{ \'1199px\': \'75vw\', \'575px\': \'90vw\' }"    (scroll)="onScroll($event)"    (onHide)="resetAllValue()"  >    @if(bookDetailsResponse){    <ng-template #header>      <div class="flex flex-col gap-2">        <span class="font-bold whitespace-nowrap">{{          bookDetailsResponse.name | capitalization        }}</span>        <span>{{ bookDetailsResponse.authors }}</span>      </div>    </ng-template>    <div class="parent1 w-full">      <div class="main1-content grid grid-cols-3 gap-1">        <div class="left1-side">          <div class="h-[180px]">            <img              src="{{ getBookImageByBookId(bookDetailsResponse.id) }}"              alt="alt"              class="object-cover h-full rounded-2xl bg-gray-600"            />          </div>          <div class="flex gap-1 mt-2">            <span class="text-yellow-400">              <i class="fa-solid fa-star"></i>            </span>            <span>{{ bookDetailsResponse.avgRating }}</span>            <span class="text-gray-400"              >({{ bookDetailsResponse.ratingCount }} reviews)</span            >          </div>          <div class="flex flex-col gap-2 my-4">            @if (bookDetailsResponse.bookStatus===\'AVAILABLE\') {            <div class="w-full">              <span class="text-sm bg-black text-white rounded-xl px-2 py-0.5"                >Available</span              >            </div>            <span              class="bg-green-500 text-sm text-white font-semibold rounded-2xl overflow-hidden h-5"              >Recycled Book - Saving the Planet!</span            >            <div              class="w-full bg-black rounded-xl flex justify-center items-center ring-2 ring-amber-300 active:scale-1 cursor-pointer"              (click)="onBorrow(bookDetailsResponse.id)"              *ngIf="isShow()"            >              <div class="text-white px-4 py-2">                <span>Borrow Book</span>              </div>            </div>            }@else {            <div class="btn-part">              <span                class="border border-green-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold"                >{{ bookDetailsResponse.bookStatus }}</span              >            </div>            }            <div class="btn1 flex gap-1">              <div                class="first-btn flex gap-1 border border-gray-200 rounded-xl px-1.5 py-0.5"              >                <span class=""> <i class="fa-regular fa-heart"></i> </span                ><span>Save</span>              </div>              <div                class="second-btn border flex gap-1 border-gray-200 rounded-xl px-1.5 py-0.5"              >                <span class=" "> <i class="fa-solid fa-share-nodes"></i> </span                ><span>Share</span>              </div>            </div>          </div>        </div>        <div class="right-side1 col-span-2">          <div class="parent-container">            <div class="nav-bar bg-gray-200/40 rounded-2xl w-full px-2 p-1">              <div class="grid grid-cols-2 gap-4 *:hover:cursor-pointer">                <div                  (click)="onMethod(\'detail\')"                  [className]="                    selectedMenu === \'detail\'                      ? \'rounded-2xl flex justify-center items-center bg-white \'                      : \'rounded-2xl flex justify-center items-center\'                  "                >                  <div>                    <div class="rounded-2xl">                      <span>Details</span>                    </div>                  </div>                </div>                <div                  (click)="onMethod(\'review\')"                  [className]="                    selectedMenu === \'review\'                      ? \'rounded-2xl flex justify-center items-center bg-white \'                      : \'rounded-2xl flex justify-center items-center\'                  "                >                  <div>                    <div class="rounded-2xl">                      <span                        >Reviews({{ bookDetailsResponse.ratingCount }})</span                      >                    </div>                  </div>                </div>              </div>            </div>            @if (selectedMenu===\'detail\') {            <div class="about-section">              <div class="about">                <div class="font-semibold my-2">About this Book</div>                <div                  class="h-30 w-full overflow-auto pl-2"                  [innerHTML]="bookDetailsResponse.detail"                ></div>              </div>            </div>            <div class="footer-section my-4 grid grid-cols-2">              <div class="first-section flex flex-col gap-1">                <div class="left-side flex flex-col">                  <span class="text-gray-400"> Category </span>                  <span class="text-black">                    {{ bookDetailsResponse.categoryName }}                  </span>                </div>                <div class="left-side flex flex-col">                  <span class="text-gray-400"> Times Borrowed </span>                  <span class="text-black">                    {{ bookDetailsResponse.borrowedCount }}                  </span>                </div>              </div>              <div class="second-section flex flex-col gap-1">                <div class="right-side flex flex-col pr-6">                  <span class="text-gray-400"> Borrowed Period </span>                  <span class="text-black"> 14 days </span>                </div>                <div class="right-side flex flex-col">                  <span class="text-gray-400"> Sustainability Score </span>                  <div class="high">                    <span class="text-red-500 mr-1">High</span>                    <span class="font-bold"                      ><i class="fa-solid fa-recycle"></i                    ></span>                  </div>                </div>              </div>            </div>            } @if(selectedMenu===\'review\'){            <div class="first-section my-3 flex gap-1">              <div class="left-side w-full">                <div class="flex gap-2 text-2xl">                  <span class="text-yellow-300">                    <i class="fa-solid fa-star"></i>                  </span>                  <span>{{ bookDetailsResponse.avgRating }}</span>                </div>                <div class="detail mt-4">                  <span class="text-gray-500"                    >Based on {{ ratingUpperData.totalReviewNo }} reviews</span                  >                </div>              </div>              <div class="right-side w-full" *ngIf="ratingUpperData">                <div class="fifth-star flex justify-center items-center">                  <div class="text-sm">                    <span class="text-black"                      >5<i class="fa-solid fa-star"></i                    ></span>                  </div>                  <div class="bar pl-5 pr-2">                    <p-progressbar                      [value]="getPerValue(\'5\')"                      [style]="{                        height: \'10px\',                        width: \'60px\',                        color: \'white\',                        backgound: \'black\'                      }"                    />                  </div>                  <span class="text-black">{{ ratingUpperData.rating_5 }}</span>                </div>                <div class="fifth-star flex justify-center items-center">                  <div class="text-sm">                    <span class="text-black"                      >4<i class="fa-solid fa-star"></i                    ></span>                  </div>                  <div class="bar pl-5 pr-2">                    <p-progressbar                      [value]="getPerValue(\'4\')"                      [style]="{                        height: \'10px\',                        width: \'60px\',                        color: \'white\',                        backgound: \'black\'                      }"                    />                  </div>                  <span class="text-black">{{ ratingUpperData.rating_4 }}</span>                </div>                <div class="fifth-star flex justify-center items-center">                  <div class="text-sm">                    <span class="text-black"                      >3<i class="fa-solid fa-star"></i                    ></span>                  </div>                  <div class="bar pl-5 pr-2">                    <p-progressbar                      [value]="getPerValue(\'3\')"                      [style]="{                        height: \'10px\',                        width: \'60px\',                        color: \'white\',                        backgound: \'black\'                      }"                    />                  </div>                  <span class="text-black">{{ ratingUpperData.rating_3 }}</span>                </div>                <div class="fifth-star flex justify-center items-center">                  <div class="text-sm">                    <span class="text-black"                      >2<i class="fa-solid fa-star"></i                    ></span>                  </div>                  <div class="bar pl-5 pr-2">                    <p-progressbar                      [value]="getPerValue(\'2\')"                      [style]="{                        height: \'10px\',                        width: \'60px\',                        color: \'white\',                        backgound: \'black\'                      }"                    />                  </div>                  <span class="text-black">{{ ratingUpperData.rating_2 }}</span>                </div>                <div class="fifth-star flex justify-center items-center">                  <div class="text-sm">                    <span class="text-black"                      >1<i class="fa-solid fa-star"></i                    ></span>                  </div>                  <div class="bar pl-5 pr-2">                    <p-progressbar                      [value]="getPerValue(\'1\')"                      [style]="{                        height: \'10px\',                        width: \'60px\',                        color: \'white\',                        backgound: \'black\'                      }"                    />                  </div>                  <span class="text-black">{{ ratingUpperData.rating_1 }}</span>                </div>              </div>            </div>            <p-divider />            <div class="second-section">              <div class="write flex flex-col gap-2">                <div>                  <span class="text-black">Write a Review</span>                </div>                @if (isGiveRating()) {                <div>                  <span>                    <p-rating [(ngModel)]="value" />                  </span>                </div>                <div class="w-full">                  <textarea                    class="bg-gray-200 h-full w-full rounded-2xl p-2 resize-none"                    row="3"                    [(ngModel)]="bookDes"                  ></textarea>                </div>                <div class="mb-2">                  <span                    class="px-4 py-2 text-white bg-black rounded-xl"                    (click)="submitFeedBack()"                    >Submit Review</span                  >                </div>                }@else{                <div>                  <span>                    <p-rating                      [stars]="giveLoginUserRatingInfo()?.rating"                      [readonly]="true"                    />                  </span>                </div>                <div class="w-full">                  <textarea                    class="bg-gray-200 h-full w-full rounded-2xl p-2 resize-none"                    row="3"                    [(ngModel)]="bookDes"                  ></textarea>                </div>                <div class="mb-2">                  <span                    class="px-4 py-2 text-white bg-black rounded-xl"                    (click)="submitFeedBackOnComment(giveLoginUserRatingInfo()?.id)"                    >Submit Review</span                  >                </div>                } @for (rating of ratingResponse; track $index) {                <div class="review-details flex justify-between gap-2">                  <div class="profile inline-block py-2">                    @if (isUserImageHave(rating.userId)) {                    <div class="size-12">                      <img                        [src]="getUserImage(rating.userId)"                        class="h-10 w-10 object-cover rounded-full"                        alt="userImage"                      />                    </div>                    }@else {                    <span class="bg-gray-300 rounded-full p-2"                      ><i class="fa-regular fa-user"></i                    ></span>                    }                  </div>                  <div class="remain-details w-full">                    <div class="upper-section flex justify-between">                      <div class="profile-name flex flex-col gap-1">                        <span> {{ getUserNameById(rating.userId) }} </span>                        <span>                          <p-rating                            [(ngModel)]="rating.rating"                            [disabled]="true"                          />                        </span>                      </div>                      <div class="date-section">                        <span>                          {{ rating.updatedAt | date : "MM:dd:yyyy" }}                        </span>                      </div>                    </div>                    <div class="comment h-20 w-full overflow-x-auto">                      @for (comment of rating.comment; track $index) {                      <span class="my-4">                        {{ comment }}                      </span>                      }                    </div>                  </div>                </div>                <p-divider></p-divider>                }              </div>            </div>            }          </div>        </div>      </div>    </div>    }  </p-dialog></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookBorrowedComponent', 'selector': 'app-book-borrowed'},{'name': 'BookCardComponent', 'selector': 'app-book-card'},{'name': 'BookComponentComponent', 'selector': 'app-book-component'},{'name': 'BookLayoutComponent', 'selector': 'app-book-layout'},{'name': 'CategoriesOperationComponent', 'selector': 'app-categories-operation'},{'name': 'ChatAiComponent', 'selector': 'app-chat-ai'},{'name': 'CommonHomeComponent', 'selector': 'app-common-home'},{'name': 'CycleHubComponent', 'selector': 'app-cycle-hub'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardPageComponent', 'selector': 'app-dashboard-page'},{'name': 'DigitalPageComponent', 'selector': 'app-digital-page'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginCallbackComponent', 'selector': 'app-login-callback'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MyBookComponent', 'selector': 'app-my-book'},{'name': 'MyProfileComponent', 'selector': 'app-my-profile'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NotificationComponent', 'selector': 'app-notification'},{'name': 'ProfileSettingComponent', 'selector': 'app-profile-setting'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SearchBoxComponent', 'selector': 'app-search-box'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'SubCategoryComponent', 'selector': 'app-sub-category'},{'name': 'SuperAdminRegisterComponent', 'selector': 'app-super-admin-register'},{'name': 'UserComponent', 'selector': 'app-user'}];
+    var DIRECTIVES = [{'name': 'AnimatedCounterDirective', 'selector': '[animatedCounter]'}];
+    var ACTUAL_COMPONENT = {'name': 'BookCardComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'BookCardComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

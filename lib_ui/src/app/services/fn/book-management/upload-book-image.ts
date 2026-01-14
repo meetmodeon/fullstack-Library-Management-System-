@@ -11,7 +11,7 @@ import { RequestBuilder } from '../../request-builder';
 export interface UploadBookImage$Params {
   bookId: number;
   type: 'USER_IMAGE' | 'BOOK_IMAGE' | 'BOOK_PDF';
-      body?: FormData
+  body?: File
 }
 
 export function uploadBookImage(http: HttpClient, rootUrl: string, params: UploadBookImage$Params, context?: HttpContext): Observable<StrictHttpResponse<{

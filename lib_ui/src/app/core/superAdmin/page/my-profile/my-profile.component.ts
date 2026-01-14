@@ -26,7 +26,7 @@ export class MyProfileComponent {
   preview:string|null=null
   imageUrl!:any;
   private apiUrl=environment.apiUrl;
-  user: UserResponse={};
+  user!: UserResponse;
 
   profileForm: FormGroup;
 

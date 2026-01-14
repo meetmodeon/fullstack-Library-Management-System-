@@ -1,0 +1,60 @@
+<p-dialog
+  header="Searching Book"
+  [modal]="true"
+  [(visible)]="visible"
+  (onHide)="resetChat()"
+  [style]="{ width: '50rem' }"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+>
+  <div class="searchingInput relative">
+    <input
+      type="text"
+      (keyup.enter)="onSearch()"
+      [(ngModel)]="searchingData"
+      class="focus:outline-none px-2 py-2 w-full bg-gray-100 rounded-md"
+      placeholder="Searching book"
+    />
+    <div class="absolute top-1 right-3 text-2xl" (click)="onSearch()">
+      <button class="cursor-pointer hover:text-gray-500">
+        <i class="fa-solid fa-search text-gray-400 active:text-gray-600"></i>
+      </button>
+    </div>
+  </div>
+
+ <div class="content-show mt-4">
+
+  @if (loading) {
+    <div class="text-center text-gray-400">Searching...</div>
+  }
+
+  @else if (listOfBookData.length > 0) {
+    @for (book of listOfBookData; track book.bookId) {
+      <div class="my-2 py-3 px-2 rounded-md border shadow hover:shadow-lg cursor-pointer"
+           (click)="showBook(book.bookId)">
+        <div class="flex flex-col">
+          <span class="font-bold">{{ book.name | capitalization}}</span>
+          <span class="text-gray-400 text-xs">{{ book.author }}</span>
+        </div>
+      </div>
+    }
+  }
+
+  @else if (searched && !hasError) {
+    <div class="text-center font-semibold text-gray-500">
+      No any content
+    </div>
+  }
+
+  @else if (hasError) {
+    <div class="text-center text-red-500">
+      Search failed. Try again.
+    </div>
+  }
+
+</div>
+
+</p-dialog>
+
+<div>
+  <app-book-card [bookId]="selectedBookId" #book></app-book-card>
+</div>

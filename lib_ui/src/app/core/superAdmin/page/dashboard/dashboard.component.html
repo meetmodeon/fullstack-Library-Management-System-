@@ -155,16 +155,11 @@
         </div>
         <div
           class="rounded-2xl bg-gray-100 p-1 flex justify-center items-center"
+          (click)="onSearch()"
         >
           <span>
             <i class="fa-solid fa-search text-gray-400"></i>
-            <input
-              type="text"
-              (keyup.enter)="onSearch()"
-              [(ngModel)]="searchingData"
-              class="focus:outline-none pl-2"
-              placeholder="Searching book"
-            />
+            <span class="px-2">Searching Book</span>
           </span>
         </div>
         <div
@@ -313,5 +308,9 @@
       </ng-template>
     </p-dialog>
   </div>
+</div>
+
+<div>
+  <app-search-box #search></app-search-box>
 </div>
 

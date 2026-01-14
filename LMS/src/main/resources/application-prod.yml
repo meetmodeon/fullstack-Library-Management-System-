@@ -1,0 +1,55 @@
+spring:
+  ai:
+    google:
+      genai:
+        api-key: ${google_genai_api_key}
+
+  datasource:
+    url: ${db_url}
+    username: ${db_username}
+    password: ${db_password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      auto-commit: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  #OAuth2.0 config
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${google_client_id}
+            client-secret: ${google_client_secret}
+            scope:
+              - email
+              - profile
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${mail_username}
+    password: ${mail_password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+  servlet:
+    multipart:
+      max-file-size: 19MB
+      max-request-size: 19MB
+frontEnd:
+  url: ${front_end_url}
+app:
+  upload-dir: ${app_upload_dir}
+
+
+

@@ -1,0 +1,1508 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>lib-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">lib-ui documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DashboardPageComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-dashboard-page</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="https://angular.io/api/router/RouterLink" target="_blank" >RouterLink</a></code>
+                                <code><a href="https://angular.io/api/router/RouterModule" target="_blank" >RouterModule</a></code>
+                                <code><a href="../components/BookCardComponent.html" target="_self" >BookCardComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./dashboard-page.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./dashboard-page.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#apiUrl" >apiUrl</a>
+                            </li>
+                            <li>
+                                <a href="#bookType" >bookType</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#child" >child</a>
+                            </li>
+                            <li>
+                                <a href="#items" >items</a>
+                            </li>
+                            <li>
+                                <a href="#listOfBook" >listOfBook</a>
+                            </li>
+                            <li>
+                                <a href="#listOfPopularBook" >listOfPopularBook</a>
+                            </li>
+                            <li>
+                                <a href="#selectedBookId" >selectedBookId</a>
+                            </li>
+                            <li>
+                                <a href="#visible" >visible</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getBook" >getBook</a>
+                            </li>
+                            <li>
+                                <a href="#getBookImage" >getBookImage</a>
+                            </li>
+                            <li>
+                                <a href="#getPopularBook" >getPopularBook</a>
+                            </li>
+                            <li>
+                                <a href="#getRecommendationBook" >getRecommendationBook</a>
+                            </li>
+                            <li>
+                                <a href="#getSubCategoryName" >getSubCategoryName</a>
+                            </li>
+                            <li>
+                                <a href="#getTopRatingBook" >getTopRatingBook</a>
+                            </li>
+                            <li>
+                                <a href="#getTrendingBook" >getTrendingBook</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#showDialog" >showDialog</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(httpClient: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, authService: <a href="../injectables/AuthServiceService.html" target="_self">AuthServiceService</a>, bookService: <a href="../injectables/BookServiceService.html" target="_self">BookServiceService</a>, subCategoryService: <a href="../injectables/SubCategoryService.html" target="_self">SubCategoryService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:41</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>httpClient</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthServiceService.html" target="_self" >AuthServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>bookService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BookServiceService.html" target="_self" >BookServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>subCategoryService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SubCategoryService.html" target="_self" >SubCategoryService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBook"></a>
+                    <span class="name">
+                        <span ><b>getBook</b></span>
+                        <a href="#getBook"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBook(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBookImage"></a>
+                    <span class="name">
+                        <span ><b>getBookImage</b></span>
+                        <a href="#getBookImage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBookImage(bookId: number | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="163"
+                                    class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:163</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>bookId</td>
+                                            <td>
+                                                        <code>number | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPopularBook"></a>
+                    <span class="name">
+                        <span ><b>getPopularBook</b></span>
+                        <a href="#getPopularBook"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPopularBook()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="141"
+                                    class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:141</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getRecommendationBook"></a>
+                    <span class="name">
+                        <span ><b>getRecommendationBook</b></span>
+                        <a href="#getRecommendationBook"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getRecommendationBook()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="74"
+                                    class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSubCategoryName"></a>
+                    <span class="name">
+                        <span ><b>getSubCategoryName</b></span>
+                        <a href="#getSubCategoryName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSubCategoryName(subCategoriesId: number | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="166"
+                                    class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:166</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>subCategoriesId</td>
+                                            <td>
+                                                        <code>number | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTopRatingBook"></a>
+                    <span class="name">
+                        <span ><b>getTopRatingBook</b></span>
+                        <a href="#getTopRatingBook"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTopRatingBook()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="120"
+                                    class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTrendingBook"></a>
+                    <span class="name">
+                        <span ><b>getTrendingBook</b></span>
+                        <a href="#getTrendingBook"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTrendingBook()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:99</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showDialog"></a>
+                    <span class="name">
+                        <span ><b>showDialog</b></span>
+                        <a href="#showDialog"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showDialog(bookId: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="176"
+                                    class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:176</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>bookId</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="apiUrl"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>apiUrl</b></span>
+                        <a href="#apiUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>environment.apiUrl</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:34</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bookType"></a>
+                    <span class="name">
+                        <span ><b>bookType</b></span>
+                        <a href="#bookType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;string&gt;(&#x27;you&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="child"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>child</b></span>
+                        <a href="#child"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/BookCardComponent.html" target="_self" >BookCardComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;book&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="items"></a>
+                    <span class="name">
+                        <span ><b>items</b></span>
+                        <a href="#items"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[1, 2, 3, 4, 5, 6]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="listOfBook"></a>
+                    <span class="name">
+                        <span ><b>listOfBook</b></span>
+                        <a href="#listOfBook"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/BookResponse.html" target="_self" >BookResponse[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="listOfPopularBook"></a>
+                    <span class="name">
+                        <span ><b>listOfPopularBook</b></span>
+                        <a href="#listOfPopularBook"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/BookResponse.html" target="_self" >BookResponse[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedBookId"></a>
+                    <span class="name">
+                        <span ><b>selectedBookId</b></span>
+                        <a href="#selectedBookId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="visible"></a>
+                    <span class="name">
+                        <span ><b>visible</b></span>
+                        <a href="#visible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/core/superAdmin/page/dashboard-page/dashboard-page.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, signal, ViewChild } from &#x27;@angular/core&#x27;;
+import { RouterLink, RouterModule } from &#x27;@angular/router&#x27;;
+import { environment } from &#x27;../../../../../environments/environment&#x27;;
+import { BookResponse } from &#x27;../../../../services/models&#x27;;
+import { HttpClient, HttpContext } from &#x27;@angular/common/http&#x27;;
+import {
+  getTopRatingBook,
+  GetTopRatingBook$Params,
+  mostPopularBook,
+  MostPopularBook$Params,
+  recommendationBook,
+  RecommendationBook$Params,
+  trendingBook,
+  TrendingBook$Params,
+} from &#x27;../../../../services/functions&#x27;;
+import { AuthServiceService } from &#x27;../../../../services/auth/auth-service.service&#x27;;
+import { BookServiceService } from &#x27;../../../../services/StateMangeSerivce/Book/book-service.service&#x27;;
+import { SubCategoryService } from &#x27;../../../../services/StateMangeSerivce/subCategoryService/sub-category.service&#x27;;
+import { Dialog } from &#x27;primeng/dialog&#x27;;
+import { BookLayoutComponent } from &quot;../../../page/book-layout/book-layout.component&quot;;
+import { BookCardComponent } from &#x27;../../../page/book-card/book-card.component&#x27;;
+
+@Component({
+  selector: &#x27;app-dashboard-page&#x27;,
+  imports: [RouterLink,
+    RouterModule,
+    BookCardComponent,
+
+    ],
+  templateUrl: &#x27;./dashboard-page.component.html&#x27;,
+  styleUrl: &#x27;./dashboard-page.component.scss&#x27;,
+})
+export class DashboardPageComponent {
+  private apiUrl &#x3D; environment.apiUrl;
+  items &#x3D; [1, 2, 3, 4, 5, 6];
+  listOfBook: BookResponse[] &#x3D; [];
+  listOfPopularBook:BookResponse[]&#x3D;[];
+  bookType &#x3D; signal&lt;string&gt;(&#x27;you&#x27;);
+  visible:boolean&#x3D;false;
+  selectedBookId!:number;
+  @ViewChild(&#x27;book&#x27;) child!:BookCardComponent;
+
+  constructor(
+    private httpClient: HttpClient,
+    private authService: AuthServiceService,
+    private bookService: BookServiceService,
+    private subCategoryService: SubCategoryService
+  ) {}
+
+  ngOnInit() {
+    if (this.authService.isLoggedIn()) {
+      this.bookService.loadBooksOnce();
+      this.subCategoryService.loadSubCategoriesOnce();
+      this.getRecommendationBook();
+      this.getPopularBook();
+    }
+  }
+
+  getBook(type: string) {
+    this.bookType.set(type);
+    switch (this.bookType()) {
+      case &#x27;trending&#x27;:
+        this.getTrendingBook();
+        break;
+      case &#x27;rating&#x27;:
+        this.getTopRatingBook();
+        break;
+      default:
+        this.getRecommendationBook();
+        break;
+    }
+  }
+
+  getRecommendationBook() {
+    const params: RecommendationBook$Params &#x3D; {
+      email: this.authService.getUserName() as string,
+      page: 0,
+      size: 4,
+    };
+
+    recommendationBook(
+      this.httpClient,
+      this.apiUrl,
+      params,
+      new HttpContext()
+    ).subscribe({
+      next: (value) &#x3D;&gt; {
+        if (value.body) {
+          const data &#x3D; value.body.content as BookResponse[];
+          this.listOfBook &#x3D; data;
+        }
+      },
+      error: (error) &#x3D;&gt; {
+        console.log(&#x27;some error on fetch the recommendation book&#x27;);
+      },
+    });
+  }
+
+  getTrendingBook() {
+    const params: TrendingBook$Params &#x3D; {
+      page: 0,
+      size: 10,
+    };
+    trendingBook(
+      this.httpClient,
+      this.apiUrl,
+      params,
+      new HttpContext()
+    ).subscribe({
+      next: (value) &#x3D;&gt; {
+        const data &#x3D; value.body.content as BookResponse[];
+        this.listOfBook &#x3D; data;
+      },
+      error: (error) &#x3D;&gt; {
+        console.log(&#x27;Error on fetching trending book&#x27;);
+      },
+    });
+  }
+
+  getTopRatingBook() {
+    const param: GetTopRatingBook$Params &#x3D; {
+      page: 0,
+      size: 4,
+    };
+    getTopRatingBook(
+      this.httpClient,
+      this.apiUrl,
+      param,
+      new HttpContext()
+    ).subscribe({
+      next: (value) &#x3D;&gt; {
+        const data &#x3D; value.body.content as BookResponse[];
+        this.listOfBook &#x3D; data;
+      },
+      error: (error) &#x3D;&gt; {
+        console.log(&#x27;Error on fetching trending book&#x27;);
+      },
+    });
+  }
+
+  getPopularBook() {
+    const params: MostPopularBook$Params &#x3D; {
+      page: 0,
+      size: 7,
+    };
+    mostPopularBook(
+      this.httpClient,
+      this.apiUrl,
+      params,
+      new HttpContext()
+    ).subscribe({
+      next: (value:any) &#x3D;&gt; {
+        if (value.body) {
+          const data &#x3D; value.body.content as BookResponse[];
+          this.listOfPopularBook &#x3D; data;
+        }
+      },
+      error: (error) &#x3D;&gt; {
+        console.log(&#x27;some error on fetch the recommendation book&#x27;);
+      },
+    });
+  }
+  getBookImage(bookId: number | undefined) {
+    return this.bookService.getBookImage(bookId as number);
+  }
+  getSubCategoryName(subCategoriesId: number | undefined) {
+    let name &#x3D; this.subCategoryService.getSubCategoryName(
+      subCategoriesId as number
+    );
+    if (name.length &gt;&#x3D; 8) {
+      name &#x3D; name.substring(0, 6) + &#x27;...&#x27;;
+    }
+    return name;
+  }
+
+  showDialog(bookId:any){
+    this.selectedBookId&#x3D;bookId as number;
+    if(this.child){
+       this.child.showDialog();
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;main-content container mx-auto p-4 grid grid-cols-12 gap-4 &quot;&gt;
+    &lt;div class&#x3D;&quot;left-side col-span-9 bg-gray-100/20&quot;&gt;
+        &lt;div class&#x3D;&quot;hero-section  bg-linear-to-r from-blue-500 to-blue-600 rounded-xl&quot;&gt;
+            &lt;div class&#x3D;&quot;main relative &quot;&gt;
+                &lt;div class&#x3D;&quot;header  flex flex-col gap-5 px-30&quot;&gt;
+                    &lt;div class&#x3D;&quot; *:text-3xl *:text-white flex flex-col  justify-center gap-5 z-10&quot;&gt;
+                        &lt;span class&#x3D;&quot;&quot;&gt;Enjoy to&lt;/span&gt;
+                        &lt;span&gt;Super Digital Book&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;msg text-sm text-gray-400 &quot;&gt;Unlock the Knowledge,Read more book.&lt;/div&gt;
+                    &lt;div class&#x3D;&quot;btn flex flex-wrap gap-4  *:hover:bg-white *:hover:text-black *:text-white my-2&quot;
+                    routerLink&#x3D;&quot;/dashboard&quot;
+                    &gt;
+                        &lt;span class&#x3D;&quot;px-4 py-2 border-2 border-white rounded-md&quot;&gt;
+                            Explore More
+                        &lt;/span&gt;
+                        &lt;span class&#x3D;&quot;px-4 py-2 border-2 border-white rounded-md&quot;&gt;
+                            Learn More
+                        &lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;image absolute top-0 right-0 z-2&quot;&gt;
+                    &lt;img src&#x3D;&quot;book-hero.jpg&quot; alt&#x3D;&quot;book&quot; class&#x3D;&quot; h-53 w-40 object-fit rounded-xl &quot;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;containt my-4&quot;&gt;
+            &lt;div
+                class&#x3D;&quot;*:hover:bg-blue-500 *:px-2 *:rounded-md *:hover:text-white *:shadow-xl *:shadow-gray-100 *:text-black *:bg-white flex flex-row  flex-wrap justify-between&quot;&gt;
+                &lt;span (click)&#x3D;&quot;getBook(&#x27;you&#x27;)&quot;&gt;
+                    For You
+                &lt;/span&gt;
+                &lt;span (click)&#x3D;&quot;getBook(&#x27;trending&#x27;)&quot;&gt;
+                    Tranding
+                &lt;/span&gt;
+                &lt;span (click)&#x3D;&quot;getBook(&#x27;rating&#x27;)&quot;&gt;
+                    Top Rating
+                &lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;lower&quot;&gt;
+            &lt;div class&#x3D;&quot;grid sm:grid-cols-1 md:grid-cols-2 gap-4&quot;&gt;
+               @for (book of listOfBook; track $index) {
+
+                 &lt;div class&#x3D;&quot;card flex gap-8 items-center shadow shadow-gray-300 px-4 py-4 rounded-md&quot;&gt;
+                    &lt;span&gt;
+                        &lt;img [src]&#x3D;&quot;getBookImage(book.bookId)&quot; alt&#x3D;&quot;&quot; class&#x3D;&quot;size-20 object-cover rounded-full&quot;&gt;
+                    &lt;/span&gt;
+                    &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+                        &lt;div class&#x3D;&quot;flex flex-col &quot;&gt;
+                            &lt;span class&#x3D;&quot;font-semibold text-sm&quot;&gt;{{ book.name }}&lt;/span&gt;
+                            &lt;span class&#x3D;&quot;text-xs text-gray-500&quot;&gt;{{ getSubCategoryName(book.subCategoryId) }}&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class&#x3D;&quot;bg-gray-500 border border-gray-400 my-2 w-1/2&quot;&gt;
+
+                        &lt;/div&gt;
+
+                        &lt;div class&#x3D;&quot;text-xs text-blue-400 cursor-pointer&quot;  (click)&#x3D;&quot;showDialog(book.bookId)&quot;&gt;
+                            &lt;span &gt;&lt;i class&#x3D;&quot;fa-solid fa-chevron-right&quot;&gt;&lt;/i&gt;&lt;/span&gt;See Details
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+               }
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;right-side col-span-3 &quot;&gt;
+        &lt;div class&#x3D;&quot;main&quot;&gt;
+            &lt;div class&#x3D;&quot;*:text-gray-500 *:text-xs flex justify-between items-center&quot;&gt;
+                &lt;span&gt;Popular &amp; Trending&lt;/span&gt;
+                &lt;span&gt;&lt;i class&#x3D;&quot;fa-solid fa-ellipsis&quot;&gt;&lt;/i&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot; my-4 flex flex-col justify-between&quot;&gt;
+                @for (book of listOfPopularBook; track $index) {
+                &lt;div class&#x3D;&quot;card flex gap-2 items-center shadow shadow-gray-300 px-1 py-3 rounded-md&quot;&gt;
+                    &lt;span class&#x3D;&quot;size-12 flex justify-between items-center&quot;&gt;
+                        &lt;img [src]&#x3D;&quot;getBookImage(book.bookId)&quot; alt&#x3D;&quot;&quot;
+                            class&#x3D;&quot;size-9 object-cover rounded-full &quot;&gt;&lt;/span&gt;
+                    &lt;div class&#x3D;&quot;flex justify-between w-full&quot;&gt;
+                        &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+                            &lt;span class&#x3D;&quot;font-semibold text-sm&quot;&gt;{{ book.name }}&lt;/span&gt;
+                            &lt;span class&#x3D;&quot;text-xs text-gray-500&quot;&gt;{{ getSubCategoryName(book.subCategoryId) }}&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class&#x3D;&quot;next &quot; &gt;
+                            &lt;button class&#x3D;&quot;p-2 bg-blue-500 text-white rounded-full text-xs cursor-pointer active:scale-90 transition-all ease-in duration-75&quot; (click)&#x3D;&quot;showDialog(book.bookId)&quot;&gt;&lt;i
+                                   class&#x3D;&quot;fa-solid fa-chevron-right&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                }
+                &lt;div class&#x3D;&quot;discover text-center mt-4 &quot;&gt;
+                    &lt;span class&#x3D;&quot;text-sm text-blue-500 cursor-pointer&quot;
+                    routerLink&#x3D;&quot;/dashboard&quot;
+                    &gt;Discover All&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  &lt;app-book-card [bookId]&#x3D;&quot;selectedBookId&quot; #book&gt;&lt;/app-book-card&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="main-content container mx-auto p-4 grid grid-cols-12 gap-4 ">    <div class="left-side col-span-9 bg-gray-100/20">        <div class="hero-section  bg-linear-to-r from-blue-500 to-blue-600 rounded-xl">            <div class="main relative ">                <div class="header  flex flex-col gap-5 px-30">                    <div class=" *:text-3xl *:text-white flex flex-col  justify-center gap-5 z-10">                        <span class="">Enjoy to</span>                        <span>Super Digital Book</span>                    </div>                    <div class="msg text-sm text-gray-400 ">Unlock the Knowledge,Read more book.</div>                    <div class="btn flex flex-wrap gap-4  *:hover:bg-white *:hover:text-black *:text-white my-2"                    routerLink="/dashboard"                    >                        <span class="px-4 py-2 border-2 border-white rounded-md">                            Explore More                        </span>                        <span class="px-4 py-2 border-2 border-white rounded-md">                            Learn More                        </span>                    </div>                </div>                <div>                </div>                <div class="image absolute top-0 right-0 z-2">                    <img src="book-hero.jpg" alt="book" class=" h-53 w-40 object-fit rounded-xl ">                </div>            </div>        </div>        <div class="containt my-4">            <div                class="*:hover:bg-blue-500 *:px-2 *:rounded-md *:hover:text-white *:shadow-xl *:shadow-gray-100 *:text-black *:bg-white flex flex-row  flex-wrap justify-between">                <span (click)="getBook(\'you\')">                    For You                </span>                <span (click)="getBook(\'trending\')">                    Tranding                </span>                <span (click)="getBook(\'rating\')">                    Top Rating                </span>            </div>        </div>        <div class="lower">            <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-4">               @for (book of listOfBook; track $index) {                 <div class="card flex gap-8 items-center shadow shadow-gray-300 px-4 py-4 rounded-md">                    <span>                        <img [src]="getBookImage(book.bookId)" alt="" class="size-20 object-cover rounded-full">                    </span>                    <div class="flex flex-col">                        <div class="flex flex-col ">                            <span class="font-semibold text-sm">{{ book.name }}</span>                            <span class="text-xs text-gray-500">{{ getSubCategoryName(book.subCategoryId) }}</span>                        </div>                        <div class="bg-gray-500 border border-gray-400 my-2 w-1/2">                        </div>                        <div class="text-xs text-blue-400 cursor-pointer"  (click)="showDialog(book.bookId)">                            <span ><i class="fa-solid fa-chevron-right"></i></span>See Details                        </div>                    </div>                </div>               }            </div>        </div>    </div>    <div class="right-side col-span-3 ">        <div class="main">            <div class="*:text-gray-500 *:text-xs flex justify-between items-center">                <span>Popular & Trending</span>                <span><i class="fa-solid fa-ellipsis"></i></span>            </div>            <div class=" my-4 flex flex-col justify-between">                @for (book of listOfPopularBook; track $index) {                <div class="card flex gap-2 items-center shadow shadow-gray-300 px-1 py-3 rounded-md">                    <span class="size-12 flex justify-between items-center">                        <img [src]="getBookImage(book.bookId)" alt=""                            class="size-9 object-cover rounded-full "></span>                    <div class="flex justify-between w-full">                        <div class="flex flex-col">                            <span class="font-semibold text-sm">{{ book.name }}</span>                            <span class="text-xs text-gray-500">{{ getSubCategoryName(book.subCategoryId) }}</span>                        </div>                        <div class="next " >                            <button class="p-2 bg-blue-500 text-white rounded-full text-xs cursor-pointer active:scale-90 transition-all ease-in duration-75" (click)="showDialog(book.bookId)"><i                                   class="fa-solid fa-chevron-right"></i></button>                        </div>                    </div>                </div>                }                <div class="discover text-center mt-4 ">                    <span class="text-sm text-blue-500 cursor-pointer"                    routerLink="/dashboard"                    >Discover All</span>                </div>            </div>        </div>    </div></div><div>  <app-book-card [bookId]="selectedBookId" #book></app-book-card></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookBorrowedComponent', 'selector': 'app-book-borrowed'},{'name': 'BookCardComponent', 'selector': 'app-book-card'},{'name': 'BookComponentComponent', 'selector': 'app-book-component'},{'name': 'BookLayoutComponent', 'selector': 'app-book-layout'},{'name': 'CategoriesOperationComponent', 'selector': 'app-categories-operation'},{'name': 'ChatAiComponent', 'selector': 'app-chat-ai'},{'name': 'CommonHomeComponent', 'selector': 'app-common-home'},{'name': 'CycleHubComponent', 'selector': 'app-cycle-hub'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardPageComponent', 'selector': 'app-dashboard-page'},{'name': 'DigitalPageComponent', 'selector': 'app-digital-page'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginCallbackComponent', 'selector': 'app-login-callback'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MyBookComponent', 'selector': 'app-my-book'},{'name': 'MyProfileComponent', 'selector': 'app-my-profile'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NotificationComponent', 'selector': 'app-notification'},{'name': 'ProfileSettingComponent', 'selector': 'app-profile-setting'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SearchBoxComponent', 'selector': 'app-search-box'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'SubCategoryComponent', 'selector': 'app-sub-category'},{'name': 'SuperAdminRegisterComponent', 'selector': 'app-super-admin-register'},{'name': 'UserComponent', 'selector': 'app-user'}];
+    var DIRECTIVES = [{'name': 'AnimatedCounterDirective', 'selector': '[animatedCounter]'}];
+    var ACTUAL_COMPONENT = {'name': 'DashboardPageComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DashboardPageComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

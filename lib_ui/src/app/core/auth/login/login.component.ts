@@ -15,7 +15,6 @@ import { Divider } from "primeng/divider";
 import { MessageService } from 'primeng/api';
 import { Toast } from "primeng/toast";
 import { Observable } from 'rxjs';
-
 @Component({
   selector: 'app-login',
   imports: [
@@ -45,7 +44,7 @@ export class LoginComponent {
     private http:HttpClient,
     private authService:AuthServiceService,
     private router:Router,
-    private messageService:MessageService
+    private messageService:MessageService,
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -73,7 +72,8 @@ export class LoginComponent {
             summary:"Logged In",
             detail:'Logged in successfully',
             life:3000
-          })
+          });
+          console.log('the role is: ',this.authService.getUserRoles() as string[]);
           setInterval(()=>{
             if(this.authService.getUserRoles().includes('ROLE_ADMIN')){
               this.router.navigate(['/admin/dashboard']);

@@ -1,0 +1,58 @@
+version: "3.9"
+
+services:
+  mysql:
+    container_name: mysql_lbm
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: Lumad
+      MYSQL_DATABASE: lbm
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - lbm_network
+    restart: unless-stopped
+
+  lbm_api:
+    container_name: lbm_app
+    image: meet786/lbm:api
+    ports:
+      - "8080:8080"
+    networks:
+      - lbm_network
+    depends_on:
+      - mysql
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: ${db_url}
+      SPRING_DATASOURCE_USERNAME: ${db_username}
+      SPRING_DATASOURCE_PASSWORD: ${db_password}
+      SPRING_MAIL_HOST: smtp.gmail.com
+      SPRING_MAIL_PORT: 587
+      SPRING_MAIL_USERNAME: ${mail_username}
+      SPRING_MAIL_PASSWORD: ${mail_password}
+      SPRING_MAIL_PROTOCOL: smtp
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH: true
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE: true
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_REQUIRED: true
+    restart: unless-stopped
+
+  lib_ui:
+    container_name: lib_ui
+    image: meet786/lbm:ui
+    ports:
+      - "4200:80"
+    networks:
+      - lbm_network
+    depends_on:
+      - lbm_api
+
+networks:
+  lbm_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local

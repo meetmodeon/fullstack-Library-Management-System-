@@ -5,6 +5,7 @@ export interface BookRequest {
   author: Array<string>;
   bookImageFile?: Blob;
   bookPdfFile?: Blob;
+  detail?: string;
   isbn: string;
   name: string;
   publication: string;

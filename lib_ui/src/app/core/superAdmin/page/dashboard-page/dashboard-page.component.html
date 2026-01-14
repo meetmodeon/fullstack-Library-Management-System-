@@ -29,93 +29,40 @@
         <div class="containt my-4">
             <div
                 class="*:hover:bg-blue-500 *:px-2 *:rounded-md *:hover:text-white *:shadow-xl *:shadow-gray-100 *:text-black *:bg-white flex flex-row  flex-wrap justify-between">
-                <span>
+                <span (click)="getBook('you')">
                     For You
                 </span>
-                <span>
+                <span (click)="getBook('trending')">
                     Tranding
                 </span>
-                <span>
-                    Hot
-                </span>
-                <span>
+                <span (click)="getBook('rating')">
                     Top Rating
-                </span>
-                <span>
-                    High Price
                 </span>
             </div>
         </div>
         <div class="lower">
             <div class="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="card flex gap-8 items-center shadow shadow-gray-300 px-4 py-4 rounded-md">
-                    <span><img src="libr.jpg" alt="" class="size-20 object-cover rounded-full"></span>
+               @for (book of listOfBook; track $index) {
+
+                 <div class="card flex gap-8 items-center shadow shadow-gray-300 px-4 py-4 rounded-md">
+                    <span>
+                        <img [src]="getBookImage(book.bookId)" alt="" class="size-20 object-cover rounded-full">
+                    </span>
                     <div class="flex flex-col">
                         <div class="flex flex-col ">
-                            <span class="font-semibold text-sm">Atomic Habit</span>
-                            <span class="text-xs text-gray-500">Cateogry</span>
+                            <span class="font-semibold text-sm">{{ book.name }}</span>
+                            <span class="text-xs text-gray-500">{{ getSubCategoryName(book.subCategoryId) }}</span>
                         </div>
                         <div class="bg-gray-500 border border-gray-400 my-2 w-1/2">
 
                         </div>
 
-                        <div class=" text-xs text-blue-400">
-                            <span><i class="fa-solid fa-chevron-right"></i></span>See Details
+                        <div class="text-xs text-blue-400 cursor-pointer"  (click)="showDialog(book.bookId)">
+                            <span ><i class="fa-solid fa-chevron-right"></i></span>See Details
                         </div>
                     </div>
                 </div>
-
-                <div class="card flex gap-8 items-center shadow shadow-gray-300 px-4 py-4 rounded-md">
-                    <span><img src="libr.jpg" alt="" class="size-20 object-cover rounded-full"></span>
-                    <div class="flex flex-col">
-                        <div class="flex flex-col ">
-                            <span class="font-semibold text-sm">Atomic Habit</span>
-                            <span class="text-xs text-gray-500">Cateogry</span>
-                        </div>
-                        <div class="bg-gray-500 border border-gray-400 my-2 w-1/2">
-
-                        </div>
-
-                        <div class=" text-xs text-blue-400">
-                            <span><i class="fa-solid fa-chevron-right"></i></span>See Details
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card flex gap-8 items-center shadow shadow-gray-300 px-4 py-4 rounded-md">
-                    <span><img src="libr.jpg" alt="" class="size-20 object-cover rounded-full"></span>
-                    <div class="flex flex-col">
-                        <div class="flex flex-col ">
-                            <span class="font-semibold text-sm">Atomic Habit</span>
-                            <span class="text-xs text-gray-500">Cateogry</span>
-                        </div>
-                        <div class="bg-gray-500 border border-gray-400 my-2 w-1/2">
-
-                        </div>
-
-                        <div class=" text-xs text-blue-400">
-                            <span><i class="fa-solid fa-chevron-right"></i></span>See Details
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card flex gap-8 items-center shadow shadow-gray-300 px-4 py-4 rounded-md">
-                    <span><img src="libr.jpg" alt="" class="size-20 object-cover rounded-full"></span>
-                    <div class="flex flex-col">
-                        <div class="flex flex-col ">
-                            <span class="font-semibold text-sm">Atomic Habit</span>
-                            <span class="text-xs text-gray-500">Cateogry</span>
-                        </div>
-                        <div class="bg-gray-500 border border-gray-400 my-2 w-1/2">
-
-                        </div>
-
-                        <div class=" text-xs text-blue-400">
-                            <span><i class="fa-solid fa-chevron-right"></i></span>See Details
-                        </div>
-                    </div>
-                </div>
-
+               }
             </div>
         </div>
     </div>
@@ -126,27 +73,33 @@
                 <span><i class="fa-solid fa-ellipsis"></i></span>
             </div>
             <div class=" my-4 flex flex-col justify-between">
-                @for (item of items; track $index) {
+                @for (book of listOfPopularBook; track $index) {
                 <div class="card flex gap-2 items-center shadow shadow-gray-300 px-1 py-3 rounded-md">
-                    <span class="size-12 flex justify-between items-center"><img src="libr.jpg" alt=""
+                    <span class="size-12 flex justify-between items-center">
+                        <img [src]="getBookImage(book.bookId)" alt=""
                             class="size-9 object-cover rounded-full "></span>
                     <div class="flex justify-between w-full">
                         <div class="flex flex-col">
-                            <span class="font-semibold text-sm">Atomic Habit</span>
-                            <span class="text-xs text-gray-500">Cateogry</span>
+                            <span class="font-semibold text-sm">{{ book.name }}</span>
+                            <span class="text-xs text-gray-500">{{ getSubCategoryName(book.subCategoryId) }}</span>
                         </div>
-                        <div class="next ">
-                            <span class="p-2 bg-blue-500 text-white rounded-full text-xs cursor-pointer"><i
-                                    class="fa-solid fa-chevron-right"></i></span>
+                        <div class="next " >
+                            <button class="p-2 bg-blue-500 text-white rounded-full text-xs cursor-pointer active:scale-90 transition-all ease-in duration-75" (click)="showDialog(book.bookId)"><i
+                                   class="fa-solid fa-chevron-right"></i></button>
                         </div>
                     </div>
                 </div>
                 }
                 <div class="discover text-center mt-4 ">
-                    <span class="text-sm text-blue-500 cursor-pointer">Discover All</span>
+                    <span class="text-sm text-blue-500 cursor-pointer"
+                    routerLink="/dashboard"
+                    >Discover All</span>
                 </div>
             </div>
 
         </div>
     </div>
+</div>
+<div>
+  <app-book-card [bookId]="selectedBookId" #book></app-book-card>
 </div>

@@ -8,6 +8,12 @@
                     <span class="text-gray-500 text-sm">Sustainable Reading</span>
                 </div>
             </div>
+            <div class="middle">
+               <div class="ai-model px-4 rounded-2xl bg-blue-100 active:bg-blue-200 active:scale-95 cursor-pointer" (click)="showChat()">
+                 <i class="fa-solid fa-magnifying-glass"></i>
+                 <span class="ml-2">AI Mode</span>
+               </div>
+            </div>
             <div class="right-side flex align-bottom ">
                 <ul class="flex gap-2">
                     <li class="pt-2" (click)="onShowNotification()">
@@ -30,8 +36,8 @@
                             </span>
 
                             <div class="flex flex-col">
-                                <span>Meet_Yadav</span>
-                                <span class="text-sm text-gray-400">meetyadav78692</span>
+                                <span>{{userData.name | capitalization}}</span>
+                                <span class="text-xs text-gray-400">{{userData.email}}</span>
                             </div>
 
 
@@ -53,4 +59,8 @@
 
 <div class="card flex justify-center">
     <p-menu #menu [model]="items" [popup]="true" />
+</div>
+
+<div class="pop-menu z-99">
+    <app-chat-ai #chat></app-chat-ai>
 </div>

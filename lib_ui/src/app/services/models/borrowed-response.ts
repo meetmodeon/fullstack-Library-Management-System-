@@ -7,6 +7,6 @@ export interface BorrowedResponse {
   borrowedId?: number;
   remainingReturnDate?: string;
   returnedDate?: string;
-  status?: 'BORROWED' | 'RETURNED' | 'OVERDUE' | 'DATE_EXTENDED';
+  status?: 'BORROWED' | 'RETURNED';
   userId?: number;
 }

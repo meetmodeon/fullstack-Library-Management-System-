@@ -1,0 +1,16 @@
+# Node.js dependencies
+node_modules/
+
+# Angular build files
+dist/
+build/
+
+# Environment files with secrets
+.env
+*.env
+
+# Spring Boot configs with secrets
+**/application-*.yml
+
+# Logs
+*.log

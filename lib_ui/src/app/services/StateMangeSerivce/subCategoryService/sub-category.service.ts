@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { HttpClient, HttpContext } from '@angular/common/http';
@@ -14,7 +14,8 @@ export class SubCategoryService {
   private apiUrl=environment.apiUrl;
   private subCategorySubject=new BehaviorSubject<SubCategoryResponse[]>([]);
   allSubCategoryResponse$=this.subCategorySubject.asObservable();
-
+  first=signal<number>(0);
+  rows=signal<number>(10);
   private loding=false;
   
   constructor(private http:HttpClient) { }
@@ -25,8 +26,8 @@ export class SubCategoryService {
     this.loding=true;
 
     const params:GetAllSubCategory$Params={
-      page:0,
-      size:100
+      page:this.first(),
+      size:this.rows()
     };
     getAllSubCategory(this.http,this.apiUrl,params,new HttpContext()).subscribe({
       next:(res:any)=>{
@@ -55,4 +56,11 @@ export class SubCategoryService {
     this.loadSubCategoriesOnce();
   }
 
+  getSubCategoryName(subCategoryId: number | undefined): string {
+    if(this.getAllSubCategoryResponse().length ===0){
+      return '';
+    }
+    const name=this.getAllSubCategoryResponse().find(s=>s.subCategoryId===subCategoryId)?.name as string;
+    return name;
+  }
 }

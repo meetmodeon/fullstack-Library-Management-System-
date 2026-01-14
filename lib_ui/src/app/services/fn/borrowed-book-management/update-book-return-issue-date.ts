@@ -10,13 +10,13 @@ import { RequestBuilder } from '../../request-builder';
 import { BorrowedResponse } from '../../models/borrowed-response';
 
 export interface UpdateBookReturnIssueDate$Params {
-  userId: number;
+  borrowedId: number;
 }
 
 export function updateBookReturnIssueDate(http: HttpClient, rootUrl: string, params: UpdateBookReturnIssueDate$Params, context?: HttpContext): Observable<StrictHttpResponse<BorrowedResponse>> {
   const rb = new RequestBuilder(rootUrl, updateBookReturnIssueDate.PATH, 'put');
   if (params) {
-    rb.path('userId', params.userId, {});
+    rb.path('borrowedId', params.borrowedId, {});
   }
 
   return http.request(
@@ -29,4 +29,4 @@ export function updateBookReturnIssueDate(http: HttpClient, rootUrl: string, par
   );
 }
 
-updateBookReturnIssueDate.PATH = '/bookBorrowed/{userId}';
+updateBookReturnIssueDate.PATH = '/bookBorrowed/{borrowedId}';

@@ -11,7 +11,7 @@
 
     <div class="containt mt-8 w-full flex flex-col gap-2">
       @for (item of getAllNewBookNotify('BOOK_DUE'); track $index) {
-      <div class="card relative" (click)="markRead(item.announcementId)">
+      <div class="card relative" (click)="item.read?null:markRead(item.announcementId)">
         <div
           class="left flex gap-2 justify-baseline flex-wrap border border-blue-200  hover:bg-gray-200 rounded-md p-1"
           [ngClass]="item.read?'bg-red-100/20':'bg-blue-100/40'"
@@ -36,7 +36,7 @@
       </div>
       }
      @for (item of getAllNewBookNotify('NEW_BOOK'); track $index) {
-       <div class="card2 relative" (click)="markRead(item.announcementId)">
+       <div class="card2 relative" (click)="item.read?null:(item.announcementId)">
         <div
           class="left flex gap-3 justify-baseline flex-wrap border border-blue-200 bg-blue-100/40 hover:bg-gray-200 rounded-md p-1"
           [ngClass]="item.read?'bg-red-100/20':'bg-blue-100/40'"
@@ -53,13 +53,13 @@
           </div>
           
         </div>
-        <div class="dot absolute top-2 right-2 size-2 rounded-full bg-black">
+        <div class="dot absolute top-2 right-2 size-2 rounded-full bg-black" *ngIf="!item.read">
           <!-- <span><i class="pi pi-circle-on" style="color: black"></i></span> -->
         </div>
       </div>
      }
       @for (item of getAllNewBookNotify('MEETING'); track $index) {
-        <div class="card3 relative" (click)="markRead(item.announcementId)">
+        <div class="card3 relative" (click)="item.read?null:(item.announcementId)">
         <div
           class="left flex gap-3 justify-baseline flex-wrap border border-blue-200 bg-blue-100/40 hover:bg-gray-200 rounded-md p-1"
           [ngClass]="item.read?'bg-red-100/20':'bg-blue-100/40'"
@@ -79,13 +79,13 @@
           </div>
           
         </div>
-        <div class="dot absolute top-2 right-2 size-2 rounded-full bg-black">
+        <div class="dot absolute top-2 right-2 size-2 rounded-full bg-black" *ngIf="!item.read">
           <!-- <span><i class="pi pi-circle-on" style="color: black"></i></span> -->
         </div>
       </div>
       }
       @for (item of getAllNewBookNotify('MILESTONE'); track $index) {
-        <div class="card4 relative" (click)="markRead(item.announcementId)">
+        <div class="card4 relative" (click)="item.read?null:(item.announcementId)">
         <div
           class="left flex gap-3 justify-baseline flex-wrap border border-blue-200 bg-blue-100/40 hover:bg-gray-200 rounded-md p-1"
           [ngClass]="item.read?'bg-red-100/20':'bg-blue-100/40'"
@@ -105,7 +105,7 @@
           </div>
           
         </div>
-        <div class="dot absolute top-2 right-2 size-2 rounded-full bg-black">
+        <div class="dot absolute top-2 right-2 size-2 rounded-full bg-black" *ngIf="!item.read">
           <!-- <span><i class="pi pi-circle-on" style="color: black"></i></span> -->
         </div>
       </div>

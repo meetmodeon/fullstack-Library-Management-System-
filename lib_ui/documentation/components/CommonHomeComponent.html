@@ -1,0 +1,1272 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>lib-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">lib-ui documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  CommonHomeComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/core/page/common-home/common-home.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-common-home</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/BookCardComponent.html" target="_self" >BookCardComponent</a></code>
+                            <code>SortContentPipePipe</code>
+                            <code>CapitalizationPipe</code>
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./common-home.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./common-home.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#baseUrl" >baseUrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#child" >child</a>
+                            </li>
+                            <li>
+                                <a href="#isVisible" >isVisible</a>
+                            </li>
+                            <li>
+                                <a href="#popularBookResponse" >popularBookResponse</a>
+                            </li>
+                            <li>
+                                <a href="#recommendedBookResponse" >recommendedBookResponse</a>
+                            </li>
+                            <li>
+                                <a href="#selectedBookId" >selectedBookId</a>
+                            </li>
+                            <li>
+                                <a href="#trendingBookResponse" >trendingBookResponse</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getAllPopularBook" >getAllPopularBook</a>
+                            </li>
+                            <li>
+                                <a href="#getAllRecommendedBook" >getAllRecommendedBook</a>
+                            </li>
+                            <li>
+                                <a href="#getAllTrendingBook" >getAllTrendingBook</a>
+                            </li>
+                            <li>
+                                <a href="#getBookImageById" >getBookImageById</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onShow" >onShow</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(httpClient: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, authService: <a href="../injectables/AuthServiceService.html" target="_self">AuthServiceService</a>, BookService: <a href="../injectables/BookServiceService.html" target="_self">BookServiceService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/core/page/common-home/common-home.component.ts:37</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>httpClient</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthServiceService.html" target="_self" >AuthServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>BookService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BookServiceService.html" target="_self" >BookServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllPopularBook"></a>
+                    <span class="name">
+                        <span ><b>getAllPopularBook</b></span>
+                        <a href="#getAllPopularBook"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllPopularBook()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="90"
+                                    class="link-to-prism">src/app/core/page/common-home/common-home.component.ts:90</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllRecommendedBook"></a>
+                    <span class="name">
+                        <span ><b>getAllRecommendedBook</b></span>
+                        <a href="#getAllRecommendedBook"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllRecommendedBook()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="70"
+                                    class="link-to-prism">src/app/core/page/common-home/common-home.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllTrendingBook"></a>
+                    <span class="name">
+                        <span ><b>getAllTrendingBook</b></span>
+                        <a href="#getAllTrendingBook"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllTrendingBook()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/app/core/page/common-home/common-home.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBookImageById"></a>
+                    <span class="name">
+                        <span ><b>getBookImageById</b></span>
+                        <a href="#getBookImageById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBookImageById(id: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="108"
+                                    class="link-to-prism">src/app/core/page/common-home/common-home.component.ts:108</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/app/core/page/common-home/common-home.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onShow"></a>
+                    <span class="name">
+                        <span ><b>onShow</b></span>
+                        <a href="#onShow"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onShow(id: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">src/app/core/page/common-home/common-home.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="baseUrl"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>baseUrl</b></span>
+                        <a href="#baseUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>environment.apiUrl</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/core/page/common-home/common-home.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="child"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>child</b></span>
+                        <a href="#child"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/BookCardComponent.html" target="_self" >BookCardComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;book&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/core/page/common-home/common-home.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isVisible"></a>
+                    <span class="name">
+                        <span ><b>isVisible</b></span>
+                        <a href="#isVisible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/core/page/common-home/common-home.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="popularBookResponse"></a>
+                    <span class="name">
+                        <span ><b>popularBookResponse</b></span>
+                        <a href="#popularBookResponse"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/BookResponse.html" target="_self" >BookResponse[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/core/page/common-home/common-home.component.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="recommendedBookResponse"></a>
+                    <span class="name">
+                        <span ><b>recommendedBookResponse</b></span>
+                        <a href="#recommendedBookResponse"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/BookResponse.html" target="_self" >BookResponse[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/core/page/common-home/common-home.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedBookId"></a>
+                    <span class="name">
+                        <span ><b>selectedBookId</b></span>
+                        <a href="#selectedBookId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/core/page/common-home/common-home.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trendingBookResponse"></a>
+                    <span class="name">
+                        <span ><b>trendingBookResponse</b></span>
+                        <a href="#trendingBookResponse"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/BookResponse.html" target="_self" >BookResponse[]</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/core/page/common-home/common-home.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ViewChild } from &#x27;@angular/core&#x27;;
+import { BookCardComponent } from &quot;../book-card/book-card.component&quot;;
+import { BookLayoutComponent } from &quot;../book-layout/book-layout.component&quot;;
+import { mostPopularBook, MostPopularBook$Params, recommendationBook, RecommendationBook$Params, trendingBook, TrendingBook$Params } from &#x27;../../../services/functions&#x27;;
+import { HttpClient, HttpContext } from &#x27;@angular/common/http&#x27;;
+import { environment } from &#x27;../../../../environments/environment&#x27;;
+import { AuthServiceService } from &#x27;../../../services/auth/auth-service.service&#x27;;
+import { BookResponse } from &#x27;../../../services/models&#x27;;
+import { SortContentPipePipe } from &#x27;../../../pipe/sortContent/sort-content-pipe.pipe&#x27;;
+import { BookServiceService } from &#x27;../../../services/StateMangeSerivce/Book/book-service.service&#x27;;
+import { CapitalizationPipe } from &#x27;../../../pipe/capitalization.pipe&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+
+@Component({
+  selector: &#x27;app-common-home&#x27;,
+  imports: [BookCardComponent,
+     SortContentPipePipe,
+     CapitalizationPipe,
+     CommonModule
+    ],
+  templateUrl: &#x27;./common-home.component.html&#x27;,
+  styleUrl: &#x27;./common-home.component.scss&#x27;
+})
+export class CommonHomeComponent {
+  private baseUrl&#x3D;environment.apiUrl;
+  isVisible:boolean&#x3D;false;
+  @ViewChild(&#x27;book&#x27;) child!:BookCardComponent;
+  selectedBookId!:number;
+  trendingBookResponse!:BookResponse[];
+  recommendedBookResponse!:BookResponse[];
+  popularBookResponse!:BookResponse[];
+
+  onShow(id:any){
+    this.selectedBookId&#x3D;id as number;
+    this.isVisible&#x3D;true;
+     this.child.showDialog();
+  }
+
+  constructor(private httpClient:HttpClient,
+    private authService:AuthServiceService,
+    private BookService:BookServiceService
+  ){
+    this.getAllTrendingBook();
+    this.getAllRecommendedBook();
+    this.getAllPopularBook();
+  }
+
+  ngOnInit(){
+    
+  }
+
+ getAllTrendingBook(){
+     const param:TrendingBook$Params&#x3D;{
+          page:0,
+          size:7
+        }
+        trendingBook(this.httpClient,this.baseUrl,param,new HttpContext())
+        .subscribe({
+          next:(value)&#x3D;&gt;{
+            if(value?.body){
+            this.trendingBookResponse&#x3D;value.body.content as BookResponse[];
+            console.log(this.trendingBookResponse);
+            }
+          },
+          error:(error)&#x3D;&gt;{
+            console.log(&#x27;Something error to fetch trending book&#x27;);
+          }
+        })
+  }
+  getAllRecommendedBook(){
+    if(this.authService.isLoggedIn()){
+      const param:RecommendationBook$Params&#x3D;{
+      page:0,
+      size:7,
+      email:this.authService.getUserName() as string
+    }
+    recommendationBook(this.httpClient,this.baseUrl,param,new HttpContext())
+    .subscribe({
+      next:(value)&#x3D;&gt;{
+        if(value?.body){
+          this.recommendedBookResponse&#x3D;value.body.content as BookResponse[];
+        }
+      },
+      error:(error)&#x3D;&gt;{
+        console.log(&#x27;Something error in fetching recommendation Book&#x27;);
+      }
+    })
+    }
+  }
+  getAllPopularBook(){
+    const param:MostPopularBook$Params&#x3D;{
+      page:0,
+      size:7
+    };
+    mostPopularBook(this.httpClient,this.baseUrl,param,new HttpContext())
+    .subscribe({
+      next:(value)&#x3D;&gt;{
+       if(value?.body){
+         this.popularBookResponse&#x3D;value.body.content as BookResponse[];
+       }
+      },
+      error:(error)&#x3D;&gt;{
+        console.log(&#x27;Something fetching in mostPopularBook&#x27;);
+      }
+    })
+  }
+
+  getBookImageById(id:any){
+    this.BookService.loadBooksOnce();
+    return this.BookService.getBookImage(id as number);
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div&gt;
+  &lt;div
+    class&#x3D;&quot;w-full h-full border border-blue-200/60 bg-blue-100/40 p-8 rounded-2xl&quot;
+  &gt;
+    &lt;div class&#x3D;&quot;flex flex-col gap-6&quot;&gt;
+      &lt;div class&#x3D;&quot;par *:text-blue-500 flex flex-col&quot;&gt;
+        &lt;span&gt;Welcome to PU Book Cycle&lt;/span&gt;
+        &lt;span&gt;Your sustainable reading journey starts here&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;image&quot;&gt;
+        &lt;div&gt;
+          &lt;img
+            src&#x3D;&quot;libr.jpg&quot;
+            alt&#x3D;&quot;image&quot;
+            class&#x3D;&quot;w-full h-110 object-cover rounded-2xl&quot;
+          /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;flex flex-col-reverse gap-4&quot;&gt;
+    &lt;div class&#x3D;&quot;tranding-now&quot; *ngIf&#x3D;&quot;trendingBookResponse.length&gt;0&quot;&gt;
+      &lt;div class&#x3D;&quot;par my-8 flex gap-2&quot;&gt;
+        &lt;span&gt;
+          &lt;i class&#x3D;&quot;pi pi-chart-line text-red-400&quot;&gt;&lt;/i&gt;
+        &lt;/span&gt;
+        &lt;span class&#x3D;&quot;text-black&quot;&gt;Trending Now&lt;/span&gt;
+        &lt;span class&#x3D;&quot;pl-2 text-gray-500&quot;&gt;Most popular this week&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8&quot;&gt;
+        @for (book of trendingBookResponse; track $index) {
+        &lt;div class&#x3D;&quot;content&quot; (click)&#x3D;&quot;onShow(book.bookId)&quot;&gt;
+          &lt;div
+            class&#x3D;&quot;border grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300&quot;
+          &gt;
+            &lt;div class&#x3D;&quot;content1-image w-full&quot;&gt;
+              &lt;div class&#x3D;&quot;h-[200px] p-2&quot;&gt;
+                &lt;img
+                  src&#x3D;&quot;{{ getBookImageById(book.bookId) }}&quot;
+                  alt&#x3D;&quot;alt&quot;
+                  class&#x3D;&quot;object-cover w-full h-full rounded-2xl bg-gray-600&quot;
+                /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;content overflow-auto flex flex-col gap-2&quot;&gt;
+              &lt;div class&#x3D;&quot;book-title&quot;&gt;
+                &lt;span class&#x3D;&quot;text-black&quot;&gt;{{ book.name }}&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;book_author&quot;&gt;
+                &lt;span class&#x3D;&quot;text-gray-400 text-sm&quot;&gt;
+                  {{ book.author | sortContentPipe }}
+                &lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;flex gap-1&quot;&gt;
+                &lt;span class&#x3D;&quot;text-yellow-400&quot;&gt;
+                  &lt;i class&#x3D;&quot;fa-solid fa-star&quot;&gt;&lt;/i&gt;
+                &lt;/span&gt;
+                &lt;span&gt;{{ book.averageRating }}&lt;/span&gt;
+                
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;btn-part mt-2&quot;&gt;
+                &lt;span
+                  class&#x3D;&quot;border border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold&quot;
+                  &gt;{{ book.bookStatus }}&lt;/span
+                &gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        }
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;recommand&quot; *ngIf&#x3D;&quot;recommendedBookResponse.length&gt;0&quot;&gt;
+      &lt;div class&#x3D;&quot;par my-8 flex gap-2&quot;&gt;
+        &lt;span&gt;
+          &lt;i class&#x3D;&quot;fa-solid fa-ranking-star text-blue-400&quot;&gt;&lt;/i&gt;
+        &lt;/span&gt;
+        &lt;span class&#x3D;&quot;text-black&quot;&gt;Recommended For You&lt;/span&gt;
+        &lt;span class&#x3D;&quot;pl-2 text-gray-500&quot;&gt;Based on your reading history&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-8&quot;&gt;
+        @for (book of recommendedBookResponse; track $index) {
+        &lt;div class&#x3D;&quot;content&quot; (click)&#x3D;&quot;onShow(book.bookId)&quot;&gt;
+          &lt;div
+            class&#x3D;&quot;border grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300&quot;
+          &gt;
+            &lt;div class&#x3D;&quot;content1-image w-full&quot;&gt;
+              &lt;div class&#x3D;&quot;h-[200px] p-2&quot;&gt;
+                &lt;img
+                  src&#x3D;&quot;{{ getBookImageById(book.bookId) }}&quot;
+                  alt&#x3D;&quot;alt&quot;
+                  class&#x3D;&quot;object-cover w-full h-full rounded-2xl bg-gray-600&quot;
+                /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;content overflow-auto flex flex-col gap-2&quot;&gt;
+              &lt;div class&#x3D;&quot;book-title&quot;&gt;
+                &lt;span class&#x3D;&quot;text-black&quot;&gt;{{ book.name | capitalization }}&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;book_author&quot;&gt;
+                &lt;span class&#x3D;&quot;text-gray-400 text-sm&quot;
+                  &gt;{{ book.author | sortContentPipe }}
+                &lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;flex gap-1&quot;&gt;
+                &lt;span class&#x3D;&quot;text-yellow-400&quot;&gt;
+                  &lt;i class&#x3D;&quot;fa-solid fa-star&quot;&gt;&lt;/i&gt;
+                &lt;/span&gt;
+                &lt;span&gt;{{ book.averageRating }}&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;btn-part mt-2&quot;&gt;
+                &lt;span
+                  class&#x3D;&quot;border border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold&quot;
+                  &gt;{{ book.bookStatus }}&lt;/span
+                &gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        }
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;recent visited&quot; *ngIf&#x3D;&quot;popularBookResponse.length&gt;0&quot;&gt;
+      &lt;div class&#x3D;&quot;par mt-6 mb-3 flex gap-2&quot;&gt;
+        &lt;span&gt;
+          &lt;i class&#x3D;&quot;fa-regular fa-clock text-blue-500&quot;&gt;&lt;/i&gt;
+        &lt;/span&gt;
+        &lt;span class&#x3D;&quot;text-black&quot;&gt;Most Popular Book&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-8&quot;&gt;
+        @for (book of popularBookResponse; track $index) {
+        &lt;div class&#x3D;&quot;content&quot; (click)&#x3D;&quot;onShow(book.bookId)&quot;&gt;
+          &lt;div
+            class&#x3D;&quot;border grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300&quot;
+          &gt;
+            &lt;div class&#x3D;&quot;content1-image w-full&quot;&gt;
+              &lt;div class&#x3D;&quot;h-[200px] p-2&quot;&gt;
+                &lt;img
+                  src&#x3D;&quot;{{ getBookImageById(book.bookId) }}&quot;
+                  alt&#x3D;&quot;alt&quot;
+                  class&#x3D;&quot;object-cover w-full h-full rounded-2xl bg-gray-600&quot;
+                /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;content overflow-auto flex flex-col gap-2&quot;&gt;
+              &lt;div class&#x3D;&quot;book-title&quot;&gt;
+                &lt;span class&#x3D;&quot;text-black&quot;&gt;{{ book.name | capitalization }}&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;book_author&quot;&gt;
+                &lt;span class&#x3D;&quot;text-gray-400 text-sm&quot;
+                  &gt;{{ book.author | sortContentPipe }}
+                &lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;flex gap-1&quot;&gt;
+                &lt;span class&#x3D;&quot;text-yellow-400&quot;&gt;
+                  &lt;i class&#x3D;&quot;fa-solid fa-star&quot;&gt;&lt;/i&gt;
+                &lt;/span&gt;
+                &lt;span&gt;{{ book.averageRating }}&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div class&#x3D;&quot;btn-part mt-2&quot;&gt;
+                &lt;span
+                  class&#x3D;&quot;border border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold&quot;
+                  &gt;{{ book.bookStatus }}&lt;/span
+                &gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        }
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+  &lt;app-book-card [bookId]&#x3D;&quot;selectedBookId&quot; #book&gt;&lt;/app-book-card&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div>  <div    class="w-full h-full border border-blue-200/60 bg-blue-100/40 p-8 rounded-2xl"  >    <div class="flex flex-col gap-6">      <div class="par *:text-blue-500 flex flex-col">        <span>Welcome to PU Book Cycle</span>        <span>Your sustainable reading journey starts here</span>      </div>      <div class="image">        <div>          <img            src="libr.jpg"            alt="image"            class="w-full h-110 object-cover rounded-2xl"          />        </div>      </div>    </div>  </div>  <div class="flex flex-col-reverse gap-4">    <div class="tranding-now" *ngIf="trendingBookResponse.length>0">      <div class="par my-8 flex gap-2">        <span>          <i class="pi pi-chart-line text-red-400"></i>        </span>        <span class="text-black">Trending Now</span>        <span class="pl-2 text-gray-500">Most popular this week</span>      </div>      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">        @for (book of trendingBookResponse; track $index) {        <div class="content" (click)="onShow(book.bookId)">          <div            class="border grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300"          >            <div class="content1-image w-full">              <div class="h-[200px] p-2">                <img                  src="{{ getBookImageById(book.bookId) }}"                  alt="alt"                  class="object-cover w-full h-full rounded-2xl bg-gray-600"                />              </div>            </div>            <div class="content overflow-auto flex flex-col gap-2">              <div class="book-title">                <span class="text-black">{{ book.name }}</span>              </div>              <div class="book_author">                <span class="text-gray-400 text-sm">                  {{ book.author | sortContentPipe }}                </span>              </div>              <div class="flex gap-1">                <span class="text-yellow-400">                  <i class="fa-solid fa-star"></i>                </span>                <span>{{ book.averageRating }}</span>                              </div>              <div class="btn-part mt-2">                <span                  class="border border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold"                  >{{ book.bookStatus }}</span                >              </div>            </div>          </div>        </div>        }      </div>    </div>    <div class="recommand" *ngIf="recommendedBookResponse.length>0">      <div class="par my-8 flex gap-2">        <span>          <i class="fa-solid fa-ranking-star text-blue-400"></i>        </span>        <span class="text-black">Recommended For You</span>        <span class="pl-2 text-gray-500">Based on your reading history</span>      </div>      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-8">        @for (book of recommendedBookResponse; track $index) {        <div class="content" (click)="onShow(book.bookId)">          <div            class="border grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300"          >            <div class="content1-image w-full">              <div class="h-[200px] p-2">                <img                  src="{{ getBookImageById(book.bookId) }}"                  alt="alt"                  class="object-cover w-full h-full rounded-2xl bg-gray-600"                />              </div>            </div>            <div class="content overflow-auto flex flex-col gap-2">              <div class="book-title">                <span class="text-black">{{ book.name | capitalization }}</span>              </div>              <div class="book_author">                <span class="text-gray-400 text-sm"                  >{{ book.author | sortContentPipe }}                </span>              </div>              <div class="flex gap-1">                <span class="text-yellow-400">                  <i class="fa-solid fa-star"></i>                </span>                <span>{{ book.averageRating }}</span>              </div>              <div class="btn-part mt-2">                <span                  class="border border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold"                  >{{ book.bookStatus }}</span                >              </div>            </div>          </div>        </div>        }      </div>    </div>    <div class="recent visited" *ngIf="popularBookResponse.length>0">      <div class="par mt-6 mb-3 flex gap-2">        <span>          <i class="fa-regular fa-clock text-blue-500"></i>        </span>        <span class="text-black">Most Popular Book</span>      </div>      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-8">        @for (book of popularBookResponse; track $index) {        <div class="content" (click)="onShow(book.bookId)">          <div            class="border grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300"          >            <div class="content1-image w-full">              <div class="h-[200px] p-2">                <img                  src="{{ getBookImageById(book.bookId) }}"                  alt="alt"                  class="object-cover w-full h-full rounded-2xl bg-gray-600"                />              </div>            </div>            <div class="content overflow-auto flex flex-col gap-2">              <div class="book-title">                <span class="text-black">{{ book.name | capitalization }}</span>              </div>              <div class="book_author">                <span class="text-gray-400 text-sm"                  >{{ book.author | sortContentPipe }}                </span>              </div>              <div class="flex gap-1">                <span class="text-yellow-400">                  <i class="fa-solid fa-star"></i>                </span>                <span>{{ book.averageRating }}</span>              </div>              <div class="btn-part mt-2">                <span                  class="border border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold"                  >{{ book.bookStatus }}</span                >              </div>            </div>          </div>        </div>        }      </div>    </div>  </div></div><div>  <app-book-card [bookId]="selectedBookId" #book></app-book-card></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookBorrowedComponent', 'selector': 'app-book-borrowed'},{'name': 'BookCardComponent', 'selector': 'app-book-card'},{'name': 'BookComponentComponent', 'selector': 'app-book-component'},{'name': 'BookLayoutComponent', 'selector': 'app-book-layout'},{'name': 'CategoriesOperationComponent', 'selector': 'app-categories-operation'},{'name': 'ChatAiComponent', 'selector': 'app-chat-ai'},{'name': 'CommonHomeComponent', 'selector': 'app-common-home'},{'name': 'CycleHubComponent', 'selector': 'app-cycle-hub'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardPageComponent', 'selector': 'app-dashboard-page'},{'name': 'DigitalPageComponent', 'selector': 'app-digital-page'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginCallbackComponent', 'selector': 'app-login-callback'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MyBookComponent', 'selector': 'app-my-book'},{'name': 'MyProfileComponent', 'selector': 'app-my-profile'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NotificationComponent', 'selector': 'app-notification'},{'name': 'ProfileSettingComponent', 'selector': 'app-profile-setting'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SearchBoxComponent', 'selector': 'app-search-box'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'SubCategoryComponent', 'selector': 'app-sub-category'},{'name': 'SuperAdminRegisterComponent', 'selector': 'app-super-admin-register'},{'name': 'UserComponent', 'selector': 'app-user'}];
+    var DIRECTIVES = [{'name': 'AnimatedCounterDirective', 'selector': '[animatedCounter]'}];
+    var ACTUAL_COMPONENT = {'name': 'CommonHomeComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'CommonHomeComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

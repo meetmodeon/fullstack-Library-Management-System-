@@ -13,7 +13,7 @@ export interface MarkRead$Params {
 }
 
 export function markRead(http: HttpClient, rootUrl: string, params: MarkRead$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-  const rb = new RequestBuilder(rootUrl, markRead.PATH, 'put');
+  const rb = new RequestBuilder(rootUrl, markRead.PATH, 'get');
   if (params) {
     rb.path('id', params.id, {});
   }
@@ -28,4 +28,4 @@ export function markRead(http: HttpClient, rootUrl: string, params: MarkRead$Par
   );
 }
 
-markRead.PATH = '/notify/{id}/read';
+markRead.PATH = '/user/markAsRead/{id}';

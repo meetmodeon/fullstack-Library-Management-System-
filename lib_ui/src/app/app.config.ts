@@ -6,6 +6,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import { authInterceptor } from './interceptors/auth.interceptor';
+import { provideQuillConfig } from 'ngx-quill';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
@@ -14,6 +15,9 @@ export const appConfig: ApplicationConfig = {
       theme: {
         preset: Aura
       }
+    }),
+     provideQuillConfig({
+      theme: 'snow'
     }),
     provideHttpClient(withInterceptors([authInterceptor])),
      provideRouter(routes)]

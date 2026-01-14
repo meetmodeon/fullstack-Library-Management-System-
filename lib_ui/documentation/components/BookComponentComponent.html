@@ -1,0 +1,2366 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>lib-ui documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">lib-ui documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  BookComponentComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-book-component</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>Dialog</code>
+                                <code><a href="https://angular.io/api/forms/ReactiveFormsModule" target="_blank" >ReactiveFormsModule</a></code>
+                            <code>CapitalizationPipe</code>
+                                <code><a href="https://angular.io/api/common/CommonModule" target="_blank" >CommonModule</a></code>
+                                <code><a href="https://angular.io/api/forms/FormsModule" target="_blank" >FormsModule</a></code>
+                            <code>MultiSelectModule</code>
+                            <code>Rating</code>
+                            <code>ButtonModule</code>
+                            <code>Divider</code>
+                            <code>TableModule</code>
+                            <code>QuillModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./book-component.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./book-component.component.scss</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#allAuthors" >allAuthors</a>
+                            </li>
+                            <li>
+                                <a href="#authorInput" >authorInput</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#baseUrl" >baseUrl</a>
+                            </li>
+                            <li>
+                                <a href="#book" >book</a>
+                            </li>
+                            <li>
+                                <a href="#bookFormGroup" >bookFormGroup</a>
+                            </li>
+                            <li>
+                                <a href="#bookListData" >bookListData</a>
+                            </li>
+                            <li>
+                                <a href="#fileType" >fileType</a>
+                            </li>
+                            <li>
+                                <a href="#isEdit" >isEdit</a>
+                            </li>
+                            <li>
+                                <a href="#listOfSubCategory" >listOfSubCategory</a>
+                            </li>
+                            <li>
+                                <a href="#selectedBookId" >selectedBookId</a>
+                            </li>
+                            <li>
+                                <a href="#statusOptions" >statusOptions</a>
+                            </li>
+                            <li>
+                                <a href="#visible" >visible</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addAuthor" >addAuthor</a>
+                            </li>
+                            <li>
+                                <a href="#getBookImage" >getBookImage</a>
+                            </li>
+                            <li>
+                                <a href="#getSubCategoryName" >getSubCategoryName</a>
+                            </li>
+                            <li>
+                                <a href="#hasError" >hasError</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onDelete" >onDelete</a>
+                            </li>
+                            <li>
+                                <a href="#onFileChange" >onFileChange</a>
+                            </li>
+                            <li>
+                                <a href="#onFileSelected" >onFileSelected</a>
+                            </li>
+                            <li>
+                                <a href="#onUpdate" >onUpdate</a>
+                            </li>
+                            <li>
+                                <a href="#onUploadFile" >onUploadFile</a>
+                            </li>
+                            <li>
+                                <a href="#openAddForm" >openAddForm</a>
+                            </li>
+                            <li>
+                                <a href="#openEditForm" >openEditForm</a>
+                            </li>
+                            <li>
+                                <a href="#removeAuthor" >removeAuthor</a>
+                            </li>
+                            <li>
+                                <a href="#submit" >submit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, bookService: <a href="../injectables/BookServiceService.html" target="_self">BookServiceService</a>, subCategoryService: <a href="../injectables/SubCategoryService.html" target="_self">SubCategoryService</a>, httpClient: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, messageService: MessageService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:69</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>bookService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BookServiceService.html" target="_self" >BookServiceService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>subCategoryService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SubCategoryService.html" target="_self" >SubCategoryService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>httpClient</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>messageService</td>
+                                                  
+                                                        <td>
+                                                                    <code>MessageService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addAuthor"></a>
+                    <span class="name">
+                        <span ><b>addAuthor</b></span>
+                        <a href="#addAuthor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addAuthor()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="130"
+                                    class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:130</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBookImage"></a>
+                    <span class="name">
+                        <span ><b>getBookImage</b></span>
+                        <a href="#getBookImage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getBookImage(bookId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="257"
+                                    class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:257</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>bookId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSubCategoryName"></a>
+                    <span class="name">
+                        <span ><b>getSubCategoryName</b></span>
+                        <a href="#getSubCategoryName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSubCategoryName(subCategoryId: number | undefined)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="146"
+                                    class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:146</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>subCategoryId</td>
+                                            <td>
+                                                        <code>number | undefined</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasError"></a>
+                    <span class="name">
+                        <span ><b>hasError</b></span>
+                        <a href="#hasError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hasError(control: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, error: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>control</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>error</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:99</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onDelete"></a>
+                    <span class="name">
+                        <span ><b>onDelete</b></span>
+                        <a href="#onDelete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onDelete(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="254"
+                                    class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:254</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFileChange"></a>
+                    <span class="name">
+                        <span ><b>onFileChange</b></span>
+                        <a href="#onFileChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFileChange(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="115"
+                                    class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:115</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFileSelected"></a>
+                    <span class="name">
+                        <span ><b>onFileSelected</b></span>
+                        <a href="#onFileSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFileSelected(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="267"
+                                    class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:267</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onUpdate"></a>
+                    <span class="name">
+                        <span ><b>onUpdate</b></span>
+                        <a href="#onUpdate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onUpdate(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="238"
+                                    class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:238</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onUploadFile"></a>
+                    <span class="name">
+                        <span ><b>onUploadFile</b></span>
+                        <a href="#onUploadFile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onUploadFile(bookId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, input: HTMLInputElement, file: "pdf" | "image")</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="261"
+                                    class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:261</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>bookId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>input</td>
+                                            <td>
+                                                        <code>HTMLInputElement</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>file</td>
+                                            <td>
+                                                        <code>&quot;pdf&quot; | &quot;image&quot;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openAddForm"></a>
+                    <span class="name">
+                        <span ><b>openAddForm</b></span>
+                        <a href="#openAddForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openAddForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="154"
+                                    class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:154</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openEditForm"></a>
+                    <span class="name">
+                        <span ><b>openEditForm</b></span>
+                        <a href="#openEditForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openEditForm(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="161"
+                                    class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:161</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeAuthor"></a>
+                    <span class="name">
+                        <span ><b>removeAuthor</b></span>
+                        <a href="#removeAuthor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeAuthor(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="139"
+                                    class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:139</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submit"></a>
+                    <span class="name">
+                        <span ><b>submit</b></span>
+                        <a href="#submit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>submit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="177"
+                                    class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:177</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="allAuthors"></a>
+                    <span class="name">
+                        <span ><b>allAuthors</b></span>
+                        <a href="#allAuthors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authorInput"></a>
+                    <span class="name">
+                        <span ><b>authorInput</b></span>
+                        <a href="#authorInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormControl" target="_blank" >FormControl</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="baseUrl"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>baseUrl</b></span>
+                        <a href="#baseUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>environment.apiUrl</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="book"></a>
+                    <span class="name">
+                        <span ><b>book</b></span>
+                        <a href="#book"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/BookRequest.html" target="_self" >BookRequest</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bookFormGroup"></a>
+                    <span class="name">
+                        <span ><b>bookFormGroup</b></span>
+                        <a href="#bookFormGroup"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bookListData"></a>
+                    <span class="name">
+                        <span ><b>bookListData</b></span>
+                        <a href="#bookListData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/BookResponse.html" target="_self" >BookResponse[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fileType"></a>
+                    <span class="name">
+                        <span ><b>fileType</b></span>
+                        <a href="#fileType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>signal&lt;bookTypes&gt;(&#x27;BOOK_IMAGE&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isEdit"></a>
+                    <span class="name">
+                        <span ><b>isEdit</b></span>
+                        <a href="#isEdit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="listOfSubCategory"></a>
+                    <span class="name">
+                        <span ><b>listOfSubCategory</b></span>
+                        <a href="#listOfSubCategory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>SubCategoryResponse[]</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedBookId"></a>
+                    <span class="name">
+                        <span ><b>selectedBookId</b></span>
+                        <a href="#selectedBookId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="statusOptions"></a>
+                    <span class="name">
+                        <span ><b>statusOptions</b></span>
+                        <a href="#statusOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Array&lt;&quot;AVAILABLE&quot; | &quot;BORROWED&quot; | &quot;LOST&quot;&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    &#x27;AVAILABLE&#x27;,
+    &#x27;BORROWED&#x27;,
+    &#x27;LOST&#x27;,
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="visible"></a>
+                    <span class="name">
+                        <span ><b>visible</b></span>
+                        <a href="#visible"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>unknown</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/core/superAdmin/page/book-manage/book-component/book-component.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, signal, Signal } from &#x27;@angular/core&#x27;;
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from &#x27;@angular/forms&#x27;;
+import { Dialog } from &#x27;primeng/dialog&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { ButtonModule } from &#x27;primeng/button&#x27;;
+import { Divider } from &#x27;primeng/divider&#x27;;
+import { TableModule } from &#x27;primeng/table&#x27;;
+import { CapitalizationPipe } from &#x27;../../../../../pipe/capitalization.pipe&#x27;;
+import { Rating } from &#x27;primeng/rating&#x27;;
+import { MultiSelectModule } from &#x27;primeng/multiselect&#x27;;
+import {
+  BookRequest,
+  BookResponse,
+  SubCategoryResponse,
+} from &#x27;../../../../../services/models&#x27;;
+import { BookServiceService } from &#x27;../../../../../services/StateMangeSerivce/Book/book-service.service&#x27;;
+
+import { HttpClient, HttpContext, HttpErrorResponse, HttpResponse, HttpResponseBase } from &#x27;@angular/common/http&#x27;;
+import { environment } from &#x27;../../../../../../environments/environment&#x27;;
+import { SubCategoryService } from &#x27;../../../../../services/StateMangeSerivce/subCategoryService/sub-category.service&#x27;;
+import { addBook, AddBook$Params, updateBookById, UpdateBookById$Params, uploadBookImage, UploadBookImage$Params } from &#x27;../../../../../services/functions&#x27;;
+import { MessageService } from &#x27;primeng/api&#x27;;
+import { QuillModule } from &#x27;ngx-quill&#x27;;
+
+
+type bookTypes&#x3D;&#x27;BOOK_IMAGE&#x27;|&#x27;BOOK_PDF&#x27;
+@Component({
+  selector: &#x27;app-book-component&#x27;,
+  imports: [
+    Dialog,
+    ReactiveFormsModule,
+    CapitalizationPipe,
+    CommonModule,
+    FormsModule,
+    MultiSelectModule,
+    Rating,
+    ButtonModule,
+    Divider,
+    TableModule,
+    QuillModule
+  ],
+  providers:[],
+  templateUrl: &#x27;./book-component.component.html&#x27;,
+  styleUrl: &#x27;./book-component.component.scss&#x27;,
+})
+export class BookComponentComponent {
+  private baseUrl&#x3D;environment.apiUrl;
+  bookFormGroup!: FormGroup;
+  book!: BookRequest;
+  bookListData: BookResponse[] &#x3D; [];
+  visible &#x3D; false;
+  isEdit &#x3D; false;
+  statusOptions: Array&lt;&#x27;AVAILABLE&#x27; | &#x27;BORROWED&#x27; | &#x27;LOST&#x27;&gt; &#x3D; [
+    &#x27;AVAILABLE&#x27;,
+    &#x27;BORROWED&#x27;,
+    &#x27;LOST&#x27;,
+  ];
+  allAuthors: string[] &#x3D; [];
+  authorInput: FormControl;
+  listOfSubCategory!: SubCategoryResponse[];
+  selectedBookId:number|null&#x3D;null;
+  fileType&#x3D;signal&lt;bookTypes&gt;(&#x27;BOOK_IMAGE&#x27;);
+  
+
+  constructor(
+    private fb: FormBuilder,
+    private bookService: BookServiceService,
+    private subCategoryService: SubCategoryService,
+    private httpClient:HttpClient,
+    private messageService:MessageService
+  ) {
+    this.authorInput &#x3D; this.fb.control(&#x27;&#x27;);
+    this.bookFormGroup &#x3D; this.fb.group({
+      author: this.fb.control&lt;string[]&gt;(
+       [],Validators.required
+      ),
+      isbn: this.fb.control(&#x27;&#x27;,Validators.required
+      ),
+      name: this.fb.control( &#x27;&#x27;,
+        Validators.required
+      ),
+      publication: this.fb.control( &#x27;&#x27;,
+        Validators.required
+      ),
+      detail:this.fb.control(&#x27;&#x27;,[Validators.maxLength(5000)]),
+      subCategoriesId: this.fb.control(&#x27;&#x27;,
+        Validators.required
+      ),
+    });
+  }
+
+  ngOnInit() {
+    this.bookService.loadBooksOnce();
+    this.bookService.books$.subscribe({
+      next: (value: any) &#x3D;&gt; {
+        this.bookListData &#x3D; value as BookResponse[];
+      },
+    });
+    this.subCategoryService.loadSubCategoriesOnce();
+    this.subCategoryService.allSubCategoryResponse$.subscribe({
+      next: (value: any) &#x3D;&gt; {
+        this.listOfSubCategory &#x3D; value as SubCategoryResponse[];
+      },
+    });
+    
+  }
+
+  onFileChange(event: any) {
+    const file &#x3D; event.target.files[0];
+
+    if (file) {
+      this.bookFormGroup.patchValue({ imageUrl: file.name });
+    }
+  }
+
+  hasError(control: string, error: string) {
+    return (
+      this.bookFormGroup.controls[control].touched &amp;&amp;
+      this.bookFormGroup.controls[control].hasError(error)
+    );
+  }
+
+  addAuthor() {
+    const value &#x3D; this.authorInput.value?.trim();
+    if (value) {
+      const authors &#x3D; this.bookFormGroup.get(&#x27;author&#x27;)?.value || [];
+      this.bookFormGroup.patchValue({ author: [...authors, value] });
+    }
+    this.authorInput &#x3D; this.fb.control(&#x27;&#x27;);
+  }
+
+  removeAuthor(index: number) {
+    const authors &#x3D; this.bookFormGroup.get(&#x27;author&#x27;)?.value || [];
+    authors.splice(index, 1);
+    this.bookFormGroup.patchValue({ author: authors });
+  }
+
+
+  getSubCategoryName(subCategoryId: number | undefined): string {
+    if (this.listOfSubCategory.length &#x3D;&#x3D;&#x3D; 0) {
+      return &#x27;&#x27;;
+    }
+    const name:string &#x3D; this.listOfSubCategory.find(s&#x3D;&gt;s.subCategoryId&#x3D;&#x3D;&#x3D;subCategoryId as number)?.name??&#x27;&#x27;;
+    return name;
+  }
+
+    openAddForm(){
+    this.isEdit&#x3D;false;
+    this.selectedBookId&#x3D;null;
+    this.bookFormGroup.reset();
+    this.visible&#x3D;true;
+  }
+
+  openEditForm(id:number){
+    this.isEdit&#x3D;true;
+    this.selectedBookId&#x3D;id;
+    const data:BookResponse&#x3D;this.bookListData.find(b&#x3D;&gt;b.bookId&#x3D;&#x3D;&#x3D;this.selectedBookId) as BookResponse;
+
+    this.bookFormGroup.patchValue({
+      name:data.name,
+      author:data.author,
+      isbn:data.isbn,
+      detail:data.detail??&#x27;&#x27;,
+      publication:data.publication,
+      subCategoriesId:data.subCategoryId
+    })
+    this.visible&#x3D;true;
+  }
+
+  submit() {
+   if(this.isEdit){
+    if(!this.selectedBookId){
+      console.error(&quot;Invalid bookId&quot;,this.selectedBookId)
+      return;
+    }
+
+    const params:UpdateBookById$Params&#x3D;{
+      bookId:this.selectedBookId as number,
+      body: this.bookFormGroup.value as BookRequest
+    }
+
+    updateBookById(this.httpClient,this.baseUrl,params,new HttpContext()).subscribe({
+      next:(value)&#x3D;&gt;{
+        if(value){
+          console.log(&quot;the updated value is: &quot;,value);
+          this.bookService.refreshBooks(value.body as BookResponse);
+          this.messageService.add({severity:&quot;success&quot;,summary:&quot;Updated&quot;,detail:&quot;Book Updated successfully&quot;,life:300});
+          this.bookFormGroup.reset();
+          this.visible&#x3D;false;
+        }
+      },
+      error:(error:HttpErrorResponse)&#x3D;&gt;{
+        this.messageService.add({
+          severity:&#x27;error&#x27;,
+          summary:&#x27;Error&#x27;,
+          detail:error.statusText,
+          life:3000
+        });
+      }
+    })
+
+    return;
+   }else{
+     if (this.bookFormGroup.invalid) {
+      this.bookFormGroup.markAllAsTouched();
+      return;
+    }
+    const params:AddBook$Params&#x3D;{
+      body:this.bookFormGroup.value as BookRequest
+    }
+    console.log(params);
+    addBook(this.httpClient,this.baseUrl,params,new HttpContext()).subscribe({
+      next:(value)&#x3D;&gt;{
+        const data&#x3D;value.body as BookResponse;
+        console.log(&#x27;book response data when added&#x27;,data);
+        const currentList&#x3D;this.bookListData;
+        this.bookListData&#x3D;[...currentList,data];
+        this.messageService.add({severity:&quot;success&quot;,summary:&quot;Added Book&quot;,detail:&quot;Book added successfully&quot;,life:3000});
+        this.bookFormGroup.reset();
+        this.visible&#x3D;false;
+      },
+      error:(error)&#x3D;&gt;{
+        this.messageService.add({severity:&#x27;error&#x27;,summary:&quot;Error&quot;,detail:&quot;Something went wrong&quot;,life:3000});
+        this.bookFormGroup.reset();
+      }
+    })
+    this.bookFormGroup.reset();
+   }
+  }
+
+  onUpdate(id: number) {
+    const bookData &#x3D; this.bookListData.find(
+      (book) &#x3D;&gt; book.bookId &#x3D;&#x3D;&#x3D; id
+    ) as BookRequest;
+    this.book &#x3D; bookData;
+    this.isEdit &#x3D; true;
+    this.visible &#x3D; true;
+
+    this.bookFormGroup.patchValue({
+      author: this.book.author ?? [],
+      isbn: this.book.isbn ?? &#x27;&#x27;,
+      name: this.book.name ?? &#x27;&#x27;,
+      publication: this.book.publication ?? &#x27;&#x27;,
+      subCategoriesId: this.book.subCategoriesId ?? [],
+    });
+  }
+  onDelete(id: number) {}
+
+
+  getBookImage(bookId:number):string{
+   return this.bookService.getBookImage(bookId);
+  }
+
+  onUploadFile(bookId:number,input:HTMLInputElement,file:&#x27;pdf&#x27;|&#x27;image&#x27;){
+    this.selectedBookId&#x3D;bookId;
+    file&#x3D;&#x3D;&#x3D;&#x27;image&#x27;?this.fileType.set(&#x27;BOOK_IMAGE&#x27;):this.fileType.set(&#x27;BOOK_PDF&#x27;)
+    setTimeout(()&#x3D;&gt;input.click(),0);
+    }
+
+    onFileSelected(event:any){
+      const file:File&#x3D;event.target.files[0];
+        
+      if(file &amp;&amp; this.selectedBookId !&#x3D;&#x3D;null){
+        const params:UploadBookImage$Params&#x3D;{
+         bookId:this.selectedBookId,
+         type:this.fileType(),
+         body:file
+        }
+
+        console.log(&quot;params data is: &quot;,params);
+        uploadBookImage(this.httpClient,this.baseUrl,params,new HttpContext()).subscribe({
+          next:value&#x3D;&gt;{
+            this.getBookImage(this.selectedBookId as number);
+            this.messageService.add({severity:&#x27;success&#x27;,summary:&quot;Ok&quot;,detail:&#x60;Upload book ${this.fileType()} success&#x60;,life:3000});
+            
+          },
+          error:error&#x3D;&gt;{
+            this.messageService.add({severity:&#x27;error&#x27;,summary:&#x27;Error&#x27;,detail:&#x27;error some things&#x27;,life:3000});
+          }
+        })
+      }
+
+    }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;sub-category&quot;&gt;
+  &lt;div class&#x3D;&quot;add-category w-full p-4&quot;&gt;
+    &lt;div class&#x3D;&quot;w-full flex justify-end&quot;&gt;
+      &lt;div
+        class&#x3D;&quot;text-black rounded-2xl shadow shadow-gray-800 px-4 border border-black inline-block transform active:scale-90 cursor-pointer&quot;
+      &gt;
+        &lt;button (click)&#x3D;&quot;openAddForm()&quot;&gt;Add New Book&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p-divider&gt;&lt;/p-divider&gt;
+
+  &lt;div class&#x3D;&quot;container mx-auto&quot;&gt;
+    @if (bookListData) {
+    &lt;div class&#x3D;&quot;show-category&quot;&gt;
+      &lt;div class&#x3D;&quot;card&quot;&gt;
+        &lt;p-table
+          [value]&#x3D;&quot;bookListData&quot;
+          [paginator]&#x3D;&quot;true&quot;
+          [rows]&#x3D;&quot;5&quot;
+          [rowsPerPageOptions]&#x3D;&quot;[5, 10, 20]&quot;
+          [tableStyle]&#x3D;&quot;{ &#x27;min-width&#x27;: &#x27;50rem&#x27; }&quot;
+          [loading]&#x3D;&quot;false&quot;
+        &gt;
+          &lt;ng-template #header&gt;
+            &lt;tr&gt;
+              &lt;th style&#x3D;&quot;width: 1%&quot;&gt;Book_Id&lt;/th&gt;
+              &lt;th style&#x3D;&quot;width: 8%&quot;&gt;Book Name&lt;/th&gt;
+              &lt;th style&#x3D;&quot;width: 10%&quot;&gt;Author&lt;/th&gt;
+              &lt;th style&#x3D;&quot;width: 3%&quot;&gt;Status&lt;/th&gt;
+              &lt;th style&#x3D;&quot;width: 5%&quot;&gt;Rating&lt;/th&gt;
+              &lt;th style&#x3D;&quot;width: 10%&quot;&gt;ISBN&lt;/th&gt;
+              &lt;th style&#x3D;&quot;width: 5%&quot;&gt;Pulication&lt;/th&gt;
+              &lt;th style&#x3D;&quot;width: 8%&quot;&gt;Detail&lt;/th&gt;
+              &lt;th style&#x3D;&quot;width: 5%&quot;&gt;Sub_Category Name&lt;/th&gt;
+              &lt;th style&#x3D;&quot;width: 20%&quot;&gt;Action&lt;/th&gt;
+              &lt;th style&#x3D;&quot;width: 15%&quot;&gt;Book pdf&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/ng-template&gt;
+          &lt;ng-template #body let-book&gt;
+            &lt;tr&gt;
+              &lt;td&gt;{{ book.bookId }}&lt;/td&gt;
+              &lt;td&gt;
+                &lt;div class&#x3D;&quot;flex items-center&quot;&gt;
+                  &lt;span class&#x3D;&quot;w-full space-x-1&quot;
+                    &gt;&lt;img
+                      [src]&#x3D;&quot;getBookImage(book.bookId) || &#x27;libr.jpg&#x27;&quot;
+                      alt&#x3D;&quot;&quot;
+                      class&#x3D;&quot;size-5 rounded-full object-cover&quot;
+                  /&gt;&lt;/span&gt;
+                  &lt;span class&#x3D;&quot;&quot;&gt;{{ book.name | capitalization }}&lt;/span&gt;
+                &lt;/div&gt;
+              &lt;/td&gt;
+              &lt;td&gt;{{ book.author }}&lt;/td&gt;
+              &lt;td&gt;{{ book.bookStatus }}&lt;/td&gt;
+              &lt;td&gt;
+                &lt;span&gt;
+                  &lt;div class&#x3D;&quot;card flex justify-center&quot;&gt;
+                    &lt;p-rating
+                      [(ngModel)]&#x3D;&quot;book.averageRating&quot;
+                      [readonly]&#x3D;&quot;true&quot;
+                    /&gt;
+                  &lt;/div&gt;
+                &lt;/span&gt;
+              &lt;/td&gt;
+              &lt;td&gt;{{ book.isbn }}&lt;/td&gt;
+              &lt;td&gt;{{ book.publication }}&lt;/td&gt;
+              &lt;!-- &lt;td [innerHTML]&#x3D;&quot;book.detail&quot;&gt;&lt;/td&gt; --&gt;
+
+              &lt;td&gt;
+                &lt;details class&#x3D;&quot;border rounded p-2 bg-gray-50 transition-transform ease-in-out duration-500&quot;&gt;
+                &lt;summary
+                  class&#x3D;&quot;cursor-pointer font-semibold text-blue-600 hover:text-blue-800 &quot;
+                &gt;
+                  View Details
+                &lt;/summary&gt;
+                &lt;div class&#x3D;&quot;mt-2&quot; [innerHTML]&#x3D;&quot;book.detail&quot;&gt;&lt;/div&gt;
+              &lt;/details&gt;
+              &lt;/td&gt;
+
+              &lt;td&gt;{{ getSubCategoryName(book.subCategoryId) }}&lt;/td&gt;
+              &lt;td&gt;
+                &lt;div class&#x3D;&quot;flex-auto space-x-2 *:transform *:active:scale-90&quot;&gt;
+                  &lt;button
+                    class&#x3D;&quot;px-4 text-black hover:bg-gray-200 rounded-2xl border border-black&quot;
+                    (click)&#x3D;&quot;openEditForm(book.bookId)&quot;
+                  &gt;
+                    Edit
+                  &lt;/button&gt;
+                  &lt;button
+                    class&#x3D;&quot;px-4 text-black hover:bg-gray-200 rounded-2xl border border-black&quot;
+                    (click)&#x3D;&quot;onDelete(book.bookId)&quot;
+                  &gt;
+                    Delete
+                  &lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/td&gt;
+              &lt;td&gt;
+                &lt;input
+                  type&#x3D;&quot;file&quot;
+                  #fileInput
+                  style&#x3D;&quot;display: none&quot;
+                  (change)&#x3D;&quot;onFileSelected($event)&quot;
+                  [accept]&#x3D;&quot;
+                    fileType() &#x3D;&#x3D;&#x3D; &#x27;BOOK_IMAGE&#x27;
+                      ? &#x27;image/jpeg,image/png&#x27;
+                      : &#x27;application/pdf&#x27;
+                  &quot;
+                /&gt;
+                &lt;div class&#x3D;&quot;flex-auto gap-1 *:transform *:active:scale-90&quot;&gt;
+                  &lt;button
+                    class&#x3D;&quot;px-4 text-black hover:bg-gray-200 rounded-2xl border border-black&quot;
+                    (click)&#x3D;&quot;onUploadFile(book.bookId, fileInput, &#x27;image&#x27;)&quot;
+                  &gt;
+                    uploadBookImage
+                  &lt;/button&gt;
+                  &lt;button
+                    class&#x3D;&quot;px-4 text-black hover:bg-gray-200 rounded-2xl border border-black&quot;
+                    (click)&#x3D;&quot;onUploadFile(book.bookId, fileInput, &#x27;pdf&#x27;)&quot;
+                  &gt;
+                    UploadBookPdf
+                  &lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/ng-template&gt;
+        &lt;/p-table&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    }
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;dialog-form&quot;&gt;
+  &lt;p-dialog
+    header&#x3D;&quot;Book Information&quot;
+    [modal]&#x3D;&quot;true&quot;
+    [(visible)]&#x3D;&quot;visible&quot;
+    [style]&#x3D;&quot;{ width: &#x27;40rem&#x27; }&quot;
+  &gt;
+    &lt;span class&#x3D;&quot;p-text-secondary block mb-6&quot;&gt;
+      {{ isEdit ? &quot;Edit Book Details&quot; : &quot;Add New Book&quot; }}
+    &lt;/span&gt;
+
+    &lt;form [formGroup]&#x3D;&quot;bookFormGroup&quot; (ngSubmit)&#x3D;&quot;submit()&quot;&gt;
+      &lt;!-- Book Name --&gt;
+      &lt;div class&#x3D;&quot;flex items-center gap-4 mb-4&quot;&gt;
+        &lt;label class&#x3D;&quot;font-semibold w-32&quot;&gt;Book Name&lt;/label&gt;
+        &lt;input
+          pInputText
+          formControlName&#x3D;&quot;name&quot;
+          class&#x3D;&quot;flex-auto rounded-md w-full border border-gray-300 p-2&quot;
+          autocomplete&#x3D;&quot;off&quot;
+        /&gt;
+      &lt;/div&gt;
+      &lt;p *ngIf&#x3D;&quot;hasError(&#x27;name&#x27;, &#x27;required&#x27;)&quot; class&#x3D;&quot;text-red-500 text-xs mb-2&quot;&gt;
+        Book Name is required
+      &lt;/p&gt;
+
+      &lt;!-- Sub Categories --&gt;
+      &lt;div class&#x3D;&quot;flex items-start gap-4 mb-6&quot;&gt;
+        &lt;label class&#x3D;&quot;font-semibold w-32 pt-2&quot;&gt;SubCategories&lt;/label&gt;
+        &lt;select
+          class&#x3D;&quot;w-full px-2 py-2 rounded-md border border-gray-300 focus:outline-3 focus:outline-gray-800&quot;
+          formControlName&#x3D;&quot;subCategoriesId&quot;
+        &gt;
+          &lt;option value&#x3D;&quot;subCategoriesId&quot; *ngIf&#x3D;&quot;isEdit&quot; selected disabled&gt;
+            {{
+              getSubCategoryName(bookFormGroup.get(&quot;subCategoriesId&quot;)?.value)
+            }}
+          &lt;/option&gt;
+          &lt;option value&#x3D;&quot;&quot; disabled selected *ngIf&#x3D;&quot;!isEdit&quot;&gt;
+            -- Select Sub Category --
+          &lt;/option&gt;
+          @for (item of listOfSubCategory; track $index) {
+          &lt;option [value]&#x3D;&quot;item.subCategoryId&quot;&gt;
+            {{ getSubCategoryName(item.subCategoryId) }}
+          &lt;/option&gt;
+          }
+        &lt;/select&gt;
+      &lt;/div&gt;
+
+      &lt;!-- ISBN --&gt;
+      &lt;div class&#x3D;&quot;flex items-center gap-4 mb-4&quot;&gt;
+        &lt;label class&#x3D;&quot;font-semibold w-32&quot;&gt;ISBN&lt;/label&gt;
+        &lt;input
+          pInputText
+          formControlName&#x3D;&quot;isbn&quot;
+          class&#x3D;&quot;flex-auto rounded-md w-full border border-gray-300 p-2&quot;
+          autocomplete&#x3D;&quot;off&quot;
+        /&gt;
+      &lt;/div&gt;
+      &lt;p *ngIf&#x3D;&quot;hasError(&#x27;isbn&#x27;, &#x27;required&#x27;)&quot; class&#x3D;&quot;text-red-500 text-xs mb-2&quot;&gt;
+        ISBN is required
+      &lt;/p&gt;
+
+      &lt;!-- Publication --&gt;
+      &lt;div class&#x3D;&quot;flex items-center gap-4 mb-4&quot;&gt;
+        &lt;label class&#x3D;&quot;font-semibold w-32&quot;&gt;Publication&lt;/label&gt;
+        &lt;input
+          pInputText
+          formControlName&#x3D;&quot;publication&quot;
+          class&#x3D;&quot;flex-auto rounded-md w-full border border-gray-300 p-2&quot;
+          autocomplete&#x3D;&quot;off&quot;
+        /&gt;
+      &lt;/div&gt;
+      &lt;p
+        *ngIf&#x3D;&quot;hasError(&#x27;publication&#x27;, &#x27;required&#x27;)&quot;
+        class&#x3D;&quot;text-red-500 text-xs mb-2&quot;
+      &gt;
+        Publication is required
+      &lt;/p&gt;
+
+      &lt;div class&#x3D;&quot;flex items-center gap-4 mb-4&quot;&gt;
+        &lt;label class&#x3D;&quot;font-semibold w-32&quot;&gt;Details&lt;/label&gt;
+        &lt;quill-editor
+          formControlName&#x3D;&quot;detail&quot;
+          [styles]&#x3D;&quot;{ height: &#x27;200px&#x27; }&quot;
+          placeholder&#x3D;&quot;Write book details here...&quot;
+        &gt;
+        &lt;/quill-editor&gt;
+      &lt;/div&gt;
+      &lt;p
+        *ngIf&#x3D;&quot;hasError(&#x27;detail&#x27;, &#x27;maxlength&#x27;)&quot;
+        class&#x3D;&quot;text-red-500 text-xs mb-2&quot;
+      &gt;
+        Details have maxlength is 5000
+      &lt;/p&gt;
+      &lt;!-- Author Multi-select --&gt;
+      &lt;div class&#x3D;&quot;flex gap-2 mb-4&quot;&gt;
+        &lt;label class&#x3D;&quot;font-semibold w-32 pt-2&quot;&gt;Authors&lt;/label&gt;
+
+        &lt;div
+          class&#x3D;&quot;flex flex-wrap gap-2 items-center border border-gray-300 p-2 rounded-lg w-full&quot;
+        &gt;
+          &lt;!-- Chips --&gt;
+          &lt;span
+            *ngFor&#x3D;&quot;let a of bookFormGroup.value.author; let i &#x3D; index&quot;
+            class&#x3D;&quot;bg-blue-200 text-blue-800 px-2 py-1 rounded-full flex items-center gap-1&quot;
+          &gt;
+            &lt;button
+              type&#x3D;&quot;button&quot;
+              (click)&#x3D;&quot;removeAuthor(i)&quot;
+              class&#x3D;&quot;text-red-600 font-bold&quot;
+            &gt;
+              &amp;times;
+            &lt;/button&gt;
+          &lt;/span&gt;
+
+          &lt;!-- Input field --&gt;
+          &lt;input
+            type&#x3D;&quot;text&quot;
+            [formControl]&#x3D;&quot;authorInput&quot;
+            (keydown.enter)&#x3D;&quot;addAuthor(); $event.preventDefault()&quot;
+            placeholder&#x3D;&quot;Type author &amp; press Enter&quot;
+            class&#x3D;&quot;flex-auto outline-none bg-transparent w-full&quot;
+          /&gt;
+        &lt;/div&gt;
+        &lt;p
+          *ngIf&#x3D;&quot;hasError(&#x27;author&#x27;, &#x27;required&#x27;)&quot;
+          class&#x3D;&quot;text-red-500 text-xs mt-1&quot;
+        &gt;
+          Author is required
+        &lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Book Status --&gt;
+      &lt;!-- &lt;div class&#x3D;&quot;flex items-center gap-4 mb-4&quot;&gt;
+        &lt;label class&#x3D;&quot;font-semibold w-32&quot;&gt;Status&lt;/label&gt;
+        &lt;select
+          formControlName&#x3D;&quot;bookStatus&quot;
+          class&#x3D;&quot;w-full border border-gray-300 p-2 rounded&quot;
+        &gt;
+          &lt;option *ngFor&#x3D;&quot;let s of statusOptions&quot; [value]&#x3D;&quot;s&quot;&gt;{{ s }}&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt; --&gt;
+
+      &lt;!-- Image Upload --&gt;
+      &lt;!-- &lt;div class&#x3D;&quot;flex items-center gap-4 mb-4&quot;&gt;
+        &lt;label class&#x3D;&quot;font-semibold w-32&quot;&gt;Image&lt;/label&gt;
+        &lt;input type&#x3D;&quot;file&quot; (change)&#x3D;&quot;onFileChange($event)&quot; class&#x3D;&quot;flex-auto&quot; /&gt;
+      &lt;/div&gt;
+      &lt;p *ngIf&#x3D;&quot;bookFormGroup.value.imageUrl&quot;&gt;
+        Selected: {{ bookFormGroup.value.imageUrl }}
+      &lt;/p&gt; --&gt;
+
+      &lt;!-- Buttons --&gt;
+      &lt;div class&#x3D;&quot;flex justify-end gap-3&quot;&gt;
+        &lt;p-button
+          label&#x3D;&quot;Cancel&quot;
+          severity&#x3D;&quot;secondary&quot;
+          (click)&#x3D;&quot;visible &#x3D; false&quot;
+        /&gt;
+        &lt;p-button [label]&#x3D;&quot;isEdit ? &#x27;Update&#x27; : &#x27;Save&#x27;&quot; type&#x3D;&quot;submit&quot; /&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/p-dialog&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis-network.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="sub-category">  <div class="add-category w-full p-4">    <div class="w-full flex justify-end">      <div        class="text-black rounded-2xl shadow shadow-gray-800 px-4 border border-black inline-block transform active:scale-90 cursor-pointer"      >        <button (click)="openAddForm()">Add New Book</button>      </div>    </div>  </div>  <p-divider></p-divider>  <div class="container mx-auto">    @if (bookListData) {    <div class="show-category">      <div class="card">        <p-table          [value]="bookListData"          [paginator]="true"          [rows]="5"          [rowsPerPageOptions]="[5, 10, 20]"          [tableStyle]="{ \'min-width\': \'50rem\' }"          [loading]="false"        >          <ng-template #header>            <tr>              <th style="width: 1%">Book_Id</th>              <th style="width: 8%">Book Name</th>              <th style="width: 10%">Author</th>              <th style="width: 3%">Status</th>              <th style="width: 5%">Rating</th>              <th style="width: 10%">ISBN</th>              <th style="width: 5%">Pulication</th>              <th style="width: 8%">Detail</th>              <th style="width: 5%">Sub_Category Name</th>              <th style="width: 20%">Action</th>              <th style="width: 15%">Book pdf</th>            </tr>          </ng-template>          <ng-template #body let-book>            <tr>              <td>{{ book.bookId }}</td>              <td>                <div class="flex items-center">                  <span class="w-full space-x-1"                    ><img                      [src]="getBookImage(book.bookId) || \'libr.jpg\'"                      alt=""                      class="size-5 rounded-full object-cover"                  /></span>                  <span class="">{{ book.name | capitalization }}</span>                </div>              </td>              <td>{{ book.author }}</td>              <td>{{ book.bookStatus }}</td>              <td>                <span>                  <div class="card flex justify-center">                    <p-rating                      [(ngModel)]="book.averageRating"                      [readonly]="true"                    />                  </div>                </span>              </td>              <td>{{ book.isbn }}</td>              <td>{{ book.publication }}</td>              <!-- <td [innerHTML]="book.detail"></td> -->              <td>                <details class="border rounded p-2 bg-gray-50 transition-transform ease-in-out duration-500">                <summary                  class="cursor-pointer font-semibold text-blue-600 hover:text-blue-800 "                >                  View Details                </summary>                <div class="mt-2" [innerHTML]="book.detail"></div>              </details>              </td>              <td>{{ getSubCategoryName(book.subCategoryId) }}</td>              <td>                <div class="flex-auto space-x-2 *:transform *:active:scale-90">                  <button                    class="px-4 text-black hover:bg-gray-200 rounded-2xl border border-black"                    (click)="openEditForm(book.bookId)"                  >                    Edit                  </button>                  <button                    class="px-4 text-black hover:bg-gray-200 rounded-2xl border border-black"                    (click)="onDelete(book.bookId)"                  >                    Delete                  </button>                </div>              </td>              <td>                <input                  type="file"                  #fileInput                  style="display: none"                  (change)="onFileSelected($event)"                  [accept]="                    fileType() === \'BOOK_IMAGE\'                      ? \'image/jpeg,image/png\'                      : \'application/pdf\'                  "                />                <div class="flex-auto gap-1 *:transform *:active:scale-90">                  <button                    class="px-4 text-black hover:bg-gray-200 rounded-2xl border border-black"                    (click)="onUploadFile(book.bookId, fileInput, \'image\')"                  >                    uploadBookImage                  </button>                  <button                    class="px-4 text-black hover:bg-gray-200 rounded-2xl border border-black"                    (click)="onUploadFile(book.bookId, fileInput, \'pdf\')"                  >                    UploadBookPdf                  </button>                </div>              </td>            </tr>          </ng-template>        </p-table>      </div>    </div>    }  </div></div><div class="dialog-form">  <p-dialog    header="Book Information"    [modal]="true"    [(visible)]="visible"    [style]="{ width: \'40rem\' }"  >    <span class="p-text-secondary block mb-6">      {{ isEdit ? "Edit Book Details" : "Add New Book" }}    </span>    <form [formGroup]="bookFormGroup" (ngSubmit)="submit()">      <!-- Book Name -->      <div class="flex items-center gap-4 mb-4">        <label class="font-semibold w-32">Book Name</label>        <input          pInputText          formControlName="name"          class="flex-auto rounded-md w-full border border-gray-300 p-2"          autocomplete="off"        />      </div>      <p *ngIf="hasError(\'name\', \'required\')" class="text-red-500 text-xs mb-2">        Book Name is required      </p>      <!-- Sub Categories -->      <div class="flex items-start gap-4 mb-6">        <label class="font-semibold w-32 pt-2">SubCategories</label>        <select          class="w-full px-2 py-2 rounded-md border border-gray-300 focus:outline-3 focus:outline-gray-800"          formControlName="subCategoriesId"        >          <option value="subCategoriesId" *ngIf="isEdit" selected disabled>            {{              getSubCategoryName(bookFormGroup.get("subCategoriesId")?.value)            }}          </option>          <option value="" disabled selected *ngIf="!isEdit">            -- Select Sub Category --          </option>          @for (item of listOfSubCategory; track $index) {          <option [value]="item.subCategoryId">            {{ getSubCategoryName(item.subCategoryId) }}          </option>          }        </select>      </div>      <!-- ISBN -->      <div class="flex items-center gap-4 mb-4">        <label class="font-semibold w-32">ISBN</label>        <input          pInputText          formControlName="isbn"          class="flex-auto rounded-md w-full border border-gray-300 p-2"          autocomplete="off"        />      </div>      <p *ngIf="hasError(\'isbn\', \'required\')" class="text-red-500 text-xs mb-2">        ISBN is required      </p>      <!-- Publication -->      <div class="flex items-center gap-4 mb-4">        <label class="font-semibold w-32">Publication</label>        <input          pInputText          formControlName="publication"          class="flex-auto rounded-md w-full border border-gray-300 p-2"          autocomplete="off"        />      </div>      <p        *ngIf="hasError(\'publication\', \'required\')"        class="text-red-500 text-xs mb-2"      >        Publication is required      </p>      <div class="flex items-center gap-4 mb-4">        <label class="font-semibold w-32">Details</label>        <quill-editor          formControlName="detail"          [styles]="{ height: \'200px\' }"          placeholder="Write book details here..."        >        </quill-editor>      </div>      <p        *ngIf="hasError(\'detail\', \'maxlength\')"        class="text-red-500 text-xs mb-2"      >        Details have maxlength is 5000      </p>      <!-- Author Multi-select -->      <div class="flex gap-2 mb-4">        <label class="font-semibold w-32 pt-2">Authors</label>        <div          class="flex flex-wrap gap-2 items-center border border-gray-300 p-2 rounded-lg w-full"        >          <!-- Chips -->          <span            *ngFor="let a of bookFormGroup.value.author; let i = index"            class="bg-blue-200 text-blue-800 px-2 py-1 rounded-full flex items-center gap-1"          >            <button              type="button"              (click)="removeAuthor(i)"              class="text-red-600 font-bold"            >              &times;            </button>          </span>          <!-- Input field -->          <input            type="text"            [formControl]="authorInput"            (keydown.enter)="addAuthor(); $event.preventDefault()"            placeholder="Type author & press Enter"            class="flex-auto outline-none bg-transparent w-full"          />        </div>        <p          *ngIf="hasError(\'author\', \'required\')"          class="text-red-500 text-xs mt-1"        >          Author is required        </p>      </div>      <!-- Book Status -->      <!-- <div class="flex items-center gap-4 mb-4">        <label class="font-semibold w-32">Status</label>        <select          formControlName="bookStatus"          class="w-full border border-gray-300 p-2 rounded"        >          <option *ngFor="let s of statusOptions" [value]="s">{{ s }}</option>        </select>      </div> -->      <!-- Image Upload -->      <!-- <div class="flex items-center gap-4 mb-4">        <label class="font-semibold w-32">Image</label>        <input type="file" (change)="onFileChange($event)" class="flex-auto" />      </div>      <p *ngIf="bookFormGroup.value.imageUrl">        Selected: {{ bookFormGroup.value.imageUrl }}      </p> -->      <!-- Buttons -->      <div class="flex justify-end gap-3">        <p-button          label="Cancel"          severity="secondary"          (click)="visible = false"        />        <p-button [label]="isEdit ? \'Update\' : \'Save\'" type="submit" />      </div>    </form>  </p-dialog></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookBorrowedComponent', 'selector': 'app-book-borrowed'},{'name': 'BookCardComponent', 'selector': 'app-book-card'},{'name': 'BookComponentComponent', 'selector': 'app-book-component'},{'name': 'BookLayoutComponent', 'selector': 'app-book-layout'},{'name': 'CategoriesOperationComponent', 'selector': 'app-categories-operation'},{'name': 'ChatAiComponent', 'selector': 'app-chat-ai'},{'name': 'CommonHomeComponent', 'selector': 'app-common-home'},{'name': 'CycleHubComponent', 'selector': 'app-cycle-hub'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DashboardPageComponent', 'selector': 'app-dashboard-page'},{'name': 'DigitalPageComponent', 'selector': 'app-digital-page'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginCallbackComponent', 'selector': 'app-login-callback'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MyBookComponent', 'selector': 'app-my-book'},{'name': 'MyProfileComponent', 'selector': 'app-my-profile'},{'name': 'NotFoundComponent', 'selector': 'app-not-found'},{'name': 'NotificationComponent', 'selector': 'app-notification'},{'name': 'ProfileSettingComponent', 'selector': 'app-profile-setting'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SearchBoxComponent', 'selector': 'app-search-box'},{'name': 'SettingComponent', 'selector': 'app-setting'},{'name': 'SubCategoryComponent', 'selector': 'app-sub-category'},{'name': 'SuperAdminRegisterComponent', 'selector': 'app-super-admin-register'},{'name': 'UserComponent', 'selector': 'app-user'}];
+    var DIRECTIVES = [{'name': 'AnimatedCounterDirective', 'selector': '[animatedCounter]'}];
+    var ACTUAL_COMPONENT = {'name': 'BookComponentComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'BookComponentComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

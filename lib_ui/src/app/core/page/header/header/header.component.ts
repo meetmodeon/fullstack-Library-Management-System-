@@ -13,6 +13,8 @@ import { UserResponse } from '../../../../services/models';
 import { AuthServiceService } from '../../../../services/auth/auth-service.service';
 import { UserServiceService } from '../../../../services/StateMangeSerivce/User/user-service.service';
 import { getUserByEmail, GetUserByEmail$Params } from '../../../../services/functions';
+import { CapitalizationPipe } from '../../../../pipe/capitalization.pipe';
+import { ChatAiComponent } from "../../chat-ai/chat-ai.component";
 @Component({
   selector: 'app-header',
   imports: [
@@ -21,7 +23,8 @@ import { getUserByEmail, GetUserByEmail$Params } from '../../../../services/func
     Menu,
     ButtonModule,
     CommonModule,
-
+    CapitalizationPipe,
+    ChatAiComponent
 ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -30,6 +33,7 @@ export class HeaderComponent {
   private apiUrl=environment.apiUrl;
   @ViewChild('notify') notify!:NotificationComponent;
   @ViewChild('profile') profile!:ProfileSettingComponent;
+  @ViewChild('chat') chat!:ChatAiComponent;
   unreadCount=signal<number>(0);
   userData!:UserResponse;
   
@@ -43,15 +47,17 @@ export class HeaderComponent {
 
   onShowNotification(){
     this.notify.onShow();
+  
+  }
+  showChat(){
+    this.chat.showDialog();
   }
   
   items=[{}];
   
   ngOnInit(){
-    this.webService.unreadCount$.subscribe((value)=>{
-      console.log("count unread msg: ",value)
-      this.unreadCount.set(value);
-    })
+    this.webService.connectIfNeeded();
+     this.getCount();
     if(this.authSerivce.isLoggedIn()){
       const params:GetUserByEmail$Params={
         email:this.authSerivce.getUserName() as string
@@ -95,5 +101,15 @@ export class HeaderComponent {
     }
   }
 
+  // ngOnChanges(){
+  //    this.getCount();
+  // }
+
+  getCount(){
+    this.webService.unreadCount$.subscribe((value)=>{
+      console.log("count unread msg: ",value)
+      this.unreadCount.set(value);
+    })
+  }
   
 }

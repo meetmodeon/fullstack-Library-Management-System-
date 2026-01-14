@@ -1,133 +1,238 @@
 <div class="sticky top-0">
-    <app-header></app-header>
+  <app-header></app-header>
 </div>
 <div class="container mx-auto">
-    <div class="w-full flex justify-center align-middle my-8">
-        <div class="nav-bar bg-gray-200/40 rounded-2xl w-full px-4 p-1">
-            <div class="grid grid-cols-5 gap-4 *:hover:cursor-pointer">
-                <div (click)="onMethod('home')"
-                    [className]="selectedMenu==='home'?'rounded-2xl flex justify-center items-center bg-white':'rounded-2xl flex justify-center items-center'">
-                    <div>
-                        <div class="flex gap-1 rounded-2xl ">
-                            <span><i class="fa-regular fa-house"></i></span>
-                            <span class="hidden lg:inline-block">Home</span>
-                        </div>
-                    </div>
-                </div>
-                <div (click)="onMethod('browse')" class=" "
-                    [className]="selectedMenu==='browse'?'rounded-2xl flex justify-center items-center bg-white':'rounded-2xl flex justify-center items-center'">
-                    <div class="flex gap-1 text-center">
-                        <span><i class="fa-solid fa-book-open"></i></span>
-                        <span class="hidden lg:inline-block">Browse</span>
-                    </div>
-                </div>
-                <div (click)="onMethod('my_book')" class=" "
-                    [className]="selectedMenu==='my_book'?'rounded-2xl flex justify-center items-center bg-white':'rounded-2xl flex justify-center items-center'">
-                    <div class="flex gap-1 px-10  p-1 rounded-2xl">
-                        <span><i class="fa-solid fa-recycle"></i></span>
-                        <span class="hidden lg:inline-block">My Book</span>
-                    </div>
-                </div>
-                <div (click)="onMethod('digital')" class=" "
-                    [className]="selectedMenu==='digital'?'rounded-2xl flex justify-center items-center bg-white':'rounded-2xl flex justify-center items-center'">
-                    <div class="flex gap-1 px-10  p-1 rounded-2xl">
-                        <span><i class="fa-solid fa-mobile-screen-button"></i></span>
-                        <span class="hidden lg:inline-block">Digital</span>
-                    </div>
-                </div>
-                <div (click)="onMethod('cycle')" class=" "
-                    [className]="selectedMenu==='cycle'?'rounded-2xl flex justify-center items-center bg-white':'rounded-2xl flex justify-center items-center'">
-                    <div class="flex gap-1 px-10 p-1 rounded-2xl">
-                        <span><i class="fa-solid fa-leaf"></i></span>
-                        <span class="hidden lg:inline">Cycle Hub</span>
-                    </div>
-                </div>
+  <div class="w-full flex justify-center align-middle my-8">
+    <div class="nav-bar bg-gray-200/40 rounded-2xl w-full px-4 p-1">
+      <div class="grid grid-cols-5 gap-4 *:hover:cursor-pointer">
+        <div
+          (click)="onMethod('home')"
+          [className]="
+            selectedMenu === 'home'
+              ? 'rounded-2xl flex justify-center items-center bg-white'
+              : 'rounded-2xl flex justify-center items-center'
+          "
+        >
+          <div>
+            <div class="flex gap-1 rounded-2xl">
+              <span><i class="fa-regular fa-house"></i></span>
+              <span class="hidden lg:inline-block">Home</span>
             </div>
+          </div>
         </div>
-
+        <div
+          (click)="onMethod('browse')"
+          class=" "
+          [className]="
+            selectedMenu === 'browse'
+              ? 'rounded-2xl flex justify-center items-center bg-white'
+              : 'rounded-2xl flex justify-center items-center'
+          "
+        >
+          <div class="flex gap-1 text-center">
+            <span><i class="fa-solid fa-book-open"></i></span>
+            <span class="hidden lg:inline-block">Browse</span>
+          </div>
+        </div>
+        <div
+          (click)="onMethod('my_book')"
+          class=" "
+          [className]="
+            selectedMenu === 'my_book'
+              ? 'rounded-2xl flex justify-center items-center bg-white'
+              : 'rounded-2xl flex justify-center items-center'
+          "
+        >
+          <div class="flex gap-1 px-10 p-1 rounded-2xl">
+            <span><i class="fa-solid fa-recycle"></i></span>
+            <span class="hidden lg:inline-block">My Book</span>
+          </div>
+        </div>
+        <div
+          (click)="onMethod('digital')"
+          class=" "
+          [className]="
+            selectedMenu === 'digital'
+              ? 'rounded-2xl flex justify-center items-center bg-white'
+              : 'rounded-2xl flex justify-center items-center'
+          "
+        >
+          <div class="flex gap-1 px-10 p-1 rounded-2xl">
+            <span><i class="fa-solid fa-mobile-screen-button"></i></span>
+            <span class="hidden lg:inline-block">Digital</span>
+          </div>
+        </div>
+        <div
+          (click)="onMethod('cycle')"
+          class=" "
+          [className]="
+            selectedMenu === 'cycle'
+              ? 'rounded-2xl flex justify-center items-center bg-white'
+              : 'rounded-2xl flex justify-center items-center'
+          "
+        >
+          <div class="flex gap-1 px-10 p-1 rounded-2xl">
+            <span><i class="fa-solid fa-leaf"></i></span>
+            <span class="hidden lg:inline">Cycle Hub</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="content">
-        @if (selectedMenu==='home') {
-        <div>
-            <app-common-home></app-common-home>
-        </div>
-        }@else if (selectedMenu==='browse') {
-        <div class="search-filter mb-4">
-            <div class="search lg:flex lg:justify-between lg:items-center">
-                <div class="lg:basis-4xl  w-full  mb-2 border-2 border-gray-200 rounded-2xl bg-gray-100">
-                    <div class="pl-10 relative">
-                        <input type="text" placeholder="Seaching Some book"
-                            class="w-full  p-2 focus:outline-none focus:ring-0" />
-                        <span class="absolute top-2 left-2"><i class="pi pi-search" style="font-size: 1rem"></i></span>
-                    </div>
-                </div>
-                <div class="flex flex-col  lg:flex-row  gap-2">
-                    <div class="button bg-gray-100 pt-2 px-4 rounded-xl flex justify-between"
-                        (click)="menu.toggle($event)">
-                        <div class="">
-                            <p-menu #menu [model]="items" [popup]="true" />
-                            <span>All Category</span>
-                        </div>
-                        <!-- <p-button (click)="menu.toggle($event)" icon="pi pi-ellipsis-v"/> -->
-                        <span><i class="pi pi-angle-down p-2" style="font-size: smaller;"></i></span>
-                        <!-- <span></span> -->
-                    </div>
-                    <div class="button1 bg-gray-100 pt-2 px-4 rounded-xl flex justify-between "
-                        (click)="menu1.toggle($event)">
-                        <div>
-                            <p-menu #menu1 [model]="items2" [popup]="true" />
-                            <span>All Status</span>
-                        </div>
-                        <span> <i class="pi pi-angle-down p-2" style="font-size: smaller;"></i></span>
-                    </div>
-                </div>
-                <div></div>
-            </div>
-
-        </div>
-        <div class="filter1 flex gap-2 flex-wrap mb-2">
-            <div class="text-gray-400"><i class="fa-solid fa-filter"></i></div>
-            <div class="text-gray-500">Quick filters:</div>
-            <div class="border border-gray-400 rounded-2xl text-sm px-2">Available Now</div>
-            <div class="border border-gray-400 rounded-2xl text-sm px-2">Digital Books</div>
-            <div class="border border-gray-400 rounded-2xl text-sm px-2">Recycle Books</div>
-        </div>
-        <div class="par my-4">
-            <p class="text-gray-400">Show 12 of 18 books</p>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 sm:gap-1 md:gap-2" (click)="onShow()">
-            @for (item of datas; track $index) {
-
-            <div>
-                <app-book-layout></app-book-layout>
-            </div>
-
-            }
-        </div>
-        }@else if (selectedMenu ==='my_book') {
-        <div class="my_book mt-6">
-            <div class="card w-full border-2 border-gray-400 rounded-2xl p-4">
-                <div class="flex gap-2 mb-4">
-                    <span><i class="fa-solid fa-arrow-rotate-left"></i></span>
-                    <span>Borrow Cycle Tracker</span>
-                </div>
-                @for (item of datas; track $index) {
-                    <app-my-book></app-my-book>
-                }
-            </div>
-
-        </div>
-        }@else if (selectedMenu==='digital') {
-            <div>
-                <app-digital-page></app-digital-page>
-            </div>
-        }@else {
-            <div>
-                <app-cycle-hub></app-cycle-hub>
-            </div>
-        }
+  </div>
+  <div class="content">
+    @if (selectedMenu==='home') {
+    <div>
+      <app-common-home></app-common-home>
     </div>
+    }@else if (selectedMenu==='browse') {
+    <div class="search-filter mb-4">
+      <div class="search lg:flex lg:justify-between lg:items-center">
+        <div
+          class="lg:basis-4xl w-full mb-2 border-2 border-gray-200 rounded-2xl bg-gray-100"
+        >
+          <div class="pl-10 relative">
+            <input
+              type="text"
+              placeholder="Seaching Some book"
+              class="w-full p-2 focus:outline-none focus:ring-0"
+              #text
+              (keyup.enter)="searchAllBook(text)"
+            />
+            <span class="absolute top-2 left-2"
+              ><i class="pi pi-search" style="font-size: 1rem"></i
+            ></span>
+          </div>
+        </div>
+        <div class="flex flex-col lg:flex-row gap-2">
+          <div
+            class="button bg-gray-100 pt-2 px-4 rounded-xl flex justify-between"
+            (click)="menu.toggle($event)"
+          >
+            <div class="">
+              <p-menu #menu [model]="items" [popup]="true" />
+              <span>{{ CategoryStatus() }}</span>
+            </div>
+            <!-- <p-button (click)="menu.toggle($event)" icon="pi pi-ellipsis-v"/> -->
+            <span
+              ><i class="pi pi-angle-down p-2" style="font-size: smaller"></i
+            ></span>
+            <!-- <span></span> -->
+          </div>
+          <div
+            class="button1 bg-gray-100 pt-2 px-4 rounded-xl flex justify-between"
+            (click)="menu1.toggle($event)"
+          >
+            <div>
+              <p-menu #menu1 [model]="items2" [popup]="true" />
+              <span>{{ bookStatus() }}</span>
+            </div>
+            <span>
+              <i class="pi pi-angle-down p-2" style="font-size: smaller"></i
+            ></span>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+    <div class="filter1 flex gap-2 flex-wrap mb-2">
+      <div class="text-gray-400"><i class="fa-solid fa-filter"></i></div>
+      <div class="text-gray-500">Quick filters:</div>
+      <div
+        class="border border-gray-400 rounded-2xl text-sm px-2 cursor-pointer"
+        (click)="getAllBookBaseOnStatus('AVAILABLE')"
+      >
+        Available Now
+      </div>
+      <div
+        class="border border-gray-400 rounded-2xl text-sm px-2 cursor-pointer"
+        (click)="searching('averageRating')"
+      >
+        Rating
+      </div>
+      <div
+        class="border border-gray-400 rounded-2xl text-sm px-2 cursor-pointer"
+        (click)="searching('name')"
+      >
+        Books Name
+      </div>
+    </div>
+    <div class="par my-4">
+      <p class="text-gray-400">
+        Show {{ foundBookNo() }} of {{ totalBook() }} books
+      </p>
+    </div>
+    <div
+      class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 sm:gap-1 md:gap-2"
+    >
+      @for (book of allBookResponse; track $index) {
+
+      <div (click)="onShow(book.bookId)">
+        <div class="content">
+          <div
+            class="border grid grid-rows-2 border-gray-200 rounded-2xl p-2 hover:shadow-xl hover:shadow-gray-300"
+          >
+            <div class="content1-image w-full">
+              <div class="h-[200px] p-2">
+                <img
+                  src="{{ getImageByBookId(book.bookId) }}"
+                  alt="alt"
+                  class="object-cover w-full h-full rounded-2xl bg-gray-600"
+                />
+              </div>
+            </div>
+            <div class="content overflow-auto flex flex-col gap-2">
+              <div class="book-title">
+                <span class="text-black">{{ book.name | capitalization }}</span>
+              </div>
+              <div class="book_author">
+                <span class="text-gray-400 text-sm">
+                  {{ book.author | sortContentPipe }}
+                </span>
+              </div>
+              <div class="flex gap-1">
+                <span class="text-yellow-400">
+                  <i class="fa-solid fa-star"></i>
+                </span>
+                <span>{{ book.averageRating }}</span>
+              </div>
+              <div class="btn-part mt-2">
+                <span
+                  class="border border-gray-200 rounded-xl px-1.5 py-0.5 text-sm font-semibold"
+                  >{{ book.bookStatus }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      }
+    </div>
+    <div class="card flex justify-center">
+      <p-paginator
+        (onPageChange)="onPageChange($event)"
+        [first]="first()"
+        [rows]="rows()"
+        [totalRecords]="120"
+        [rowsPerPageOptions]="[20, 30]"
+      />
+    </div>
+
+    }@else if (selectedMenu ==='my_book') {
+    <div class="my_book mt-6">
+      <app-my-book></app-my-book>
+    </div>
+    }@else if (selectedMenu==='digital') {
+    <div>
+      <app-digital-page></app-digital-page>
+    </div>
+    }@else {
+    <div>
+      <app-cycle-hub></app-cycle-hub>
+    </div>
+    }
+  </div>
 </div>
 <div>
-    <app-book-card #book></app-book-card>
+  <app-book-card [bookId]="selectedBookId" #book></app-book-card>
 </div>

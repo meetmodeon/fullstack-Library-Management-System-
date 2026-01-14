@@ -6,6 +6,12 @@ import { HeaderComponent } from './core/page/header/header/header.component';
 import { HomeComponent } from './core/page/home/home.component';
 import { DashboardComponent } from './core/page/dashboard/dashboard.component';
 import { LoginCallbackComponent } from './core/auth/login-callback/login-callback.component';
+import { BookCardComponent } from './core/page/book-card/book-card.component';
+import { BookLayoutComponent } from './core/page/book-layout/book-layout.component';
+import { authGuard } from './guards/auth.guard';
+import { NotFoundComponent } from './core/page/not-found/not-found.component';
+import { roleGuard } from './guards/role.guard';
+import { loadGuard } from './guards/load.guard';
 
 export const routes: Routes = [
     {
@@ -27,7 +33,8 @@ export const routes: Routes = [
     },
     {
         path:"dashboard",
-        component:DashboardComponent
+        component:DashboardComponent,
+        canActivate:[authGuard]
     },
     {
         path:'login-callback',
@@ -35,17 +42,25 @@ export const routes: Routes = [
     },
     {
         path:'admin',
+        //canActivateChild:[roleGuard],
         children:[
             {
                 path:"register",
                 loadComponent:()=>
-                    import('./core/auth/register/register.component').then(m=>m.RegisterComponent)
+                    import('./core/auth/register/register.component').then(m=>m.RegisterComponent),
+                
             },
             {
                 path:"dashboard",
                 loadComponent:()=>
-                    import('./core/superAdmin/page/dashboard/dashboard.component').then(m=>m.DashboardComponent)
+                    import('./core/superAdmin/page/dashboard/dashboard.component').then(m=>m.DashboardComponent),
+                //canActivateChild:[authGuard]
+                canMatch:[loadGuard]
             }
         ]
+    },
+    {
+        path:"**",
+        component:NotFoundComponent
     }
 ];

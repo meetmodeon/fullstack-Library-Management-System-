@@ -1,5 +1,28 @@
 const fs = require('fs');
+const path = require('path');
 
+// Function to generate Markdown for all images in a folder
+function generateImageMarkdown(folderPath, label) {
+    if (!fs.existsSync(folderPath)) return '';
+
+    const files = fs.readdirSync(folderPath)
+        .filter(file => /\.(png|jpe?g|gif|svg)$/i.test(file)); // only image files
+
+    if (files.length === 0) return '';
+
+    let md = `### ${label}\n\n`;
+    files.forEach(file => {
+        const relativePath = path.join('docs/images', label.toLowerCase(), file).replace(/\\/g, '/');
+        md += `![${label}](${relativePath})\n\n`;
+    });
+    return md;
+}
+
+// Paths
+const adminImagesPath = 'D:/LBM/docs/images/admin';
+const userImagesPath = 'D:/LBM/docs/images/user';
+
+// README content
 const content = `
 # 📚 LBM Library Management System
 
@@ -31,6 +54,12 @@ npm run docs:serve
 
 Open:
 http://localhost:4300
+
+### Screenshots
+
+${generateImageMarkdown(adminImagesPath, 'Admin Dashboard')}
+
+${generateImageMarkdown(userImagesPath, 'User Dashboard')}
 
 ---
 
@@ -70,5 +99,10 @@ Full Stack Java + Angular Developer
 Nepal 🇳🇵
 `;
 
+// Ensure docs/images folders exist
+fs.mkdirSync('D:/LBM/docs/images/admin', { recursive: true });
+fs.mkdirSync('D:/LBM/docs/images/user', { recursive: true });
+
+// Write README
 fs.writeFileSync('D:/LBM/README.md', content.trim());
-console.log("✅ README.md generated successfully");
+console.log("✅ README.md generated with multiple images successfully!");

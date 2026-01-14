@@ -29,6 +29,40 @@ npm run docs:serve
 Open:
 http://localhost:4300
 
+### Screenshots
+
+### Admin Dashboard
+
+![Admin Dashboard](docs/images/admin dashboard/Screenshot 2026-01-14 221334.png)
+
+![Admin Dashboard](docs/images/admin dashboard/Screenshot 2026-01-14 221410.png)
+
+![Admin Dashboard](docs/images/admin dashboard/Screenshot 2026-01-14 221502.png)
+
+![Admin Dashboard](docs/images/admin dashboard/Screenshot 2026-01-14 221545.png)
+
+![Admin Dashboard](docs/images/admin dashboard/Screenshot 2026-01-14 221718.png)
+
+![Admin Dashboard](docs/images/admin dashboard/Screenshot 2026-01-14 221826.png)
+
+
+
+### User Dashboard
+
+![User Dashboard](docs/images/user dashboard/Screenshot 2026-01-14 215734.png)
+
+![User Dashboard](docs/images/user dashboard/Screenshot 2026-01-14 220137.png)
+
+![User Dashboard](docs/images/user dashboard/Screenshot 2026-01-14 220217.png)
+
+![User Dashboard](docs/images/user dashboard/Screenshot 2026-01-14 220255.png)
+
+![User Dashboard](docs/images/user dashboard/Screenshot 2026-01-14 220335.png)
+
+![User Dashboard](docs/images/user dashboard/Screenshot 2026-01-14 220427.png)
+
+
+
 ---
 
 ## ☕ Backend (Spring Boot)

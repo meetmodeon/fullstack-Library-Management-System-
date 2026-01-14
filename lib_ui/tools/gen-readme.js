@@ -2,21 +2,32 @@ const fs = require('fs');
 const path = require('path');
 
 // Function to generate Markdown for images in a folder
-function generateImageMarkdown(folderPath, folderName, label) {
+function generateImageMarkdown(folderPath, label) {
     if (!fs.existsSync(folderPath)) return '';
 
     const files = fs.readdirSync(folderPath)
-        .filter(file => /\.(png|jpe?g|gif|svg)$/i.test(file));
+        .filter(file => /\.(png|jpe?g|gif|svg)$/i.test(file)); // only image files
 
     if (files.length === 0) return '';
 
     let md = `### ${label}\n\n`;
+
     files.forEach(file => {
-        const relativePath = path.join('docs/images', folderName, file).replace(/\\/g, '/');
+        // Rename file to remove spaces
+        const newFileName = file.replace(/ /g, '_');
+        const oldPath = path.join(folderPath, file);
+        const newPath = path.join(folderPath, newFileName);
+        if (file !== newFileName) {
+            fs.renameSync(oldPath, newPath);
+        }
+
+        const relativePath = path.relative('D:/LBM', newPath).replace(/\\/g, '/');
         md += `![${label}](${relativePath})\n\n`;
     });
+
     return md;
 }
+
 
 // Ensure folders exist
 const adminFolder = 'D:/LBM/docs/images/admin';

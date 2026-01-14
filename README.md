@@ -27,34 +27,34 @@ Open: [http://localhost:4300](http://localhost:4300)
 
 ### Screenshots
 
-### Admin Dashboard
+### admin
 
-![Admin Dashboard](docs/images/admin/Screenshot 2026-01-14 221334.png)
+![admin](docs/images/admin/Screenshot_2026-01-14_221334.png)
 
-![Admin Dashboard](docs/images/admin/Screenshot 2026-01-14 221410.png)
+![admin](docs/images/admin/Screenshot_2026-01-14_221410.png)
 
-![Admin Dashboard](docs/images/admin/Screenshot 2026-01-14 221502.png)
+![admin](docs/images/admin/Screenshot_2026-01-14_221502.png)
 
-![Admin Dashboard](docs/images/admin/Screenshot 2026-01-14 221545.png)
+![admin](docs/images/admin/Screenshot_2026-01-14_221545.png)
 
-![Admin Dashboard](docs/images/admin/Screenshot 2026-01-14 221718.png)
+![admin](docs/images/admin/Screenshot_2026-01-14_221718.png)
 
-![Admin Dashboard](docs/images/admin/Screenshot 2026-01-14 221826.png)
+![admin](docs/images/admin/Screenshot_2026-01-14_221826.png)
 
 
-### User Dashboard
+### user
 
-![User Dashboard](docs/images/user/Screenshot 2026-01-14 215734.png)
+![user](docs/images/user/Screenshot_2026-01-14_215734.png)
 
-![User Dashboard](docs/images/user/Screenshot 2026-01-14 220137.png)
+![user](docs/images/user/Screenshot_2026-01-14_220137.png)
 
-![User Dashboard](docs/images/user/Screenshot 2026-01-14 220217.png)
+![user](docs/images/user/Screenshot_2026-01-14_220217.png)
 
-![User Dashboard](docs/images/user/Screenshot 2026-01-14 220255.png)
+![user](docs/images/user/Screenshot_2026-01-14_220255.png)
 
-![User Dashboard](docs/images/user/Screenshot 2026-01-14 220335.png)
+![user](docs/images/user/Screenshot_2026-01-14_220335.png)
 
-![User Dashboard](docs/images/user/Screenshot 2026-01-14 220427.png)
+![user](docs/images/user/Screenshot_2026-01-14_220427.png)
 
 
 

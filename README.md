@@ -86,6 +86,7 @@ Backend API: [http://localhost:8080/api/v1](http://localhost:8080/api/v1)
 ---
 
 ## 👤 Author
-Methal Kumar Yadav 
+Methal Kumar Yadav
+
 Full Stack Java + Angular Developer  
 Nepal 🇳🇵
